@@ -32,6 +32,7 @@ namespace SomerenUI
                 case "Dashboard":
                     // hide all other panels
                     pnlStudents.Hide();
+                    pnlLecturers.Hide();
 
                     // show dashboard
                     pnlDashboard.Show();
@@ -41,11 +42,19 @@ namespace SomerenUI
                     // hide all other panels
                     pnlDashboard.Hide();
                     imgDashboard.Hide();
+                    pnlLecturers.Hide();
 
                     // show students
                     pnlStudents.Show();
                     break;
-                case "Lecturers":                    
+                case "Lecturers":
+                    //hide all other panels
+                    pnlDashboard.Hide();
+                    pnlStudents.Hide();
+                    imgDashboard.Hide();
+
+                    //show lecturers
+                    pnlLecturers.Show();
                     break;
                 case "Activities":
                     break;
@@ -120,6 +129,11 @@ namespace SomerenUI
         private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Students");
+        }
+
+        private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Lecturers");
         }
     }
 }
