@@ -118,7 +118,35 @@ namespace SomerenUI
 
             else if (panelName == "Lecturers")
             {
-                //Elias 
+                try
+                {
+                    // fill the teachers listview with a list of teachers
+                    TeacherService teacherService = new TeacherService(); ;
+                    List<Teacher> teacherList = teacherService.GetTeachers(); ;
+                    // clear the listview before filling it again
+                    ListviewLecturers.Clear();
+                    ListviewLecturers.View = View.Details;
+                    ListviewLecturers.FullRowSelect = true;
+                    ListviewLecturers.Columns.Add("ID", 254);
+                    ListviewLecturers.Columns.Add("First name", 254);
+                    ListviewLecturers.Columns.Add("Last name", 254);
+
+                    //List View
+                    foreach (Teacher teacher in teacherList)
+                    {
+                        string[] name = teacher.Name.Split(new[] { ' ' }, 2);
+                        string[] item = { teacher.Number.ToString(), name[0], name[1] };
+                        ListViewItem li = new ListViewItem(item);
+                        ListviewLecturers.Items.Add(li);
+
+                    }
+                    if (teacherList.Count == 0)
+                        throw new Exception("There is currently no content in this table. Sorry for the inconvenience");
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong while loading the teachers: " + e.Message);
+                }
             }
             else if (panelName == "Rooms")
             {
