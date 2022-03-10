@@ -33,6 +33,8 @@ namespace SomerenUI
                     // hide all other panels
                     pnlStudents.Hide();
                     pnlLecturers.Hide();
+                    pnlActivities.Hide();
+                    pnlRooms.Hide();
 
                     // show dashboard
                     pnlDashboard.Show();
@@ -43,6 +45,8 @@ namespace SomerenUI
                     pnlDashboard.Hide();
                     imgDashboard.Hide();
                     pnlLecturers.Hide();
+                    pnlActivities.Hide();
+                    pnlRooms.Hide();
 
                     // show students
                     pnlStudents.Show();
@@ -52,13 +56,29 @@ namespace SomerenUI
                     pnlDashboard.Hide();
                     pnlStudents.Hide();
                     imgDashboard.Hide();
+                    pnlActivities.Hide();
+                    pnlRooms.Hide();
 
                     //show lecturers
                     pnlLecturers.Show();
                     break;
                 case "Activities":
+                    //hide all other panels 
+                    pnlDashboard.Hide();
+                    pnlStudents.Hide();
+                    pnlRooms.Hide();
+                    
+
+                    //show activities
+                    pnlActivities.Show();
                     break;
                 case "Rooms":
+                    //hide all other panels
+                    pnlDashboard.Hide();
+                    pnlStudents.Hide();
+                    
+                    //show rooms
+                    pnlRooms.Show();
                     break;
 
             }
@@ -99,6 +119,15 @@ namespace SomerenUI
                     MessageBox.Show("Something went wrong while loading the students: " + e.Message);
                 }
             }
+
+            else if (panelName == "Lecturers")
+            {
+                //Elias 
+            }
+            else if (panelName == "Rooms")
+            {
+                //Lucas
+            }
         }
 
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -134,6 +163,16 @@ namespace SomerenUI
         private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Lecturers");
+        }
+
+        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Activities");
+        }
+
+        private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Rooms");
         }
     }
 }
