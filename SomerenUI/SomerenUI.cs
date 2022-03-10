@@ -68,16 +68,14 @@ namespace SomerenUI
                     pnlStudents.Hide();
                     pnlRooms.Hide();
 
-
-                    //show activities (pnLecturers is needed, Activities is nested inside of Lecturers)
-                    pnlLecturers.Show();
+                    //show activities                    
                     pnlActivities.Show();
                     break;
                 case "Rooms":
                     //hide all other panels
                     pnlDashboard.Hide();
                     pnlStudents.Hide();
-                    
+
                     //show rooms
                     pnlRooms.Show();
                     break;
