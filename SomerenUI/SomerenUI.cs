@@ -67,9 +67,10 @@ namespace SomerenUI
                     pnlDashboard.Hide();
                     pnlStudents.Hide();
                     pnlRooms.Hide();
-                    
 
-                    //show activities
+
+                    //show activities (pnLecturers is needed, Activities is nested inside of Lecturers)
+                    pnlLecturers.Show();
                     pnlActivities.Show();
                     break;
                 case "Rooms":
@@ -99,9 +100,6 @@ namespace SomerenUI
                     listViewStudents.Columns.Add("First name", 254);
                     listViewStudents.Columns.Add("Last name", 254);
                     
-
-
-
                     //List View
                     foreach (Student s in studentList)
                     {
