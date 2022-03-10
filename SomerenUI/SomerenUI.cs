@@ -118,7 +118,7 @@ namespace SomerenUI
 
             else if (panelName == "Lecturers")
             {
-                //Elias 
+                //Elias test
             }
             else if (panelName == "Rooms")
             {
