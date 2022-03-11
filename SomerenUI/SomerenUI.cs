@@ -152,10 +152,10 @@ namespace SomerenUI
             {
                 try
                 {
-                    // fill the teachers listview with a list of teachers
+                    
                     RoomService roomService = new RoomService(); ;
                     List<Room> roomList = roomService.GetRooms(); ;
-                    // clear the listview before filling it again
+                    
                     listViewRooms.Clear();
                     listViewRooms.View = View.Details;
                     listViewRooms.FullRowSelect = true;
@@ -163,7 +163,7 @@ namespace SomerenUI
                     listViewRooms.Columns.Add("Number of beds", 254);
                     listViewRooms.Columns.Add("Room type", 254);
 
-                    //List View
+                    
                     foreach (Room room in roomList)
                     {
                         string roomType;
