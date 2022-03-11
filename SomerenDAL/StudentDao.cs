@@ -23,7 +23,6 @@ namespace SomerenDAL
         {
             List<Student> students = new List<Student>();
 
-
             try
             {
                 foreach (DataRow dr in dataTable.Rows)

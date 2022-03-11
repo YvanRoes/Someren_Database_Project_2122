@@ -166,7 +166,7 @@ namespace SomerenUI
                     //List View
                     foreach (Room room in roomList)
                     {
-                        string roomType = room.Type ? "Teacher" : "Student";
+                        string roomType = room.Type.ToString();
                         string[] item = { room.Number.ToString(), room.Capacity.ToString(), roomType};
                         ListViewItem li = new ListViewItem(item);
                         listViewRooms.Items.Add(li);
