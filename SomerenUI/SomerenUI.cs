@@ -89,15 +89,15 @@ namespace SomerenUI
                     break;
 
             }
-            
+
             if (panelName == "Students")
-            {               
+            {
                 try
                 {
                     // fill the students listview within the students panel with a list of students
                     StudentService studService = new StudentService(); ;
                     List<Student> studentList = studService.GetStudents(); ;
-                    
+
                     // clear the listview before filling it again
                     ListViewStudents.Clear();
                     ListViewStudents.View = View.Details;
@@ -106,13 +106,16 @@ namespace SomerenUI
                     ListViewStudents.Columns.Add("First name", 254);
                     ListViewStudents.Columns.Add("Last name", 254);
                     
+
                     //List View
                     foreach (Student s in studentList)
                     {
-                        string[] name = s.Name.Split(new[] {' '}, 2);
+                        string[] name = s.Name.Split(new[] { ' ' }, 2);
                         string[] item = { s.Number.ToString(), name[0], name[1] };
+
                         ListViewItem li = new ListViewItem(item);                        
                         ListViewStudents.Items.Add(li);
+
 
                     }
                     if (studentList.Count == 0)
@@ -126,11 +129,75 @@ namespace SomerenUI
 
             else if (panelName == "Lecturers")
             {
-                //Elias 
+                try
+                {
+                    // fill the teachers listview with a list of teachers
+                    TeacherService teacherService = new TeacherService(); ;
+                    List<Teacher> teacherList = teacherService.GetTeachers(); ;
+                    // clear the listview before filling it again
+                    ListviewLecturers.Clear();
+                    ListviewLecturers.View = View.Details;
+                    ListviewLecturers.FullRowSelect = true;
+                    ListviewLecturers.Columns.Add("ID", 254);
+                    ListviewLecturers.Columns.Add("First name", 254);
+                    ListviewLecturers.Columns.Add("Last name", 254);
+
+                    //List View
+                    foreach (Teacher teacher in teacherList)
+                    {
+                        string[] name = teacher.Name.Split(new[] { ' ' }, 2);
+                        string[] item = { teacher.Number.ToString(), name[0], name[1] };
+                        ListViewItem li = new ListViewItem(item);
+                        ListviewLecturers.Items.Add(li);
+
+                    }
+                    if (teacherList.Count == 0)
+                        throw new Exception("There is currently no content in this table. Sorry for the inconvenience");
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong while loading the teachers: " + e.Message);
+                }
             }
             else if (panelName == "Rooms")
             {
-                //Lucas
+                try
+                {
+                    
+                    RoomService roomService = new RoomService(); ;
+                    List<Room> roomList = roomService.GetRooms(); ;
+                    
+                    listViewRooms.Clear();
+                    listViewRooms.View = View.Details;
+                    listViewRooms.FullRowSelect = true;
+                    listViewRooms.Columns.Add("Room number", 254);
+                    listViewRooms.Columns.Add("Number of beds", 254);
+                    listViewRooms.Columns.Add("Room type", 254);
+
+                    
+                    foreach (Room room in roomList)
+                    {
+                        string roomType;
+                        if (room.Type == 0)
+                        {
+                            roomType = "Student";
+                        }
+                        else
+                        {
+                            roomType = "Teacher";
+                        }
+                        string[] item = { room.Number.ToString(), room.Capacity.ToString(), roomType};
+                        ListViewItem li = new ListViewItem(item);
+                        listViewRooms.Items.Add(li);
+
+                    }
+                    if (roomList.Count == 0)
+                        throw new Exception("There is currently no content in this table. Sorry for the inconvenience");
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong while loading the rooms: " + e.Message);
+                }
             }
         }
 
@@ -177,6 +244,16 @@ namespace SomerenUI
         private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Rooms");
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listViewRooms_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
