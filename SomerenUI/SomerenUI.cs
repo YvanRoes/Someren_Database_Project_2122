@@ -70,6 +70,7 @@ namespace SomerenUI
                     pnlDashboard.Hide();
                     pnlStudents.Hide();
                     pnlRooms.Hide();
+                    pnlLecturers.Hide();
 
                     //show activities                    
                     pnlActivities.Show();
