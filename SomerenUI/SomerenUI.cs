@@ -39,6 +39,7 @@ namespace SomerenUI
                     // show dashboard
                     pnlDashboard.Show();
                     imgDashboard.Show();
+                    pnlDashboard.Dock = DockStyle.Fill;
                     break;
                 case "Students":
                     // hide all other panels
@@ -50,6 +51,7 @@ namespace SomerenUI
 
                     // show students
                     pnlStudents.Show();
+                    pnlStudents.Dock = DockStyle.Fill;
                     break;
                 case "Lecturers":
                     //hide all other panels
@@ -61,6 +63,7 @@ namespace SomerenUI
 
                     //show lecturers
                     pnlLecturers.Show();
+                    pnlLecturers.Dock = DockStyle.Fill;
                     break;
                 case "Activities":
                     //hide all other panels 
@@ -70,14 +73,19 @@ namespace SomerenUI
 
                     //show activities                    
                     pnlActivities.Show();
+                    pnlActivities.Dock = DockStyle.Fill;
                     break;
                 case "Rooms":
                     //hide all other panels
                     pnlDashboard.Hide();
                     pnlStudents.Hide();
+                    pnlActivities.Hide();
+                    pnlLecturers.Hide();
+                    pnlStudents.Hide();
 
                     //show rooms
                     pnlRooms.Show();
+                    pnlRooms.Dock = DockStyle.Fill;
                     break;
 
             }
@@ -91,12 +99,12 @@ namespace SomerenUI
                     List<Student> studentList = studService.GetStudents(); ;
                     
                     // clear the listview before filling it again
-                    listViewStudents.Clear();
-                    listViewStudents.View = View.Details;
-                    listViewStudents.FullRowSelect = true;
-                    listViewStudents.Columns.Add("ID", 254);
-                    listViewStudents.Columns.Add("First name", 254);
-                    listViewStudents.Columns.Add("Last name", 254);
+                    ListViewStudents.Clear();
+                    ListViewStudents.View = View.Details;
+                    ListViewStudents.FullRowSelect = true;
+                    ListViewStudents.Columns.Add("ID", 254);
+                    ListViewStudents.Columns.Add("First name", 254);
+                    ListViewStudents.Columns.Add("Last name", 254);
                     
                     //List View
                     foreach (Student s in studentList)
@@ -104,7 +112,7 @@ namespace SomerenUI
                         string[] name = s.Name.Split(new[] {' '}, 2);
                         string[] item = { s.Number.ToString(), name[0], name[1] };
                         ListViewItem li = new ListViewItem(item);                        
-                        listViewStudents.Items.Add(li);
+                        ListViewStudents.Items.Add(li);
 
                     }
                     if (studentList.Count == 0)
