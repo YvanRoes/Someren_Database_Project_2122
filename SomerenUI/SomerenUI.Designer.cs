@@ -382,9 +382,9 @@
             this.label2.Location = new System.Drawing.Point(15, 14);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(137, 33);
+            this.label2.Size = new System.Drawing.Size(128, 33);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Lecturers";
+            this.label2.Text = "lecturers";
             // 
             // pnlStudents
             // 
