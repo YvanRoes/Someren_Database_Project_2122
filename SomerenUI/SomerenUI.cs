@@ -17,6 +17,7 @@ namespace SomerenUI
         public SomerenUI()
         {
             InitializeComponent();
+            this.Size = new Size(978, 544);
         }
 
         private void SomerenUI_Load(object sender, EventArgs e)
@@ -35,6 +36,9 @@ namespace SomerenUI
                     pnlLecturers.Hide();
                     pnlActivities.Hide();
                     pnlRooms.Hide();
+                    pnlStock.Hide();
+                    pnlRegister.Hide();
+                    pnlReport.Hide();
 
                     // show dashboard
                     pnlDashboard.Show();
@@ -48,6 +52,9 @@ namespace SomerenUI
                     pnlLecturers.Hide();
                     pnlActivities.Hide();
                     pnlRooms.Hide();
+                    pnlStock.Hide();
+                    pnlRegister.Hide();
+                    pnlReport.Hide();
 
                     // show students
                     pnlStudents.Show();
@@ -60,6 +67,9 @@ namespace SomerenUI
                     imgDashboard.Hide();
                     pnlActivities.Hide();
                     pnlRooms.Hide();
+                    pnlStock.Hide();
+                    pnlRegister.Hide();
+                    pnlReport.Hide();
 
                     //show lecturers
                     pnlLecturers.Show();
@@ -71,6 +81,9 @@ namespace SomerenUI
                     pnlStudents.Hide();
                     pnlRooms.Hide();
                     pnlLecturers.Hide();
+                    pnlStock.Hide();
+                    pnlRegister.Hide();
+                    pnlReport.Hide();
 
                     //show activities                    
                     pnlActivities.Show();
@@ -83,10 +96,58 @@ namespace SomerenUI
                     pnlActivities.Hide();
                     pnlLecturers.Hide();
                     pnlStudents.Hide();
+                    pnlStock.Hide();
+                    pnlRegister.Hide();
+                    pnlReport.Hide();
 
                     //show rooms
                     pnlRooms.Show();
                     pnlRooms.Dock = DockStyle.Fill;
+                    break;
+                case "Stock management":
+                    //hide
+                    pnlDashboard.Hide();
+                    pnlStudents.Hide();
+                    pnlActivities.Hide();
+                    pnlLecturers.Hide();
+                    pnlStudents.Hide();
+                    pnlRooms.Hide();
+                    pnlRegister.Hide();
+                    pnlReport.Hide();
+
+                    //show
+                    pnlStock.Show();
+                    pnlStock.Dock = DockStyle.Fill;
+                    break;
+                case "Cash register":
+                    //hide
+                    pnlDashboard.Hide();
+                    pnlStudents.Hide();
+                    pnlActivities.Hide();
+                    pnlLecturers.Hide();
+                    pnlStudents.Hide();
+                    pnlRooms.Hide();
+                    pnlStock.Hide();
+                    pnlReport.Hide();
+
+                    //show
+                    pnlRegister.Show();
+                    pnlRegister.Dock = DockStyle.Fill;                   
+                    break;
+                case "Revenue report":
+                    //hide
+                    pnlDashboard.Hide();
+                    pnlStudents.Hide();
+                    pnlActivities.Hide();
+                    pnlLecturers.Hide();
+                    pnlStudents.Hide();
+                    pnlRooms.Hide();
+                    pnlStock.Hide();
+                    pnlRegister.Hide();
+                    
+                    //show
+                    pnlReport.Show();
+                    pnlReport.Dock = DockStyle.Fill;
                     break;
 
             }
@@ -242,6 +303,21 @@ namespace SomerenUI
         private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Rooms");
+        }
+
+        private void cashRegisterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Cash register");
+        }
+
+        private void StockToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            showPanel("Stock management");
+        }
+
+        private void revenueReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Revenue report");
         }
     }
 }
