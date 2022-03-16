@@ -17,6 +17,7 @@ namespace SomerenUI
         public SomerenUI()
         {
             InitializeComponent();
+            this.Size = new Size(978, 544);
         }
 
         private void SomerenUI_Load(object sender, EventArgs e)
@@ -35,6 +36,9 @@ namespace SomerenUI
                     pnlLecturers.Hide();
                     pnlActivities.Hide();
                     pnlRooms.Hide();
+                    pnlStock.Hide();
+                    pnlRegister.Hide();
+                    pnlReport.Hide();
 
                     // show dashboard
                     pnlDashboard.Show();
@@ -48,6 +52,9 @@ namespace SomerenUI
                     pnlLecturers.Hide();
                     pnlActivities.Hide();
                     pnlRooms.Hide();
+                    pnlStock.Hide();
+                    pnlRegister.Hide();
+                    pnlReport.Hide();
 
                     // show students
                     pnlStudents.Show();
@@ -60,6 +67,9 @@ namespace SomerenUI
                     imgDashboard.Hide();
                     pnlActivities.Hide();
                     pnlRooms.Hide();
+                    pnlStock.Hide();
+                    pnlRegister.Hide();
+                    pnlReport.Hide();
 
                     //show lecturers
                     pnlLecturers.Show();
@@ -71,6 +81,9 @@ namespace SomerenUI
                     pnlStudents.Hide();
                     pnlRooms.Hide();
                     pnlLecturers.Hide();
+                    pnlStock.Hide();
+                    pnlRegister.Hide();
+                    pnlReport.Hide();
 
                     //show activities                    
                     pnlActivities.Show();
@@ -83,22 +96,70 @@ namespace SomerenUI
                     pnlActivities.Hide();
                     pnlLecturers.Hide();
                     pnlStudents.Hide();
+                    pnlStock.Hide();
+                    pnlRegister.Hide();
+                    pnlReport.Hide();
 
                     //show rooms
                     pnlRooms.Show();
                     pnlRooms.Dock = DockStyle.Fill;
                     break;
+                case "Stock management":
+                    //hide
+                    pnlDashboard.Hide();
+                    pnlStudents.Hide();
+                    pnlActivities.Hide();
+                    pnlLecturers.Hide();
+                    pnlStudents.Hide();
+                    pnlRooms.Hide();
+                    pnlRegister.Hide();
+                    pnlReport.Hide();
+
+                    //show
+                    pnlStock.Show();
+                    pnlStock.Dock = DockStyle.Fill;
+                    break;
+                case "Cash register":
+                    //hide
+                    pnlDashboard.Hide();
+                    pnlStudents.Hide();
+                    pnlActivities.Hide();
+                    pnlLecturers.Hide();
+                    pnlStudents.Hide();
+                    pnlRooms.Hide();
+                    pnlStock.Hide();
+                    pnlReport.Hide();
+
+                    //show
+                    pnlRegister.Show();
+                    pnlRegister.Dock = DockStyle.Fill;                   
+                    break;
+                case "Revenue report":
+                    //hide
+                    pnlDashboard.Hide();
+                    pnlStudents.Hide();
+                    pnlActivities.Hide();
+                    pnlLecturers.Hide();
+                    pnlStudents.Hide();
+                    pnlRooms.Hide();
+                    pnlStock.Hide();
+                    pnlRegister.Hide();
+                    
+                    //show
+                    pnlReport.Show();
+                    pnlReport.Dock = DockStyle.Fill;
+                    break;
 
             }
-            
+
             if (panelName == "Students")
-            {               
+            {
                 try
                 {
                     // fill the students listview within the students panel with a list of students
                     StudentService studService = new StudentService(); ;
                     List<Student> studentList = studService.GetStudents(); ;
-                    
+
                     // clear the listview before filling it again
                     ListViewStudents.Clear();
                     ListViewStudents.View = View.Details;
@@ -106,13 +167,13 @@ namespace SomerenUI
                     ListViewStudents.Columns.Add("ID", 254);
                     ListViewStudents.Columns.Add("First name", 254);
                     ListViewStudents.Columns.Add("Last name", 254);
-                    
+
                     //List View
                     foreach (Student s in studentList)
                     {
-                        string[] name = s.Name.Split(new[] {' '}, 2);
+                        string[] name = s.Name.Split(new[] { ' ' }, 2);
                         string[] item = { s.Number.ToString(), name[0], name[1] };
-                        ListViewItem li = new ListViewItem(item);                        
+                        ListViewItem li = new ListViewItem(item);
                         ListViewStudents.Items.Add(li);
 
                     }
@@ -197,6 +258,39 @@ namespace SomerenUI
                     MessageBox.Show("Something went wrong while loading the rooms: " + e.Message);
                 }
             }
+            else if (panelName == "Revenue report")
+            {
+                try
+                {
+                    // fill the teachers listview with a list of teachers
+                    TeacherService teacherService = new TeacherService(); ;
+                    List<Teacher> teacherList = teacherService.GetTeachers(); ;
+
+                    // clear the listview before filling it again
+                    ListViewRevenueReport.Clear();
+                    ListViewRevenueReport.View = View.Details;
+                    ListViewRevenueReport.FullRowSelect = true;
+                    ListViewRevenueReport.Columns.Add("Sales", 150);
+                    ListViewRevenueReport.Columns.Add("Turnover", 150);
+                    ListViewRevenueReport.Columns.Add("Number of customers", 150);
+
+                    //List View
+                    foreach (Teacher teacher in teacherList)
+                    {
+                        string[] name = teacher.Name.Split(new[] { ' ' }, 2);
+                        string[] item = { teacher.Number.ToString(), name[0], name[1] };
+                        ListViewItem li = new ListViewItem(item);
+                        ListViewRevenueReport.Items.Add(li);
+
+                    }
+                    if (teacherList.Count == 0)
+                        throw new Exception("There is currently no content in this table. Sorry for the inconvenience");
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong while loading the teachers: " + e.Message);
+                }
+            }
         }
 
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -242,6 +336,31 @@ namespace SomerenUI
         private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Rooms");
+        }
+
+        private void cashRegisterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Cash register");
+        }
+
+        private void StockToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            showPanel("Stock management");
+        }
+
+        private void revenueReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Revenue report");
+        }
+
+        private void dateTimePickerStart_ValueChanged(object sender, EventArgs e)
+        {
+            monthCalendar1.MinDate = dateTimePickerStart.Value;
+        }
+
+        private void dateTimePickerEnd_ValueChanged(object sender, EventArgs e)
+        {
+            monthCalendar1.MaxDate = dateTimePickerEnd.Value;
         }
     }
 }
