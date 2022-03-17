@@ -356,6 +356,7 @@ namespace SomerenUI
         private void dateTimePickerStart_ValueChanged(object sender, EventArgs e)
         {
             monthCalendar1.MinDate = dateTimePickerStart.Value;
+
         }
 
         private void dateTimePickerEnd_ValueChanged(object sender, EventArgs e)

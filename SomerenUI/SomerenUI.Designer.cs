@@ -88,6 +88,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.pnlReport = new System.Windows.Forms.Panel();
+            this.ListViewRevenueReport = new System.Windows.Forms.ListView();
             this.label7 = new System.Windows.Forms.Label();
             this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
@@ -96,7 +97,6 @@
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.ListViewRevenueReport = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -645,11 +645,20 @@
             this.pnlReport.Controls.Add(this.monthCalendar1);
             this.pnlReport.Controls.Add(this.pictureBox7);
             this.pnlReport.Controls.Add(this.label6);
-            this.pnlReport.Location = new System.Drawing.Point(16, 289);
+            this.pnlReport.Location = new System.Drawing.Point(13, 196);
             this.pnlReport.Margin = new System.Windows.Forms.Padding(4);
             this.pnlReport.Name = "pnlReport";
             this.pnlReport.Size = new System.Drawing.Size(1726, 739);
             this.pnlReport.TabIndex = 11;
+            // 
+            // ListViewRevenueReport
+            // 
+            this.ListViewRevenueReport.HideSelection = false;
+            this.ListViewRevenueReport.Location = new System.Drawing.Point(520, 46);
+            this.ListViewRevenueReport.Name = "ListViewRevenueReport";
+            this.ListViewRevenueReport.Size = new System.Drawing.Size(665, 231);
+            this.ListViewRevenueReport.TabIndex = 12;
+            this.ListViewRevenueReport.UseCompatibleStateImageBehavior = false;
             // 
             // label7
             // 
@@ -724,21 +733,12 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(15, 14);
+            this.label6.Location = new System.Drawing.Point(16, 14);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(215, 33);
             this.label6.TabIndex = 3;
             this.label6.Text = "Revenue report";
-            // 
-            // ListViewRevenueReport
-            // 
-            this.ListViewRevenueReport.HideSelection = false;
-            this.ListViewRevenueReport.Location = new System.Drawing.Point(520, 46);
-            this.ListViewRevenueReport.Name = "ListViewRevenueReport";
-            this.ListViewRevenueReport.Size = new System.Drawing.Size(665, 231);
-            this.ListViewRevenueReport.TabIndex = 12;
-            this.ListViewRevenueReport.UseCompatibleStateImageBehavior = false;
             // 
             // SomerenUI
             // 
