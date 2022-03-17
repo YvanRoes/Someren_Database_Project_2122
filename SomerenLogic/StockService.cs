@@ -21,5 +21,28 @@ namespace SomerenLogic
             List<StockItem> stock = stockdb.GetAllItems();
             return stock;
         }
+
+        public StockItem ItemById(int id)
+        {
+            List<StockItem> stock = stockdb.GetAllItems();
+            StockItem item = stock[stock.FindIndex(x => x.Id == id)];
+            return item;
+        }
+
+        public void UpdateItem(StockItem s)
+        {         
+            stockdb.UpdateItem(s.Id, s.Name, s.Price, s.Alcohol ? 1 : 0);
+        }
+
+        public void AddItem(StockItem s)
+        {
+            stockdb.AddItem(s.Id, s.Name, s.Price, s.Alcohol ? 1 : 0, s.Stock);
+        }
+
+
+        public void DelItem(StockItem s)
+        {
+            stockdb.DelItem(s.Id);
+        }
     }
 }

@@ -132,7 +132,7 @@ namespace SomerenUI
 
                     //show
                     pnlRegister.Show();
-                    pnlRegister.Dock = DockStyle.Fill;                   
+                    pnlRegister.Dock = DockStyle.Fill;
                     break;
                 case "Revenue report":
                     //hide
@@ -144,22 +144,22 @@ namespace SomerenUI
                     pnlRooms.Hide();
                     pnlStock.Hide();
                     pnlRegister.Hide();
-                    
+
                     //show
                     pnlReport.Show();
                     pnlReport.Dock = DockStyle.Fill;
                     break;
 
             }
-            
+
             if (panelName == "Students")
-            {               
+            {
                 try
                 {
                     // fill the students listview within the students panel with a list of students
                     StudentService studService = new StudentService(); ;
                     List<Student> studentList = studService.GetStudents(); ;
-                    
+
                     // clear the listview before filling it again
                     ListViewStudents.Clear();
                     ListViewStudents.View = View.Details;
@@ -167,13 +167,13 @@ namespace SomerenUI
                     ListViewStudents.Columns.Add("ID", 254);
                     ListViewStudents.Columns.Add("First name", 254);
                     ListViewStudents.Columns.Add("Last name", 254);
-                    
+
                     //List View
                     foreach (Student s in studentList)
                     {
-                        string[] name = s.Name.Split(new[] {' '}, 2);
+                        string[] name = s.Name.Split(new[] { ' ' }, 2);
                         string[] item = { s.Number.ToString(), name[0], name[1] };
-                        ListViewItem li = new ListViewItem(item);                        
+                        ListViewItem li = new ListViewItem(item);
                         ListViewStudents.Items.Add(li);
 
                     }
@@ -259,6 +259,7 @@ namespace SomerenUI
                 }
             }
 
+
         }
 
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -321,7 +322,9 @@ namespace SomerenUI
             showPanel("Revenue report");
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        //Variant A Yvan Roes
+        private void btnList_Click(object sender, EventArgs e)
         {
             ListViewStock.Clear();
             ListViewStock.View = View.Details;
@@ -345,6 +348,75 @@ namespace SomerenUI
                 ListViewStock.Items.Add(li);
 
             }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            StockService stock = new StockService();
+            StockItem item = new StockItem()
+            {
+                Id = int.Parse(txtId.Text),
+                Name = txtName.Text,
+                Price = decimal.Parse(txtPrice.Text),
+                Alcohol = txtAlcoholic.Text.ToLower() == "yes" ? true : false,
+            };
+            stock.UpdateItem(item);
+            //update list & clear flields
+            btnList_Click(sender, e);
+            btnClear_Click(sender, e);
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int Id = int.Parse(ListViewStock.SelectedItems[0].Text);
+                StockService stock = new StockService();
+                StockItem item = stock.ItemById(Id);
+                txtId.Text = item.Id.ToString();
+                txtName.Text = item.Name.ToString();
+                txtPrice.Text = item.Price.ToString();
+                txtAlcoholic.Text = item.Alcohol ? "yes" : "no";
+                txtStock.Text = item.Stock.ToString();
+                
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtId.Text = null;
+            txtName.Text = null;
+            txtPrice.Text = null;
+            txtAlcoholic.Text = null;
+            txtStock.Text=null;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            StockService stock = new StockService();
+            StockItem item = new StockItem()
+            {
+                Name = txtName.Text,
+                Price = decimal.Parse(txtPrice.Text),
+                Alcohol = txtAlcoholic.Text.ToLower() == "yes" ? true : false,
+                Stock = int.Parse(txtStock.Text)
+            };
+            stock.AddItem(item);
+            //update list & clear fields
+            btnList_Click(sender, e);
+            btnClear_Click(sender, e);
+            
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int Id = int.Parse(ListViewStock.SelectedItems[0].Text);
+            StockService stock = new StockService();
+            stock.DelItem(stock.ItemById(Id));
+            //update list & clear fields
+            btnList_Click(sender, e);
+            btnClear_Click(sender, e);
         }
     }
 }
