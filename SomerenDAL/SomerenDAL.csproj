@@ -46,6 +46,7 @@
     <Compile Include="BaseDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoomDao.cs" />
+    <Compile Include="StockItemDao.cs" />
     <Compile Include="StudentDao.cs" />
     <Compile Include="TeacherDao.cs" />
   </ItemGroup>

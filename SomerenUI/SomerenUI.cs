@@ -258,6 +258,7 @@ namespace SomerenUI
                     MessageBox.Show("Something went wrong while loading the rooms: " + e.Message);
                 }
             }
+
         }
 
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -318,6 +319,32 @@ namespace SomerenUI
         private void revenueReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Revenue report");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ListViewStock.Clear();
+            ListViewStock.View = View.Details;
+            ListViewStock.FullRowSelect = true;
+            ListViewStock.Columns.Add("id", 150);
+            ListViewStock.Columns.Add("Name", 150);
+            ListViewStock.Columns.Add("Price", 150);
+            ListViewStock.Columns.Add("Alcoholic", 150);
+            ListViewStock.Columns.Add("Stock", 100);
+            ListViewStock.Columns.Add("Sold");
+
+            StockService Stock = new StockService();
+            List<StockItem> items = Stock.GetItems();
+
+
+
+            foreach (StockItem s in items)
+            {
+                string[] item = { s.Id.ToString(), s.Name, s.Price.ToString(), s.Alcohol ? "yes" : "no", s.Stock.ToString(), s.Sold.ToString() };
+                ListViewItem li = new ListViewItem(item);
+                ListViewStock.Items.Add(li);
+
+            }
         }
     }
 }

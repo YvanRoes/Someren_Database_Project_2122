@@ -23,26 +23,17 @@ namespace SomerenDAL
         {
             List<Student> students = new List<Student>();
 
-
-            try
+            foreach (DataRow dr in dataTable.Rows)
             {
-                foreach (DataRow dr in dataTable.Rows)
+                Student student = new Student()
                 {
-                    Student student = new Student()
-                    {
-                        Number = (int)dr["Student_ID"],
-                        Name = (string)(dr["name"].ToString())
-                    };
-                    students.Add(student);
-                }
-                return students;
+                    Number = (int)dr["Student_ID"],
+                    Name = (string)(dr["name"].ToString())
+                };
+                students.Add(student);
             }
-            catch (Exception ex)
-            {
-                throw new Exception("query column names do not correspond with the database column names");
-                throw ex;
-            }
-            
+            return students;
+
         }
     }
 }
