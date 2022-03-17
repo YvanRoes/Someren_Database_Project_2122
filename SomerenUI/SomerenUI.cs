@@ -133,6 +133,7 @@ namespace SomerenUI
                     //show
                     pnlRegister.Show();
                     pnlRegister.Dock = DockStyle.Fill;
+
                     break;
                 case "Revenue report":
                     //hide
@@ -259,7 +260,39 @@ namespace SomerenUI
                 }
             }
 
+            else if (panelName == "Revenue report")
+            {
+                try
+                {
+                    // fill the teachers listview with a list of teachers
+                    TeacherService teacherService = new TeacherService(); ;
+                    List<Teacher> teacherList = teacherService.GetTeachers(); ;
 
+                    // clear the listview before filling it again
+                    ListViewRevenueReport.Clear();
+                    ListViewRevenueReport.View = View.Details;
+                    ListViewRevenueReport.FullRowSelect = true;
+                    ListViewRevenueReport.Columns.Add("Sales", 150);
+                    ListViewRevenueReport.Columns.Add("Turnover", 150);
+                    ListViewRevenueReport.Columns.Add("Number of customers", 150);
+
+                    //List View
+                    foreach (Teacher teacher in teacherList)
+                    {
+                        string[] name = teacher.Name.Split(new[] { ' ' }, 2);
+                        string[] item = { teacher.Number.ToString(), name[0], name[1] };
+                        ListViewItem li = new ListViewItem(item);
+                        ListViewRevenueReport.Items.Add(li);
+
+                    }
+                    if (teacherList.Count == 0)
+                        throw new Exception("There is currently no content in this table. Sorry for the inconvenience");
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong while loading the teachers: " + e.Message);
+                }
+            }
         }
 
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -321,7 +354,6 @@ namespace SomerenUI
         {
             showPanel("Revenue report");
         }
-
 
         //Variant A Yvan Roes
         private void btnList_Click(object sender, EventArgs e)
@@ -417,6 +449,17 @@ namespace SomerenUI
             //update list & clear fields
             btnList_Click(sender, e);
             btnClear_Click(sender, e);
+
+        private void dateTimePickerStart_ValueChanged(object sender, EventArgs e)
+        {
+            monthCalendar1.MinDate = dateTimePickerStart.Value;
+
+        }
+
+        private void dateTimePickerEnd_ValueChanged(object sender, EventArgs e)
+        {
+            monthCalendar1.MaxDate = dateTimePickerEnd.Value;
+
         }
     }
 }
