@@ -39,6 +39,10 @@
             this.lecturersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.activitiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.roomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.drinksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.StockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cashRegisterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.revenueReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlDashboard = new System.Windows.Forms.Panel();
             this.lbl_Dashboard = new System.Windows.Forms.Label();
             this.pnlActivities = new System.Windows.Forms.Panel();
@@ -69,11 +73,21 @@
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.drinksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.StockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cashRegisterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.revenueReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlStock = new System.Windows.Forms.Panel();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnSelect = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnList = new System.Windows.Forms.Button();
+            this.txtAlcoholic = new System.Windows.Forms.TextBox();
+            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.ListViewStock = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -94,6 +108,8 @@
             this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.txtStock = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -155,19 +171,19 @@
             // dashboardToolStripMenuItem1
             // 
             this.dashboardToolStripMenuItem1.Name = "dashboardToolStripMenuItem1";
-            this.dashboardToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.dashboardToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
             this.dashboardToolStripMenuItem1.Text = "Dashboard";
             this.dashboardToolStripMenuItem1.Click += new System.EventHandler(this.dashboardToolStripMenuItem1_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(128, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -199,6 +215,37 @@
             this.roomsToolStripMenuItem.Text = "Rooms";
             this.roomsToolStripMenuItem.Click += new System.EventHandler(this.roomsToolStripMenuItem_Click);
             // 
+            // drinksToolStripMenuItem
+            // 
+            this.drinksToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.StockToolStripMenuItem,
+            this.cashRegisterToolStripMenuItem,
+            this.revenueReportToolStripMenuItem});
+            this.drinksToolStripMenuItem.Name = "drinksToolStripMenuItem";
+            this.drinksToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.drinksToolStripMenuItem.Text = "Drinks";
+            // 
+            // StockToolStripMenuItem
+            // 
+            this.StockToolStripMenuItem.Name = "StockToolStripMenuItem";
+            this.StockToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.StockToolStripMenuItem.Text = "Stock management";
+            this.StockToolStripMenuItem.Click += new System.EventHandler(this.StockToolStripMenuItem_Click_1);
+            // 
+            // cashRegisterToolStripMenuItem
+            // 
+            this.cashRegisterToolStripMenuItem.Name = "cashRegisterToolStripMenuItem";
+            this.cashRegisterToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.cashRegisterToolStripMenuItem.Text = "Cash register";
+            this.cashRegisterToolStripMenuItem.Click += new System.EventHandler(this.cashRegisterToolStripMenuItem_Click);
+            // 
+            // revenueReportToolStripMenuItem
+            // 
+            this.revenueReportToolStripMenuItem.Name = "revenueReportToolStripMenuItem";
+            this.revenueReportToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.revenueReportToolStripMenuItem.Text = "Revenue report";
+            this.revenueReportToolStripMenuItem.Click += new System.EventHandler(this.revenueReportToolStripMenuItem_Click);
+            // 
             // pnlDashboard
             // 
             this.pnlDashboard.Controls.Add(this.lbl_Dashboard);
@@ -223,7 +270,7 @@
             this.pnlActivities.Controls.Add(this.ListViewActivities);
             this.pnlActivities.Controls.Add(this.pictureBox3);
             this.pnlActivities.Controls.Add(this.lbl_Activities);
-            this.pnlActivities.Location = new System.Drawing.Point(674, 261);
+            this.pnlActivities.Location = new System.Drawing.Point(1246, 42);
             this.pnlActivities.Name = "pnlActivities";
             this.pnlActivities.Size = new System.Drawing.Size(247, 200);
             this.pnlActivities.TabIndex = 7;
@@ -282,7 +329,7 @@
             this.pnlRooms.Controls.Add(this.ListViewRooms);
             this.pnlRooms.Controls.Add(this.pictureBox4);
             this.pnlRooms.Controls.Add(this.label1);
-            this.pnlRooms.Location = new System.Drawing.Point(393, 261);
+            this.pnlRooms.Location = new System.Drawing.Point(965, 42);
             this.pnlRooms.Name = "pnlRooms";
             this.pnlRooms.Size = new System.Drawing.Size(247, 200);
             this.pnlRooms.TabIndex = 8;
@@ -454,46 +501,170 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Students";
             // 
-            // drinksToolStripMenuItem
-            // 
-            this.drinksToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.StockToolStripMenuItem,
-            this.cashRegisterToolStripMenuItem,
-            this.revenueReportToolStripMenuItem});
-            this.drinksToolStripMenuItem.Name = "drinksToolStripMenuItem";
-            this.drinksToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.drinksToolStripMenuItem.Text = "Drinks";
-            // 
-            // StockToolStripMenuItem
-            // 
-            this.StockToolStripMenuItem.Name = "StockToolStripMenuItem";
-            this.StockToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.StockToolStripMenuItem.Text = "Stock management";
-            this.StockToolStripMenuItem.Click += new System.EventHandler(this.StockToolStripMenuItem_Click_1);
-            // 
-            // cashRegisterToolStripMenuItem
-            // 
-            this.cashRegisterToolStripMenuItem.Name = "cashRegisterToolStripMenuItem";
-            this.cashRegisterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.cashRegisterToolStripMenuItem.Text = "Cash register";
-            this.cashRegisterToolStripMenuItem.Click += new System.EventHandler(this.cashRegisterToolStripMenuItem_Click);
-            // 
-            // revenueReportToolStripMenuItem
-            // 
-            this.revenueReportToolStripMenuItem.Name = "revenueReportToolStripMenuItem";
-            this.revenueReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.revenueReportToolStripMenuItem.Text = "Revenue report";
-            this.revenueReportToolStripMenuItem.Click += new System.EventHandler(this.revenueReportToolStripMenuItem_Click);
-            // 
             // pnlStock
             // 
+            this.pnlStock.Controls.Add(this.label11);
+            this.pnlStock.Controls.Add(this.txtStock);
+            this.pnlStock.Controls.Add(this.btnClear);
+            this.pnlStock.Controls.Add(this.btnSelect);
+            this.pnlStock.Controls.Add(this.btnAdd);
+            this.pnlStock.Controls.Add(this.btnUpdate);
+            this.pnlStock.Controls.Add(this.btnDelete);
+            this.pnlStock.Controls.Add(this.btnList);
+            this.pnlStock.Controls.Add(this.txtAlcoholic);
+            this.pnlStock.Controls.Add(this.txtPrice);
+            this.pnlStock.Controls.Add(this.txtName);
+            this.pnlStock.Controls.Add(this.txtId);
+            this.pnlStock.Controls.Add(this.label10);
+            this.pnlStock.Controls.Add(this.label9);
+            this.pnlStock.Controls.Add(this.label8);
+            this.pnlStock.Controls.Add(this.label7);
             this.pnlStock.Controls.Add(this.ListViewStock);
             this.pnlStock.Controls.Add(this.pictureBox1);
             this.pnlStock.Controls.Add(this.label4);
-            this.pnlStock.Location = new System.Drawing.Point(107, 509);
+            this.pnlStock.Location = new System.Drawing.Point(126, 333);
             this.pnlStock.Name = "pnlStock";
-            this.pnlStock.Size = new System.Drawing.Size(247, 200);
+            this.pnlStock.Size = new System.Drawing.Size(710, 240);
             this.pnlStock.TabIndex = 9;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnClear.Location = new System.Drawing.Point(397, 182);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 19;
+            this.btnClear.Text = "Clear fields";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnSelect
+            // 
+            this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSelect.Location = new System.Drawing.Point(397, 151);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(75, 23);
+            this.btnSelect.TabIndex = 18;
+            this.btnSelect.Text = "Select Item";
+            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAdd.Location = new System.Drawing.Point(602, 182);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 17;
+            this.btnAdd.Text = "Add to stock";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnUpdate.Location = new System.Drawing.Point(510, 182);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.TabIndex = 16;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDelete.Location = new System.Drawing.Point(602, 151);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 15;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnList
+            // 
+            this.btnList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnList.Location = new System.Drawing.Point(510, 151);
+            this.btnList.Name = "btnList";
+            this.btnList.Size = new System.Drawing.Size(75, 23);
+            this.btnList.TabIndex = 14;
+            this.btnList.Text = "List all ";
+            this.btnList.UseVisualStyleBackColor = true;
+            this.btnList.Click += new System.EventHandler(this.btnList_Click);
+            // 
+            // txtAlcoholic
+            // 
+            this.txtAlcoholic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtAlcoholic.Location = new System.Drawing.Point(246, 179);
+            this.txtAlcoholic.Name = "txtAlcoholic";
+            this.txtAlcoholic.Size = new System.Drawing.Size(100, 20);
+            this.txtAlcoholic.TabIndex = 13;
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtPrice.Location = new System.Drawing.Point(246, 151);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(100, 20);
+            this.txtPrice.TabIndex = 12;
+            // 
+            // txtName
+            // 
+            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtName.Location = new System.Drawing.Point(49, 179);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(100, 20);
+            this.txtName.TabIndex = 11;
+            // 
+            // txtId
+            // 
+            this.txtId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtId.Location = new System.Drawing.Point(49, 148);
+            this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
+            this.txtId.Size = new System.Drawing.Size(100, 20);
+            this.txtId.TabIndex = 10;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(180, 182);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(50, 13);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "Alcoholic";
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(180, 151);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(31, 13);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "Price";
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 182);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Name";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(27, 148);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(16, 13);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Id";
             // 
             // ListViewStock
             // 
@@ -507,7 +678,7 @@
             this.ListViewStock.HideSelection = false;
             this.ListViewStock.Location = new System.Drawing.Point(16, 43);
             this.ListViewStock.Name = "ListViewStock";
-            this.ListViewStock.Size = new System.Drawing.Size(75, 41);
+            this.ListViewStock.Size = new System.Drawing.Size(538, 81);
             this.ListViewStock.TabIndex = 5;
             this.ListViewStock.UseCompatibleStateImageBehavior = false;
             // 
@@ -528,7 +699,7 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(114, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(577, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(130, 123);
             this.pictureBox1.TabIndex = 0;
@@ -549,7 +720,7 @@
             this.pnlRegister.Controls.Add(this.ListViewRegister);
             this.pnlRegister.Controls.Add(this.pictureBox2);
             this.pnlRegister.Controls.Add(this.label5);
-            this.pnlRegister.Location = new System.Drawing.Point(393, 509);
+            this.pnlRegister.Location = new System.Drawing.Point(1246, 290);
             this.pnlRegister.Name = "pnlRegister";
             this.pnlRegister.Size = new System.Drawing.Size(247, 200);
             this.pnlRegister.TabIndex = 10;
@@ -608,7 +779,7 @@
             this.pnlReport.Controls.Add(this.ListViewReport);
             this.pnlReport.Controls.Add(this.pictureBox7);
             this.pnlReport.Controls.Add(this.label6);
-            this.pnlReport.Location = new System.Drawing.Point(674, 509);
+            this.pnlReport.Location = new System.Drawing.Point(965, 290);
             this.pnlReport.Name = "pnlReport";
             this.pnlReport.Size = new System.Drawing.Size(247, 200);
             this.pnlReport.TabIndex = 11;
@@ -662,18 +833,36 @@
             this.label6.TabIndex = 3;
             this.label6.Text = "Revenue report";
             // 
+            // txtStock
+            // 
+            this.txtStock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtStock.Location = new System.Drawing.Point(49, 205);
+            this.txtStock.Name = "txtStock";
+            this.txtStock.Size = new System.Drawing.Size(100, 20);
+            this.txtStock.TabIndex = 20;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(8, 208);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(35, 13);
+            this.label11.TabIndex = 21;
+            this.label11.Text = "Stock";
+            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1537, 846);
+            this.ClientSize = new System.Drawing.Size(1537, 1061);
             this.Controls.Add(this.pnlReport);
             this.Controls.Add(this.pnlRegister);
             this.Controls.Add(this.pnlStock);
+            this.Controls.Add(this.pnlActivities);
             this.Controls.Add(this.pnlLecturers);
             this.Controls.Add(this.pnlStudents);
             this.Controls.Add(this.pnlRooms);
-            this.Controls.Add(this.pnlActivities);
             this.Controls.Add(this.pnlDashboard);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -681,7 +870,7 @@
             this.Name = "SomerenUI";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "z";
+            this.Text = "Someren";
             this.Load += new System.EventHandler(this.SomerenUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).EndInit();
             this.menuStrip1.ResumeLayout(false);
@@ -781,6 +970,22 @@
         private System.Windows.Forms.ColumnHeader columnHeader21;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtAlcoholic;
+        private System.Windows.Forms.TextBox txtPrice;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.Button btnList;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnSelect;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtStock;
     }
 }
 
