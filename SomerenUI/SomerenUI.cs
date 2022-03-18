@@ -151,15 +151,15 @@ namespace SomerenUI
                     break;
 
             }
-            
+
             if (panelName == "Students")
-            {               
+            {
                 try
                 {
                     // fill the students listview within the students panel with a list of students
                     StudentService studService = new StudentService(); ;
                     List<Student> studentList = studService.GetStudents(); ;
-                    
+
                     // clear the listview before filling it again
                     ListViewStudents.Clear();
                     ListViewStudents.View = View.Details;
@@ -167,13 +167,13 @@ namespace SomerenUI
                     ListViewStudents.Columns.Add("ID", 254);
                     ListViewStudents.Columns.Add("First name", 254);
                     ListViewStudents.Columns.Add("Last name", 254);
-                    
+
                     //List View
                     foreach (Student s in studentList)
                     {
-                        string[] name = s.Name.Split(new[] {' '}, 2);
+                        string[] name = s.Name.Split(new[] { ' ' }, 2);
                         string[] item = { s.Number.ToString(), name[0], name[1] };
-                        ListViewItem li = new ListViewItem(item);                        
+                        ListViewItem li = new ListViewItem(item);
                         ListViewStudents.Items.Add(li);
 
                     }
@@ -218,6 +218,7 @@ namespace SomerenUI
                     MessageBox.Show("Something went wrong while loading the teachers: " + e.Message);
                 }
             }
+
             else if (panelName == "Rooms")
             {
                 try
@@ -256,6 +257,72 @@ namespace SomerenUI
                 catch (Exception e)
                 {
                     MessageBox.Show("Something went wrong while loading the rooms: " + e.Message);
+                }
+            }
+
+            else if (panelName == "Cash register") 
+            {
+                try
+                {
+                    // fill the students listview within the cash register panel with a list of students
+                    StudentService studService = new StudentService(); ;
+                    List<Student> studentList = studService.GetStudents(); ;
+
+                    // clear the listview before filling it again
+                    ListViewRegisterS.Clear();
+                    ListViewRegisterS.View = View.Details;
+                    ListViewRegisterS.FullRowSelect = true;
+                    ListViewRegisterS.Columns.Add("ID", 254);
+                    ListViewRegisterS.Columns.Add("Name", 254);
+
+                    //List View
+                    foreach (Student s in studentList)
+                    {
+                        string[] item = { s.Number.ToString(), s.Name };
+                        ListViewItem li = new ListViewItem(item);
+                        ListViewRegisterS.Items.Add(li);
+
+                    }
+                    if (studentList.Count == 0)
+                        throw new Exception("There is currently no content in this table. Sorry for the inconvenience");
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong while loading the students: " + e.Message);
+                }
+
+                try
+                {
+                    // fill the drinks listview within the cash register panel with a list of drinks
+                    DrinkService drinkService = new DrinkService(); ;
+                    List<Drink> drinkList = drinkService.GetDrinks(); ;
+
+                    // clear the listview before filling it again
+                    ListViewRegisterD.Clear();
+                    ListViewRegisterD.View = View.Details;
+                    ListViewRegisterD.FullRowSelect = true;
+                    ListViewRegisterD.Columns.Add("ID", 254);
+                    ListViewRegisterD.Columns.Add("Name", 254);
+                    ListViewRegisterD.Columns.Add("Alc/No", 254);
+                    ListViewRegisterD.Columns.Add("Price", 254);
+                    ListViewRegisterD.Columns.Add("Stock", 254);
+
+
+                    //List View
+                    foreach (Drink d in drinkList)
+                    {
+                       
+                        string[] item = { d.Number.ToString(), d.Name, d.Type ? "No Alc" : "Alc", d.Price.ToString(), d.Stock.ToString() };
+                        ListViewItem li = new ListViewItem(item);
+                        ListViewRegisterD.Items.Add(li);
+
+                    }
+                    if (drinkList.Count == 0)
+                        throw new Exception("There is currently no content in this table. Sorry for the inconvenience");
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong while loading the drinks: " + e.Message);
                 }
             }
         }
@@ -318,6 +385,16 @@ namespace SomerenUI
         private void revenueReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Revenue report");
+        }
+
+        private void pnlRegister_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ListViewRegisterS_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
