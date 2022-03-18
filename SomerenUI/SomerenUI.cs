@@ -418,5 +418,35 @@ namespace SomerenUI
             btnList_Click(sender, e);
             btnClear_Click(sender, e);
         }
+
+        // Variant C - Elias Tarin
+        private void btnCheckout_Click(object sender, EventArgs e)
+        {
+            listViewRevenueReport.Clear();
+            listViewRevenueReport.View = View.Details;
+            listViewRevenueReport.FullRowSelect = true;
+            listViewRevenueReport.Columns.Add("Sales", 100);
+            listViewRevenueReport.Columns.Add("Turnover", 100);
+            listViewRevenueReport.Columns.Add("Number of customers", 150);
+
+            RevenueReport report = new RevenueReport();
+            RevenueReportService revenueReportService = new RevenueReportService();
+            report = revenueReportService.GetRevenueReport(dateTimePickerStart.Value , dateTimePickerEnd.Value);
+
+            ListViewItem li = new ListViewItem(report.Sales.ToString());
+            li.SubItems.Add($"{report.Turnover.ToString()}");
+            li.SubItems.Add($"{report.NumberOfCustomers.ToString()}");
+            listViewRevenueReport.Items.Add(li);
+        }
+
+        private void dateTimePickerStart_ValueChanged(object sender, EventArgs e)
+        {
+             DateTime startDate = dateTimePickerStart.Value;
+        }
+
+        private void dateTimePickerEnd_ValueChanged(object sender, EventArgs e)
+        {
+             DateTime endDate = dateTimePickerEnd.Value;
+        }
     }
 }
