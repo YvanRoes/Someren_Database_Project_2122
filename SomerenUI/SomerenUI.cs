@@ -118,6 +118,7 @@ namespace SomerenUI
                     //show
                     pnlStock.Show();
                     pnlStock.Dock = DockStyle.Fill;
+                    ListAllStock();
                     break;
                 case "Cash register":
                     //hide
@@ -324,6 +325,7 @@ namespace SomerenUI
                     MessageBox.Show("Something went wrong while loading the drinks: " + e.Message);
                 }
             }
+            
 
         }
 
@@ -340,11 +342,6 @@ namespace SomerenUI
         private void dashboardToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             showPanel("Dashboard");
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void imgDashboard_Click(object sender, EventArgs e)
@@ -389,7 +386,7 @@ namespace SomerenUI
 
 
         //Variant A Yvan Roes
-        private void btnList_Click(object sender, EventArgs e)
+        private void ListAllStock()
         {
             ListViewStock.Clear();
             ListViewStock.View = View.Details;
@@ -415,6 +412,23 @@ namespace SomerenUI
             }
         }
 
+        private void SelectStockItem()
+        {            
+            try
+            {
+                int Id = int.Parse(ListViewStock.FocusedItem.SubItems[0].Text);
+                StockService stock = new StockService();
+                StockItem item = stock.ItemById(Id);
+                txtId.Text = item.Id.ToString();
+                txtName.Text = item.Name.ToString();
+                txtPrice.Text = item.Price.ToString();
+                txtAlcoholic.Text = item.Alcohol ? "yes" : "no";
+                txtStock.Text = item.Stock.ToString();
+
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             StockService stock = new StockService();
@@ -427,25 +441,8 @@ namespace SomerenUI
             };
             stock.UpdateItem(item);
             //update list & clear flields
-            btnList_Click(sender, e);
+            ListAllStock();
             btnClear_Click(sender, e);
-        }
-
-        private void btnSelect_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int Id = int.Parse(ListViewStock.SelectedItems[0].Text);
-                StockService stock = new StockService();
-                StockItem item = stock.ItemById(Id);
-                txtId.Text = item.Id.ToString();
-                txtName.Text = item.Name.ToString();
-                txtPrice.Text = item.Price.ToString();
-                txtAlcoholic.Text = item.Alcohol ? "yes" : "no";
-                txtStock.Text = item.Stock.ToString();
-                
-            }
-            catch (Exception ex) { throw ex; }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -469,7 +466,7 @@ namespace SomerenUI
             };
             stock.AddItem(item);
             //update list & clear fields
-            btnList_Click(sender, e);
+            ListAllStock();
             btnClear_Click(sender, e);
             
         }
@@ -480,8 +477,13 @@ namespace SomerenUI
             StockService stock = new StockService();
             stock.DelItem(stock.ItemById(Id));
             //update list & clear fields
-            btnList_Click(sender, e);
+            ListAllStock();
             btnClear_Click(sender, e);
+        }
+
+        private void ListViewStock_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SelectStockItem();
         }
 
         // Variant C - Elias Tarin

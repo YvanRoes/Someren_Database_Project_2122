@@ -77,11 +77,9 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txtStock = new System.Windows.Forms.TextBox();
             this.btnClear = new System.Windows.Forms.Button();
-            this.btnSelect = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.btnList = new System.Windows.Forms.Button();
             this.txtAlcoholic = new System.Windows.Forms.TextBox();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -97,6 +95,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.pnlRegister = new System.Windows.Forms.Panel();
+            this.ListViewRegisterD = new System.Windows.Forms.ListView();
+            this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ListViewRegisterS = new System.Windows.Forms.ListView();
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -113,10 +115,6 @@
             this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.ListViewRegisterD = new System.Windows.Forms.ListView();
-            this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -270,14 +268,13 @@
             this.lbl_Dashboard.Size = new System.Drawing.Size(185, 13);
             this.lbl_Dashboard.TabIndex = 1;
             this.lbl_Dashboard.Text = "Welcome to the Someren Application!";
-            this.lbl_Dashboard.Click += new System.EventHandler(this.label1_Click);
             // 
             // pnlActivities
             // 
             this.pnlActivities.Controls.Add(this.ListViewActivities);
             this.pnlActivities.Controls.Add(this.pictureBox3);
             this.pnlActivities.Controls.Add(this.lbl_Activities);
-            this.pnlActivities.Location = new System.Drawing.Point(1246, 42);
+            this.pnlActivities.Location = new System.Drawing.Point(1229, 42);
             this.pnlActivities.Name = "pnlActivities";
             this.pnlActivities.Size = new System.Drawing.Size(247, 200);
             this.pnlActivities.TabIndex = 7;
@@ -513,11 +510,9 @@
             this.pnlStock.Controls.Add(this.label11);
             this.pnlStock.Controls.Add(this.txtStock);
             this.pnlStock.Controls.Add(this.btnClear);
-            this.pnlStock.Controls.Add(this.btnSelect);
             this.pnlStock.Controls.Add(this.btnAdd);
             this.pnlStock.Controls.Add(this.btnUpdate);
             this.pnlStock.Controls.Add(this.btnDelete);
-            this.pnlStock.Controls.Add(this.btnList);
             this.pnlStock.Controls.Add(this.txtAlcoholic);
             this.pnlStock.Controls.Add(this.txtPrice);
             this.pnlStock.Controls.Add(this.txtName);
@@ -529,16 +524,16 @@
             this.pnlStock.Controls.Add(this.ListViewStock);
             this.pnlStock.Controls.Add(this.pictureBox1);
             this.pnlStock.Controls.Add(this.label4);
-            this.pnlStock.Location = new System.Drawing.Point(126, 333);
+            this.pnlStock.Location = new System.Drawing.Point(671, 275);
             this.pnlStock.Name = "pnlStock";
-            this.pnlStock.Size = new System.Drawing.Size(228, 240);
+            this.pnlStock.Size = new System.Drawing.Size(247, 201);
             this.pnlStock.TabIndex = 9;
             // 
             // label11
             // 
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(8, 208);
+            this.label11.Location = new System.Drawing.Point(8, 169);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(35, 13);
             this.label11.TabIndex = 21;
@@ -547,7 +542,7 @@
             // txtStock
             // 
             this.txtStock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtStock.Location = new System.Drawing.Point(49, 205);
+            this.txtStock.Location = new System.Drawing.Point(49, 166);
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(100, 20);
             this.txtStock.TabIndex = 20;
@@ -555,7 +550,7 @@
             // btnClear
             // 
             this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnClear.Location = new System.Drawing.Point(397, 182);
+            this.btnClear.Location = new System.Drawing.Point(397, 143);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 19;
@@ -563,21 +558,10 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // btnSelect
-            // 
-            this.btnSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSelect.Location = new System.Drawing.Point(397, 151);
-            this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(75, 23);
-            this.btnSelect.TabIndex = 18;
-            this.btnSelect.Text = "Select Item";
-            this.btnSelect.UseVisualStyleBackColor = true;
-            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
-            // 
             // btnAdd
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAdd.Location = new System.Drawing.Point(602, 182);
+            this.btnAdd.Location = new System.Drawing.Point(510, 143);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 17;
@@ -588,7 +572,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnUpdate.Location = new System.Drawing.Point(510, 182);
+            this.btnUpdate.Location = new System.Drawing.Point(397, 112);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 16;
@@ -599,7 +583,7 @@
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDelete.Location = new System.Drawing.Point(602, 151);
+            this.btnDelete.Location = new System.Drawing.Point(510, 112);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 15;
@@ -607,21 +591,10 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // btnList
-            // 
-            this.btnList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnList.Location = new System.Drawing.Point(510, 151);
-            this.btnList.Name = "btnList";
-            this.btnList.Size = new System.Drawing.Size(75, 23);
-            this.btnList.TabIndex = 14;
-            this.btnList.Text = "List all ";
-            this.btnList.UseVisualStyleBackColor = true;
-            this.btnList.Click += new System.EventHandler(this.btnList_Click);
-            // 
             // txtAlcoholic
             // 
             this.txtAlcoholic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtAlcoholic.Location = new System.Drawing.Point(246, 179);
+            this.txtAlcoholic.Location = new System.Drawing.Point(246, 140);
             this.txtAlcoholic.Name = "txtAlcoholic";
             this.txtAlcoholic.Size = new System.Drawing.Size(100, 20);
             this.txtAlcoholic.TabIndex = 13;
@@ -629,7 +602,7 @@
             // txtPrice
             // 
             this.txtPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtPrice.Location = new System.Drawing.Point(246, 151);
+            this.txtPrice.Location = new System.Drawing.Point(246, 112);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(100, 20);
             this.txtPrice.TabIndex = 12;
@@ -637,7 +610,7 @@
             // txtName
             // 
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtName.Location = new System.Drawing.Point(49, 179);
+            this.txtName.Location = new System.Drawing.Point(49, 140);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 20);
             this.txtName.TabIndex = 11;
@@ -645,7 +618,7 @@
             // txtId
             // 
             this.txtId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtId.Location = new System.Drawing.Point(49, 148);
+            this.txtId.Location = new System.Drawing.Point(49, 109);
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(100, 20);
@@ -655,7 +628,7 @@
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(180, 182);
+            this.label10.Location = new System.Drawing.Point(180, 143);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(50, 13);
             this.label10.TabIndex = 9;
@@ -665,7 +638,7 @@
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(180, 151);
+            this.label9.Location = new System.Drawing.Point(180, 112);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(31, 13);
             this.label9.TabIndex = 8;
@@ -675,7 +648,7 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 182);
+            this.label8.Location = new System.Drawing.Point(8, 143);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 13);
             this.label8.TabIndex = 7;
@@ -685,7 +658,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(27, 148);
+            this.label7.Location = new System.Drawing.Point(27, 109);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(16, 13);
             this.label7.TabIndex = 6;
@@ -703,9 +676,10 @@
             this.ListViewStock.HideSelection = false;
             this.ListViewStock.Location = new System.Drawing.Point(16, 43);
             this.ListViewStock.Name = "ListViewStock";
-            this.ListViewStock.Size = new System.Drawing.Size(56, 81);
+            this.ListViewStock.Size = new System.Drawing.Size(75, 42);
             this.ListViewStock.TabIndex = 5;
             this.ListViewStock.UseCompatibleStateImageBehavior = false;
+            this.ListViewStock.SelectedIndexChanged += new System.EventHandler(this.ListViewStock_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -724,7 +698,7 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(94, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(113, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(130, 123);
             this.pictureBox1.TabIndex = 0;
@@ -746,10 +720,39 @@
             this.pnlRegister.Controls.Add(this.ListViewRegisterS);
             this.pnlRegister.Controls.Add(this.pictureBox2);
             this.pnlRegister.Controls.Add(this.label5);
-            this.pnlRegister.Location = new System.Drawing.Point(794, 285);
+            this.pnlRegister.Location = new System.Drawing.Point(965, 275);
             this.pnlRegister.Name = "pnlRegister";
-            this.pnlRegister.Size = new System.Drawing.Size(637, 416);
+            this.pnlRegister.Size = new System.Drawing.Size(244, 200);
             this.pnlRegister.TabIndex = 10;
+            // 
+            // ListViewRegisterD
+            // 
+            this.ListViewRegisterD.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ListViewRegisterD.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader19,
+            this.columnHeader20,
+            this.columnHeader21});
+            this.ListViewRegisterD.HideSelection = false;
+            this.ListViewRegisterD.Location = new System.Drawing.Point(264, 43);
+            this.ListViewRegisterD.MinimumSize = new System.Drawing.Size(50, 50);
+            this.ListViewRegisterD.Name = "ListViewRegisterD";
+            this.ListViewRegisterD.Size = new System.Drawing.Size(50, 50);
+            this.ListViewRegisterD.TabIndex = 6;
+            this.ListViewRegisterD.UseCompatibleStateImageBehavior = false;
+            // 
+            // columnHeader19
+            // 
+            this.columnHeader19.Text = "ID";
+            // 
+            // columnHeader20
+            // 
+            this.columnHeader20.Text = "Name";
+            // 
+            // columnHeader21
+            // 
+            this.columnHeader21.Text = "Date of Birth";
             // 
             // ListViewRegisterS
             // 
@@ -782,7 +785,7 @@
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
-            this.pictureBox2.Location = new System.Drawing.Point(504, 0);
+            this.pictureBox2.Location = new System.Drawing.Point(111, 0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(130, 123);
             this.pictureBox2.TabIndex = 0;
@@ -811,9 +814,9 @@
             this.pnlReport.Controls.Add(this.dateTimePickerStart);
             this.pnlReport.Controls.Add(this.pictureBox7);
             this.pnlReport.Controls.Add(this.label6);
-            this.pnlReport.Location = new System.Drawing.Point(362, 333);
+            this.pnlReport.Location = new System.Drawing.Point(393, 275);
             this.pnlReport.Name = "pnlReport";
-            this.pnlReport.Size = new System.Drawing.Size(411, 343);
+            this.pnlReport.Size = new System.Drawing.Size(247, 200);
             this.pnlReport.TabIndex = 11;
             // 
             // listViewRevenueReport
@@ -822,22 +825,26 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewRevenueReport.HideSelection = false;
-            this.listViewRevenueReport.Location = new System.Drawing.Point(380, 93);
-            this.listViewRevenueReport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listViewRevenueReport.Location = new System.Drawing.Point(380, 142);
+            this.listViewRevenueReport.Margin = new System.Windows.Forms.Padding(2);
             this.listViewRevenueReport.MinimumSize = new System.Drawing.Size(50, 50);
             this.listViewRevenueReport.Name = "listViewRevenueReport";
-            this.listViewRevenueReport.Size = new System.Drawing.Size(50, 110);
+            this.listViewRevenueReport.Size = new System.Drawing.Size(50, 50);
             this.listViewRevenueReport.TabIndex = 16;
             this.listViewRevenueReport.UseCompatibleStateImageBehavior = false;
             // 
             // btnCheckout
             // 
-            this.btnCheckout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCheckout.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCheckout.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckout.Location = new System.Drawing.Point(52, 99);
-            this.btnCheckout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCheckout.Location = new System.Drawing.Point(52, 247);
+            this.btnCheckout.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCheckout.MaximumSize = new System.Drawing.Size(224, 50);
+            this.btnCheckout.MinimumSize = new System.Drawing.Size(50, 50);
             this.btnCheckout.Name = "btnCheckout";
-            this.btnCheckout.Size = new System.Drawing.Size(229, 122);
+            this.btnCheckout.Size = new System.Drawing.Size(50, 50);
             this.btnCheckout.TabIndex = 15;
             this.btnCheckout.Text = "&Checkout";
             this.btnCheckout.UseVisualStyleBackColor = true;
@@ -890,7 +897,7 @@
             this.dateTimePickerEnd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dateTimePickerEnd.Location = new System.Drawing.Point(114, 206);
-            this.dateTimePickerEnd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerEnd.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerEnd.Name = "dateTimePickerEnd";
             this.dateTimePickerEnd.Size = new System.Drawing.Size(194, 20);
             this.dateTimePickerEnd.TabIndex = 5;
@@ -901,7 +908,7 @@
             this.dateTimePickerStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dateTimePickerStart.Location = new System.Drawing.Point(114, 165);
-            this.dateTimePickerStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerStart.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerStart.Name = "dateTimePickerStart";
             this.dateTimePickerStart.Size = new System.Drawing.Size(194, 20);
             this.dateTimePickerStart.TabIndex = 4;
@@ -912,7 +919,7 @@
             this.pictureBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox7.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox7.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox7.InitialImage")));
-            this.pictureBox7.Location = new System.Drawing.Point(276, 0);
+            this.pictureBox7.Location = new System.Drawing.Point(112, 0);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(130, 123);
             this.pictureBox7.TabIndex = 0;
@@ -927,35 +934,6 @@
             this.label6.Size = new System.Drawing.Size(179, 29);
             this.label6.TabIndex = 3;
             this.label6.Text = "Revenue report";
-            // 
-            // ListViewRegisterD
-            // 
-            this.ListViewRegisterD.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ListViewRegisterD.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader19,
-            this.columnHeader20,
-            this.columnHeader21});
-            this.ListViewRegisterD.HideSelection = false;
-            this.ListViewRegisterD.Location = new System.Drawing.Point(264, 43);
-            this.ListViewRegisterD.MinimumSize = new System.Drawing.Size(50, 50);
-            this.ListViewRegisterD.Name = "ListViewRegisterD";
-            this.ListViewRegisterD.Size = new System.Drawing.Size(234, 257);
-            this.ListViewRegisterD.TabIndex = 6;
-            this.ListViewRegisterD.UseCompatibleStateImageBehavior = false;
-            // 
-            // columnHeader19
-            // 
-            this.columnHeader19.Text = "ID";
-            // 
-            // columnHeader20
-            // 
-            this.columnHeader20.Text = "Name";
-            // 
-            // columnHeader21
-            // 
-            this.columnHeader21.Text = "Date of Birth";
             // 
             // SomerenUI
             // 
@@ -1080,11 +1058,9 @@
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.Button btnList;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtStock;
