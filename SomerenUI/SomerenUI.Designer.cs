@@ -115,6 +115,9 @@
             this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.activitiesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.activitySupervisorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.activityStudentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -208,6 +211,10 @@
             // 
             // activitiesToolStripMenuItem
             // 
+            this.activitiesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.activitiesToolStripMenuItem1,
+            this.activitySupervisorsToolStripMenuItem,
+            this.activityStudentsToolStripMenuItem});
             this.activitiesToolStripMenuItem.Name = "activitiesToolStripMenuItem";
             this.activitiesToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.activitiesToolStripMenuItem.Text = "Activities";
@@ -935,6 +942,24 @@
             this.label6.TabIndex = 3;
             this.label6.Text = "Revenue report";
             // 
+            // activitiesToolStripMenuItem1
+            // 
+            this.activitiesToolStripMenuItem1.Name = "activitiesToolStripMenuItem1";
+            this.activitiesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.activitiesToolStripMenuItem1.Text = "Activities";
+            // 
+            // activitySupervisorsToolStripMenuItem
+            // 
+            this.activitySupervisorsToolStripMenuItem.Name = "activitySupervisorsToolStripMenuItem";
+            this.activitySupervisorsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.activitySupervisorsToolStripMenuItem.Text = "Activity Supervisors";
+            // 
+            // activityStudentsToolStripMenuItem
+            // 
+            this.activityStudentsToolStripMenuItem.Name = "activityStudentsToolStripMenuItem";
+            this.activityStudentsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.activityStudentsToolStripMenuItem.Text = "Activity Students";
+            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1075,6 +1100,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader19;
         private System.Windows.Forms.ColumnHeader columnHeader20;
         private System.Windows.Forms.ColumnHeader columnHeader21;
+        private System.Windows.Forms.ToolStripMenuItem activitiesToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem activitySupervisorsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem activityStudentsToolStripMenuItem;
     }
 }
 
