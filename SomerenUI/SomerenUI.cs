@@ -357,12 +357,7 @@ namespace SomerenUI
         private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Lecturers");
-        }
-
-        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            showPanel("Activities");
-        }
+        }        
 
         private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
