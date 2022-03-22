@@ -118,6 +118,24 @@
             this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.pnlActivityStudent = new System.Windows.Forms.Panel();
+            this.btnRemoveParticipant = new System.Windows.Forms.Button();
+            this.btnAddParticipant = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.ListViewActivityStudentNP = new System.Windows.Forms.ListView();
+            this.columnHeader28 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader29 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ListViewActivityStudentP = new System.Windows.Forms.ListView();
+            this.columnHeader25 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ListViewStudentActivityList = new System.Windows.Forms.ListView();
+            this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.label15 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -135,6 +153,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlReport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            this.pnlActivityStudent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // imgDashboard
@@ -145,7 +165,6 @@
             this.imgDashboard.Size = new System.Drawing.Size(311, 270);
             this.imgDashboard.TabIndex = 0;
             this.imgDashboard.TabStop = false;
-            this.imgDashboard.Click += new System.EventHandler(this.imgDashboard_Click);
             // 
             // menuStrip1
             // 
@@ -236,6 +255,7 @@
             this.activityStudentsToolStripMenuItem.Name = "activityStudentsToolStripMenuItem";
             this.activityStudentsToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.activityStudentsToolStripMenuItem.Text = "Activity Students";
+            this.activityStudentsToolStripMenuItem.Click += new System.EventHandler(this.activityStudentsToolStripMenuItem_Click);
             // 
             // roomsToolStripMenuItem
             // 
@@ -957,11 +977,171 @@
             this.label6.TabIndex = 3;
             this.label6.Text = "Revenue report";
             // 
+            // pnlActivityStudent
+            // 
+            this.pnlActivityStudent.Controls.Add(this.btnRemoveParticipant);
+            this.pnlActivityStudent.Controls.Add(this.btnAddParticipant);
+            this.pnlActivityStudent.Controls.Add(this.label18);
+            this.pnlActivityStudent.Controls.Add(this.label17);
+            this.pnlActivityStudent.Controls.Add(this.label16);
+            this.pnlActivityStudent.Controls.Add(this.ListViewActivityStudentNP);
+            this.pnlActivityStudent.Controls.Add(this.ListViewActivityStudentP);
+            this.pnlActivityStudent.Controls.Add(this.ListViewStudentActivityList);
+            this.pnlActivityStudent.Controls.Add(this.pictureBox8);
+            this.pnlActivityStudent.Controls.Add(this.label15);
+            this.pnlActivityStudent.Location = new System.Drawing.Point(671, 506);
+            this.pnlActivityStudent.Name = "pnlActivityStudent";
+            this.pnlActivityStudent.Size = new System.Drawing.Size(538, 386);
+            this.pnlActivityStudent.TabIndex = 8;
+            // 
+            // btnRemoveParticipant
+            // 
+            this.btnRemoveParticipant.Location = new System.Drawing.Point(16, 347);
+            this.btnRemoveParticipant.Name = "btnRemoveParticipant";
+            this.btnRemoveParticipant.Size = new System.Drawing.Size(190, 23);
+            this.btnRemoveParticipant.TabIndex = 12;
+            this.btnRemoveParticipant.Text = "Remove selected participant";
+            this.btnRemoveParticipant.UseVisualStyleBackColor = true;
+            this.btnRemoveParticipant.Click += new System.EventHandler(this.btnRemoveParticipant_Click);
+            // 
+            // btnAddParticipant
+            // 
+            this.btnAddParticipant.Location = new System.Drawing.Point(16, 318);
+            this.btnAddParticipant.Name = "btnAddParticipant";
+            this.btnAddParticipant.Size = new System.Drawing.Size(190, 23);
+            this.btnAddParticipant.TabIndex = 11;
+            this.btnAddParticipant.Text = "Add selected participant";
+            this.btnAddParticipant.UseVisualStyleBackColor = true;
+            this.btnAddParticipant.Click += new System.EventHandler(this.btnAddParticipant_Click);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(12, 57);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(82, 24);
+            this.label18.TabIndex = 10;
+            this.label18.Text = "Activities";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(212, 246);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(145, 24);
+            this.label17.TabIndex = 9;
+            this.label17.Text = "Non participants";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(213, 57);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(105, 24);
+            this.label16.TabIndex = 8;
+            this.label16.Text = "Participants";
+            // 
+            // ListViewActivityStudentNP
+            // 
+            this.ListViewActivityStudentNP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ListViewActivityStudentNP.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader28,
+            this.columnHeader29});
+            this.ListViewActivityStudentNP.HideSelection = false;
+            this.ListViewActivityStudentNP.Location = new System.Drawing.Point(212, 278);
+            this.ListViewActivityStudentNP.Name = "ListViewActivityStudentNP";
+            this.ListViewActivityStudentNP.Size = new System.Drawing.Size(187, 60);
+            this.ListViewActivityStudentNP.TabIndex = 7;
+            this.ListViewActivityStudentNP.UseCompatibleStateImageBehavior = false;
+            // 
+            // columnHeader28
+            // 
+            this.columnHeader28.Text = "ID";
+            // 
+            // columnHeader29
+            // 
+            this.columnHeader29.Text = "Name";
+            // 
+            // ListViewActivityStudentP
+            // 
+            this.ListViewActivityStudentP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ListViewActivityStudentP.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader25,
+            this.columnHeader26,
+            this.columnHeader24});
+            this.ListViewActivityStudentP.HideSelection = false;
+            this.ListViewActivityStudentP.Location = new System.Drawing.Point(212, 84);
+            this.ListViewActivityStudentP.Name = "ListViewActivityStudentP";
+            this.ListViewActivityStudentP.Size = new System.Drawing.Size(187, 159);
+            this.ListViewActivityStudentP.TabIndex = 6;
+            this.ListViewActivityStudentP.UseCompatibleStateImageBehavior = false;
+            // 
+            // columnHeader25
+            // 
+            this.columnHeader25.Text = "ID";
+            // 
+            // columnHeader26
+            // 
+            this.columnHeader26.Text = "Name";
+            // 
+            // columnHeader24
+            // 
+            this.columnHeader24.Text = "Activity";
+            // 
+            // ListViewStudentActivityList
+            // 
+            this.ListViewStudentActivityList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader22,
+            this.columnHeader23});
+            this.ListViewStudentActivityList.HideSelection = false;
+            this.ListViewStudentActivityList.Location = new System.Drawing.Point(16, 84);
+            this.ListViewStudentActivityList.Name = "ListViewStudentActivityList";
+            this.ListViewStudentActivityList.Size = new System.Drawing.Size(190, 228);
+            this.ListViewStudentActivityList.TabIndex = 5;
+            this.ListViewStudentActivityList.UseCompatibleStateImageBehavior = false;
+            this.ListViewStudentActivityList.SelectedIndexChanged += new System.EventHandler(this.ListViewStudentActivityList_SelectedIndexChanged);
+            // 
+            // columnHeader22
+            // 
+            this.columnHeader22.Text = "ID";
+            // 
+            // columnHeader23
+            // 
+            this.columnHeader23.Text = "Name";
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBox8.Image = global::SomerenUI.Properties.Resources.someren;
+            this.pictureBox8.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox8.InitialImage")));
+            this.pictureBox8.Location = new System.Drawing.Point(408, 0);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(130, 386);
+            this.pictureBox8.TabIndex = 0;
+            this.pictureBox8.TabStop = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(11, 11);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(195, 29);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Activities Student";
+            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1443, 1061);
+            this.Controls.Add(this.pnlActivityStudent);
             this.Controls.Add(this.pnlReport);
             this.Controls.Add(this.pnlRegister);
             this.Controls.Add(this.pnlStock);
@@ -1004,6 +1184,9 @@
             this.pnlReport.ResumeLayout(false);
             this.pnlReport.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            this.pnlActivityStudent.ResumeLayout(false);
+            this.pnlActivityStudent.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1100,6 +1283,24 @@
         private System.Windows.Forms.ToolStripMenuItem activitiesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem activitySupervisorsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem activityStudentsToolStripMenuItem;
+        private System.Windows.Forms.Panel pnlActivityStudent;
+        private System.Windows.Forms.ListView ListViewActivityStudentNP;
+        private System.Windows.Forms.ColumnHeader columnHeader28;
+        private System.Windows.Forms.ColumnHeader columnHeader29;
+        private System.Windows.Forms.ListView ListViewActivityStudentP;
+        private System.Windows.Forms.ColumnHeader columnHeader25;
+        private System.Windows.Forms.ColumnHeader columnHeader26;
+        private System.Windows.Forms.ListView ListViewStudentActivityList;
+        private System.Windows.Forms.ColumnHeader columnHeader22;
+        private System.Windows.Forms.ColumnHeader columnHeader23;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ColumnHeader columnHeader24;
+        private System.Windows.Forms.Button btnRemoveParticipant;
+        private System.Windows.Forms.Button btnAddParticipant;
     }
 }
 
