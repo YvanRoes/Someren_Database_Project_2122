@@ -601,7 +601,8 @@ namespace SomerenUI
             {
                 buyService.AddNewOrder(order);
                 buyService.DecreaseStock(order.DrinkId);
-                MessageBox.Show($"Purchase was successful (order ID: {order.BuyId}).");
+                MessageBox.Show($"Purchase was successful.");
+                FillListViewCashRegister();
 
             }
             catch (Exception err)
