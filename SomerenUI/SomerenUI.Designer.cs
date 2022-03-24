@@ -822,7 +822,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewRevenueReport.HideSelection = false;
             this.listViewRevenueReport.Location = new System.Drawing.Point(1013, 339);
-            this.listViewRevenueReport.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.listViewRevenueReport.Margin = new System.Windows.Forms.Padding(5);
             this.listViewRevenueReport.MinimumSize = new System.Drawing.Size(127, 114);
             this.listViewRevenueReport.Name = "listViewRevenueReport";
             this.listViewRevenueReport.Size = new System.Drawing.Size(127, 114);
@@ -836,7 +836,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCheckout.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckout.Location = new System.Drawing.Point(139, 589);
-            this.btnCheckout.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnCheckout.Margin = new System.Windows.Forms.Padding(5);
             this.btnCheckout.MaximumSize = new System.Drawing.Size(597, 119);
             this.btnCheckout.MinimumSize = new System.Drawing.Size(133, 119);
             this.btnCheckout.Name = "btnCheckout";
@@ -893,7 +893,7 @@
             this.dateTimePickerEnd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dateTimePickerEnd.Location = new System.Drawing.Point(304, 491);
-            this.dateTimePickerEnd.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dateTimePickerEnd.Margin = new System.Windows.Forms.Padding(5);
             this.dateTimePickerEnd.Name = "dateTimePickerEnd";
             this.dateTimePickerEnd.Size = new System.Drawing.Size(511, 38);
             this.dateTimePickerEnd.TabIndex = 5;
@@ -904,7 +904,7 @@
             this.dateTimePickerStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dateTimePickerStart.Location = new System.Drawing.Point(304, 393);
-            this.dateTimePickerStart.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dateTimePickerStart.Margin = new System.Windows.Forms.Padding(5);
             this.dateTimePickerStart.Name = "dateTimePickerStart";
             this.dateTimePickerStart.Size = new System.Drawing.Size(511, 38);
             this.dateTimePickerStart.TabIndex = 4;
@@ -1122,7 +1122,7 @@
             this.lblCheckoutInfoCR.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCheckoutInfoCR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCheckoutInfoCR.Location = new System.Drawing.Point(520, 742);
+            this.lblCheckoutInfoCR.Location = new System.Drawing.Point(331, 746);
             this.lblCheckoutInfoCR.Name = "lblCheckoutInfoCR";
             this.lblCheckoutInfoCR.Size = new System.Drawing.Size(881, 46);
             this.lblCheckoutInfoCR.TabIndex = 8;
@@ -1137,6 +1137,7 @@
             this.btnCheckoutCR.TabIndex = 7;
             this.btnCheckoutCR.Text = "Checkout";
             this.btnCheckoutCR.UseVisualStyleBackColor = true;
+            this.btnCheckoutCR.Click += new System.EventHandler(this.btnCheckoutCR_Click);
             // 
             // ListViewRegisterD
             // 
@@ -1155,6 +1156,7 @@
             this.ListViewRegisterD.Size = new System.Drawing.Size(652, 522);
             this.ListViewRegisterD.TabIndex = 6;
             this.ListViewRegisterD.UseCompatibleStateImageBehavior = false;
+            this.ListViewRegisterD.SelectedIndexChanged += new System.EventHandler(this.ListViewRegisterD_SelectedIndexChanged);
             // 
             // columnHeader19
             // 
@@ -1184,6 +1186,7 @@
             this.ListViewRegisterS.Size = new System.Drawing.Size(451, 522);
             this.ListViewRegisterS.TabIndex = 5;
             this.ListViewRegisterS.UseCompatibleStateImageBehavior = false;
+            this.ListViewRegisterS.SelectedIndexChanged += new System.EventHandler(this.ListViewRegisterS_SelectedIndexChanged);
             // 
             // columnHeader16
             // 
