@@ -39,6 +39,7 @@ namespace SomerenUI
                     pnlStock.Hide();
                     pnlRegister.Hide();
                     pnlReport.Hide();
+                    pnlActivityStudent.Hide();
 
                     // show dashboard
                     pnlDashboard.Show();
@@ -55,6 +56,7 @@ namespace SomerenUI
                     pnlStock.Hide();
                     pnlRegister.Hide();
                     pnlReport.Hide();
+                    pnlActivityStudent.Hide();
 
                     // show students
                     pnlStudents.Show();
@@ -70,6 +72,7 @@ namespace SomerenUI
                     pnlStock.Hide();
                     pnlRegister.Hide();
                     pnlReport.Hide();
+                    pnlActivityStudent.Hide();
 
                     //show lecturers
                     pnlLecturers.Show();
@@ -84,6 +87,7 @@ namespace SomerenUI
                     pnlStock.Hide();
                     pnlRegister.Hide();
                     pnlReport.Hide();
+                    pnlActivityStudent.Hide();
 
                     //show activities                    
                     pnlActivities.Show();
@@ -99,6 +103,7 @@ namespace SomerenUI
                     pnlStock.Hide();
                     pnlRegister.Hide();
                     pnlReport.Hide();
+                    pnlActivityStudent.Hide();
 
                     //show rooms
                     pnlRooms.Show();
@@ -114,6 +119,7 @@ namespace SomerenUI
                     pnlRooms.Hide();
                     pnlRegister.Hide();
                     pnlReport.Hide();
+                    pnlActivityStudent.Hide();
 
                     //show
                     pnlStock.Show();
@@ -130,6 +136,7 @@ namespace SomerenUI
                     pnlRooms.Hide();
                     pnlStock.Hide();
                     pnlReport.Hide();
+                    pnlActivityStudent.Hide();
 
                     //show
                     pnlRegister.Show();
@@ -145,10 +152,28 @@ namespace SomerenUI
                     pnlRooms.Hide();
                     pnlStock.Hide();
                     pnlRegister.Hide();
+                    pnlActivityStudent.Hide();
 
                     //show
                     pnlReport.Show();
                     pnlReport.Dock = DockStyle.Fill;
+                    break;
+
+                case "Activity Students":
+                    //hide
+                    pnlDashboard.Hide();
+                    pnlStudents.Hide();
+                    pnlActivities.Hide();
+                    pnlLecturers.Hide();
+                    pnlStudents.Hide();
+                    pnlRooms.Hide();
+                    pnlStock.Hide();
+                    pnlRegister.Hide();
+                    pnlReport.Hide();
+
+                    //show
+                    pnlActivityStudent.Show();
+                    pnlActivityStudent.Dock = DockStyle.Fill;
                     break;
 
             }
@@ -159,7 +184,7 @@ namespace SomerenUI
                 {
                     // fill the students listview within the students panel with a list of students
                     StudentService studService = new StudentService(); ;
-                    List<Student> studentList = studService.GetStudents(); ;
+                    List<Student> studentList = studService.GetStudents();
 
                     // clear the listview before filling it again
                     ListViewStudents.Clear();
@@ -219,6 +244,7 @@ namespace SomerenUI
                     MessageBox.Show("Something went wrong while loading the teachers: " + e.Message);
                 }
             }
+
             else if (panelName == "Rooms")
             {
                 try
@@ -325,6 +351,12 @@ namespace SomerenUI
                     MessageBox.Show("Something went wrong while loading the drinks: " + e.Message);
                 }
             }
+
+
+            else if (panelName == "Activity Students")
+            {
+                FillListViewsActivityStudents();
+            }
             
 
         }
@@ -377,6 +409,11 @@ namespace SomerenUI
         private void revenueReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Revenue report");
+        }
+
+        private void activityStudentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Activity Students");
         }
 
 
@@ -510,5 +547,106 @@ namespace SomerenUI
         {
              DateTime endDate = dateTimePickerEnd.Value;
         }
+
+
+
+        //Variant C Week 4 Yvan Roes
+        void FillListViewsActivityStudents()
+        {
+            //Participants
+            ActivityStudentService service = new ActivityStudentService();
+            List<Student> participants = service.GetParticipants();
+            List<Student> nonParticipants = service.GetNonParticipants();
+
+            ListViewActivityStudentP.Clear();
+            ListViewActivityStudentP.View = View.Details;
+            ListViewActivityStudentP.FullRowSelect = true;
+            ListViewActivityStudentP.Columns.Add("Student_Id", 200);
+            ListViewActivityStudentP.Columns.Add("Name", 200);
+            ListViewActivityStudentP.Columns.Add("Activity", 200);
+
+            foreach (Student p in participants)
+            {
+                string[] item = { p.Number.ToString(), p.Name , p.Activity};
+                ListViewItem li = new ListViewItem(item);
+                ListViewActivityStudentP.Items.Add(li);
+            }
+
+            //non participants
+            ListViewActivityStudentNP.Clear();
+            ListViewActivityStudentNP.View = View.Details;
+            ListViewActivityStudentNP.FullRowSelect = true;
+            ListViewActivityStudentNP.Columns.Add("ID", 254);
+            ListViewActivityStudentNP.Columns.Add("Name", 254);
+
+            foreach (Student np in nonParticipants.Distinct())
+            {
+                string[] item = { np.Number.ToString(), np.Name };
+                ListViewItem li = new ListViewItem(item);
+                ListViewActivityStudentNP.Items.Add(li);
+            }
+
+            List<ActivityStudent> activities = service.GetActivities();
+
+            ListViewStudentActivityList.Clear();
+            ListViewStudentActivityList.View = View.Details;
+            ListViewStudentActivityList.FullRowSelect = true;
+            ListViewStudentActivityList.Columns.Add("Id", 90);
+            ListViewStudentActivityList.Columns.Add("Activity", 90);
+
+            foreach(ActivityStudent a in activities)
+            {
+                string[] item = { a.Activity_ID.ToString(), a.Activity_Description };
+                ListViewItem li = new ListViewItem(item);
+                ListViewStudentActivityList.Items.Add(li);
+            }
+
+        }
+
+        private void ListViewStudentActivityList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SelectActivity();
+        }
+
+        void SelectActivity()
+        {
+            try
+            {
+                int Id = int.Parse(ListViewStudentActivityList.FocusedItem.SubItems[0].Text);               
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        private void btnAddParticipant_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ActivityStudentService service = new ActivityStudentService();
+                int student_id = int.Parse(ListViewActivityStudentNP.FocusedItem.SubItems[0].Text);
+                int activity_id = int.Parse(ListViewStudentActivityList.FocusedItem.SubItems[0].Text);
+                service.AddStudentActivity(student_id, activity_id);
+            }catch(Exception ex) { throw ex; }
+
+            FillListViewsActivityStudents();
+            
+        }
+
+        private void btnRemoveParticipant_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to remove this student from the activity?", "Are you sure?", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    ActivityStudentService service = new ActivityStudentService();
+                    int student_id = int.Parse(ListViewActivityStudentP.FocusedItem.SubItems[0].Text);
+                    service.RemoveStudentActivity(student_id);
+                }
+                
+            }
+            catch (Exception ex) { throw ex; }
+
+            FillListViewsActivityStudents();
+        }    
     }
 }
