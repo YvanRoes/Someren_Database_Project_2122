@@ -518,6 +518,58 @@ namespace SomerenUI
             SelectStockItem();
         }
 
+        // Variant B - Lucas de Jong
+
+        private void UpdateCheckoutInfo(int resetNum)
+        {
+            //the reset number is a number that is defaulted to 0 every time the panel goes back to a default setting.
+            try
+            {
+                if (resetNum != 0)
+                {
+                    throw new Exception("Invalid Parameters! \nUpdateCheckoutInfo()");
+                }
+                else
+                {
+                    lblCheckoutInfoCR.Text = "";
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+                throw;
+            }
+        }
+        private void lvStudents_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //update text if both a student and a drink are selected
+            if ((ListViewRegisterD.SelectedItems.Count != 0) && (ListViewRegisterS.SelectedItems.Count != 0))
+            {
+                UpdateCheckoutInfo(ListViewRegisterS.SelectedItems[0], ListViewRegisterD.SelectedItems[0]);
+                btnCheckout.Enabled = true;
+            }
+
+        }
+        private void UpdateCheckoutInfo(ListViewItem student, ListViewItem drink)
+        {
+            // make the text say a confirmation message once a drink and student are selected 
+            try
+            {
+
+                string sName = student.SubItems[0].Text;
+                string dName = drink.SubItems[0].Text;
+                string price = drink.SubItems[3].Text;
+                lblCheckoutInfoCR.Text = $"click the checkout button to confirm that {sName} is purchasing a {dName}.\nPrice: {price}";
+
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Invalid Parameters! \nUpdateCheckoutInfo()");
+                throw;
+            }
+        }
+
         // Variant C - Elias Tarin
         private void btnCheckout_Click(object sender, EventArgs e)
         {
@@ -547,6 +599,9 @@ namespace SomerenUI
         {
              DateTime endDate = dateTimePickerEnd.Value;
         }
+
+
+
 
 
 
