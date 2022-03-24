@@ -138,6 +138,10 @@ namespace SomerenUI
                     pnlReport.Hide();
                     pnlActivityStudent.Hide();
 
+                    //disable the checkout button and reset the text
+                    btnCheckoutCR.Enabled = false;
+                    UpdateCheckoutInfo(0);
+
                     //show
                     pnlRegister.Show();
                     pnlRegister.Dock = DockStyle.Fill;
@@ -288,70 +292,8 @@ namespace SomerenUI
 
             else if (panelName == "Cash register")
             {
-                try
-                {
-                    // fill the students listview within the cash register panel with a list of students
-                    StudentService studService = new StudentService(); ;
-                    List<Student> studentList = studService.GetStudents(); ;
-
-                    // clear the listview before filling it again
-                    ListViewRegisterS.Clear();
-                    ListViewRegisterS.View = View.Details;
-                    ListViewRegisterS.FullRowSelect = true;
-                    ListViewRegisterS.Columns.Add("ID", 70);
-                    ListViewRegisterS.Columns.Add("Name", 120);
-
-                    //List View
-                    foreach (Student s in studentList)
-                    {
-                        string[] item = { s.Number.ToString(), s.Name };
-                        ListViewItem li = new ListViewItem(item);
-                        ListViewRegisterS.Items.Add(li);
-
-                    }
-                    if (studentList.Count == 0)
-                        throw new Exception("There is currently no content in this table. Sorry for the inconvenience");
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Something went wrong while loading the students: " + e.Message);
-                }
-
-                try
-                {
-                    // fill the drinks listview within the cash register panel with a list of drinks
-                    DrinkService drinkService = new DrinkService(); ;
-                    List<Drink> drinkList = drinkService.GetDrinks(); ;
-
-                    // clear the listview before filling it again
-                    ListViewRegisterD.Clear();
-                    ListViewRegisterD.View = View.Details;
-                    ListViewRegisterD.FullRowSelect = true;
-                    ListViewRegisterD.Columns.Add("ID",70);
-                    ListViewRegisterD.Columns.Add("Name", 70);
-                    ListViewRegisterD.Columns.Add("Alc/No", 70);
-                    ListViewRegisterD.Columns.Add("Price", 70);
-                    ListViewRegisterD.Columns.Add("Stock", 70);
-
-
-                    //List View
-                    foreach (Drink d in drinkList)
-                    {
-
-                        string[] item = { d.Number.ToString(), d.Name, d.Type ? "No Alc" : "Alc", d.Price.ToString(), d.Stock.ToString() };
-                        ListViewItem li = new ListViewItem(item);
-                        ListViewRegisterD.Items.Add(li);
-
-                    }
-                    if (drinkList.Count == 0)
-                        throw new Exception("There is currently no content in this table. Sorry for the inconvenience");
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Something went wrong while loading the drinks: " + e.Message);
-                }
+                FillListViewCashRegister();
             }
-
 
             else if (panelName == "Activity Students")
             {
@@ -518,6 +460,158 @@ namespace SomerenUI
             SelectStockItem();
         }
 
+        // Variant B - Lucas de Jong
+        private void FillListViewCashRegister() 
+        {
+            try
+            {
+                // fill the students listview within the cash register panel with a list of students
+                StudentService studService = new StudentService(); ;
+                List<Student> studentList = studService.GetStudents(); ;
+
+                // clear the listview before filling it again
+                ListViewRegisterS.Clear();
+                ListViewRegisterS.View = View.Details;
+                ListViewRegisterS.FullRowSelect = true;
+                ListViewRegisterS.Columns.Add("ID", 70);
+                ListViewRegisterS.Columns.Add("Name", 120);
+
+                //List View
+                foreach (Student s in studentList)
+                {
+                    string[] item = { s.Number.ToString(), s.Name };
+                    ListViewItem li = new ListViewItem(item);
+                    ListViewRegisterS.Items.Add(li);
+
+                }
+                if (studentList.Count == 0)
+                    throw new Exception("There is currently no content in this table. Sorry for the inconvenience");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong while loading the students: " + e.Message);
+            }
+
+            try
+            {
+                // fill the drinks listview within the cash register panel with a list of drinks
+                DrinkService drinkService = new DrinkService(); ;
+                List<Drink> drinkList = drinkService.GetDrinks(); ;
+
+                // clear the listview before filling it again
+                ListViewRegisterD.Clear();
+                ListViewRegisterD.View = View.Details;
+                ListViewRegisterD.FullRowSelect = true;
+                ListViewRegisterD.Columns.Add("ID", 70);
+                ListViewRegisterD.Columns.Add("Name", 70);
+                ListViewRegisterD.Columns.Add("Alc/No", 70);
+                ListViewRegisterD.Columns.Add("Price", 70);
+                ListViewRegisterD.Columns.Add("Stock", 70);
+
+
+                //List View
+                foreach (Drink d in drinkList)
+                {
+
+                    string[] item = { d.Number.ToString(), d.Name, d.Type ? "No Alc" : "Alc", d.Price.ToString(), d.Stock.ToString() };
+                    ListViewItem li = new ListViewItem(item);
+                    ListViewRegisterD.Items.Add(li);
+
+                }
+                if (drinkList.Count == 0)
+                    throw new Exception("There is currently no content in this table. Sorry for the inconvenience");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong while loading the drinks: " + e.Message);
+            }
+        }
+
+        private void UpdateCheckoutInfo(int resetNum)
+        {
+            //the reset number is a number that is defaulted to 0 every time the panel goes back to a default setting.
+            try
+            {
+                if (resetNum != 0)
+                {
+                    throw new Exception("Invalid Parameters! \nUpdateCheckoutInfo()");
+                }
+                else
+                {
+                    lblCheckoutInfoCR.Text = "";
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+                throw;
+            }
+        }
+        private void ListViewRegisterS_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //verify that both a student and drink are selected
+            if ((ListViewRegisterD.SelectedItems.Count != 0) && (ListViewRegisterS.SelectedItems.Count != 0))
+            {
+                UpdateCheckoutInfo(ListViewRegisterS.SelectedItems[0], ListViewRegisterD.SelectedItems[0]);
+                btnCheckoutCR.Enabled = true;
+            }
+        }
+
+        private void ListViewRegisterD_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //verify that both a student and drink are selected
+            if ((ListViewRegisterD.SelectedItems.Count != 0) && (ListViewRegisterS.SelectedItems.Count != 0))
+            {
+                UpdateCheckoutInfo(ListViewRegisterS.SelectedItems[0], ListViewRegisterD.SelectedItems[0]);
+                btnCheckoutCR.Enabled = true;
+            }
+        }
+
+        private void UpdateCheckoutInfo(ListViewItem student, ListViewItem drink)
+        {
+            // make the text say a confirmation message once a drink and student are selected 
+            try
+            {
+                string sName = student.SubItems[1].Text;
+                string dName = drink.SubItems[1].Text;
+                string price = drink.SubItems[3].Text;
+                lblCheckoutInfoCR.Text = $"click the checkout button to confirm that {sName} is purchasing a {dName}.\nPrice: {price}";
+
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Invalid Parameters! \nUpdateCheckoutInfo()");
+                throw;
+            }
+        }
+        private void btnCheckoutCR_Click(object sender, EventArgs e)
+        {
+            UpdateCheckoutInfo(0);
+
+            Buy order = new Buy()
+            {
+                DrinkId = Convert.ToInt32(ListViewRegisterD.SelectedItems[0].SubItems[0].Text),
+                PurchaserId = Convert.ToInt32(ListViewRegisterS.SelectedItems[0].SubItems[0].Text),
+                PurchaseTime = DateTime.Now,
+            };
+
+            BuyService buyService = new BuyService();
+            try
+            {
+                buyService.AddNewOrder(order);
+                buyService.DecreaseStock(order.DrinkId);
+                MessageBox.Show($"Purchase was successful.");
+                FillListViewCashRegister();
+
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Error: order already exists in the database!\n" + err.Message);
+            }
+
+        }
+
         // Variant C - Elias Tarin
         private void btnCheckout_Click(object sender, EventArgs e)
         {
@@ -547,6 +641,9 @@ namespace SomerenUI
         {
              DateTime endDate = dateTimePickerEnd.Value;
         }
+
+
+
 
 
 
@@ -647,6 +744,8 @@ namespace SomerenUI
             catch (Exception ex) { throw ex; }
 
             FillListViewsActivityStudents();
-        }    
+        }
+
+
     }
 }
