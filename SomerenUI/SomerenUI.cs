@@ -481,6 +481,7 @@ namespace SomerenUI
             SelectStockItem();
         }
 
+
         // Variant C - Elias Tarin
         private void btnCheckout_Click(object sender, EventArgs e)
         {
@@ -509,6 +510,11 @@ namespace SomerenUI
         private void dateTimePickerEnd_ValueChanged(object sender, EventArgs e)
         {
              DateTime endDate = dateTimePickerEnd.Value;
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
