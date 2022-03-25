@@ -697,7 +697,7 @@ namespace SomerenUI
             ListViewNonParticipants.View = View.Details;
             ListViewNonParticipants.FullRowSelect = true;
             ListViewNonParticipants.Columns.Add("Teacher ID", 80);
-            ListViewNonParticipants.Columns.Add("Teacher Name", 80);
+            ListViewNonParticipants.Columns.Add("Teacher Name", 130);
 
             foreach (Teacher teacher in nonParticipants.Distinct())
             {
@@ -711,8 +711,8 @@ namespace SomerenUI
             ListViewActivityLecturersActivities.Clear();
             ListViewActivityLecturersActivities.View = View.Details;
             ListViewActivityLecturersActivities.FullRowSelect = true;
-            ListViewActivityLecturersActivities.Columns.Add("Id", 90);
-            ListViewActivityLecturersActivities.Columns.Add("Activity", 90);
+            ListViewActivityLecturersActivities.Columns.Add("Id", 30);
+            ListViewActivityLecturersActivities.Columns.Add("Activity",  90);
 
             foreach (ActivitySuperviser activity in activities)
             {
@@ -724,15 +724,11 @@ namespace SomerenUI
 
         private void btnAddLecturer_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ActivitySuperviserService service = new ActivitySuperviserService();
-                int superviserId = int.Parse(ListViewNonParticipants.FocusedItem.SubItems[0].Text);
-                int activityId = int.Parse(ListViewActivityLecturersActivities.FocusedItem.SubItems[0].Text);
-                service.AddSuperviserActivity(superviserId, activityId);
-            }
-            catch (Exception ex) { throw ex; }
-            FillForms();
+           ActivitySuperviserService service = new ActivitySuperviserService();
+           int superviserId = int.Parse(ListViewNonParticipants.FocusedItem.SubItems[0].Text);
+           int activityId = int.Parse(ListViewActivityLecturersActivities.FocusedItem.SubItems[0].Text);
+           service.AddSuperviserActivity(superviserId, activityId);
+           FillForms();
         }
         private void btnRemoveLecturer_Click(object sender, EventArgs e)
         {

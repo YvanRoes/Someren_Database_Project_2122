@@ -52,7 +52,7 @@ namespace SomerenDAL
         }
         public List<Teacher> GetNonParticipants()
         {
-            string query = "SELECT TEACHER.Teacher_ID, TEACHER.[name] FROM TEACHER LEFT JOIN ACTIVITYSUPERVISER ON ACTIVITYSUPERVISER.Teacher_ID = TEACHER.Lecturer_ID WHERE ACTIVITYSUPERVISER.Lecturer_ID IS NULL";
+            string query = "SELECT TEACHER.Teacher_ID, TEACHER.[name] FROM TEACHER LEFT JOIN ACTIVITYSUPERVISER ON ACTIVITYSUPERVISER.Lecturer_ID = TEACHER.Teacher_ID WHERE ACTIVITYSUPERVISER.Lecturer_ID IS NULL";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }

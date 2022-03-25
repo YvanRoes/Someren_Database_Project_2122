@@ -1214,16 +1214,16 @@
             this.pnlActivitySuperviser.Controls.Add(this.ListViewNonParticipants);
             this.pnlActivitySuperviser.Controls.Add(this.ListViewParticipants);
             this.pnlActivitySuperviser.Controls.Add(this.ListViewActivityLecturersActivities);
-            this.pnlActivitySuperviser.Location = new System.Drawing.Point(16, 476);
+            this.pnlActivitySuperviser.Location = new System.Drawing.Point(121, 617);
             this.pnlActivitySuperviser.Name = "pnlActivitySuperviser";
-            this.pnlActivitySuperviser.Size = new System.Drawing.Size(340, 401);
+            this.pnlActivitySuperviser.Size = new System.Drawing.Size(316, 269);
             this.pnlActivitySuperviser.TabIndex = 12;
             // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label19.Location = new System.Drawing.Point(397, 51);
+            this.label19.Location = new System.Drawing.Point(415, 127);
             this.label19.MinimumSize = new System.Drawing.Size(8, 400);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(8, 400);
@@ -1233,27 +1233,27 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(510, 272);
+            this.label22.Location = new System.Drawing.Point(519, 314);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(281, 26);
+            this.label22.Size = new System.Drawing.Size(257, 26);
             this.label22.TabIndex = 8;
-            this.label22.Text = "Non Participants - Lecturers";
+            this.label22.Text = "Non Participant Lecturers";
             // 
             // label21
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(508, 54);
+            this.label21.Location = new System.Drawing.Point(517, 96);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(235, 26);
+            this.label21.Size = new System.Drawing.Size(345, 26);
             this.label21.TabIndex = 7;
-            this.label21.Text = "Participants - Lecturers";
+            this.label21.Text = "Participant Lecturers - Supervisors";
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(37, 92);
+            this.label20.Location = new System.Drawing.Point(161, 96);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(82, 24);
             this.label20.TabIndex = 6;
@@ -1271,11 +1271,11 @@
             // 
             // btnRemoveLecturer
             // 
-            this.btnRemoveLecturer.BackColor = System.Drawing.Color.DimGray;
+            this.btnRemoveLecturer.BackColor = System.Drawing.Color.OrangeRed;
             this.btnRemoveLecturer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRemoveLecturer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveLecturer.ForeColor = System.Drawing.Color.White;
-            this.btnRemoveLecturer.Location = new System.Drawing.Point(41, 396);
+            this.btnRemoveLecturer.Location = new System.Drawing.Point(102, 461);
             this.btnRemoveLecturer.Name = "btnRemoveLecturer";
             this.btnRemoveLecturer.Size = new System.Drawing.Size(200, 66);
             this.btnRemoveLecturer.TabIndex = 4;
@@ -1285,13 +1285,14 @@
             // 
             // btnAddLecturer
             // 
-            this.btnAddLecturer.BackColor = System.Drawing.Color.LightGray;
+            this.btnAddLecturer.BackColor = System.Drawing.Color.Chartreuse;
             this.btnAddLecturer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddLecturer.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnAddLecturer.FlatAppearance.BorderSize = 6;
             this.btnAddLecturer.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnAddLecturer.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnAddLecturer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnAddLecturer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddLecturer.Location = new System.Drawing.Point(41, 325);
+            this.btnAddLecturer.Location = new System.Drawing.Point(102, 390);
             this.btnAddLecturer.Name = "btnAddLecturer";
             this.btnAddLecturer.Size = new System.Drawing.Size(200, 66);
             this.btnAddLecturer.TabIndex = 3;
@@ -1301,8 +1302,11 @@
             // 
             // ListViewNonParticipants
             // 
+            this.ListViewNonParticipants.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ListViewNonParticipants.ForeColor = System.Drawing.Color.White;
+            this.ListViewNonParticipants.FullRowSelect = true;
             this.ListViewNonParticipants.HideSelection = false;
-            this.ListViewNonParticipants.Location = new System.Drawing.Point(508, 299);
+            this.ListViewNonParticipants.Location = new System.Drawing.Point(517, 341);
             this.ListViewNonParticipants.Name = "ListViewNonParticipants";
             this.ListViewNonParticipants.Size = new System.Drawing.Size(342, 180);
             this.ListViewNonParticipants.TabIndex = 2;
@@ -1310,8 +1314,10 @@
             // 
             // ListViewParticipants
             // 
+            this.ListViewParticipants.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ListViewParticipants.ForeColor = System.Drawing.Color.White;
             this.ListViewParticipants.HideSelection = false;
-            this.ListViewParticipants.Location = new System.Drawing.Point(508, 85);
+            this.ListViewParticipants.Location = new System.Drawing.Point(517, 127);
             this.ListViewParticipants.Name = "ListViewParticipants";
             this.ListViewParticipants.Size = new System.Drawing.Size(342, 169);
             this.ListViewParticipants.TabIndex = 1;
@@ -1319,12 +1325,17 @@
             // 
             // ListViewActivityLecturersActivities
             // 
+            this.ListViewActivityLecturersActivities.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.ListViewActivityLecturersActivities.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ListViewActivityLecturersActivities.ForeColor = System.Drawing.Color.White;
+            this.ListViewActivityLecturersActivities.FullRowSelect = true;
             this.ListViewActivityLecturersActivities.HideSelection = false;
-            this.ListViewActivityLecturersActivities.Location = new System.Drawing.Point(41, 116);
+            this.ListViewActivityLecturersActivities.Location = new System.Drawing.Point(92, 127);
             this.ListViewActivityLecturersActivities.Name = "ListViewActivityLecturersActivities";
-            this.ListViewActivityLecturersActivities.Size = new System.Drawing.Size(271, 190);
+            this.ListViewActivityLecturersActivities.Size = new System.Drawing.Size(258, 205);
             this.ListViewActivityLecturersActivities.TabIndex = 0;
             this.ListViewActivityLecturersActivities.UseCompatibleStateImageBehavior = false;
+            this.ListViewActivityLecturersActivities.View = System.Windows.Forms.View.SmallIcon;
             // 
             // SomerenUI
             // 
