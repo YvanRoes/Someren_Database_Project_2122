@@ -40,6 +40,7 @@ namespace SomerenUI
                     pnlRegister.Hide();
                     pnlReport.Hide();
                     pnlActivityStudent.Hide();
+                    pnlActivitySuperviser.Hide();
 
                     // show dashboard
                     pnlDashboard.Show();
@@ -57,6 +58,7 @@ namespace SomerenUI
                     pnlRegister.Hide();
                     pnlReport.Hide();
                     pnlActivityStudent.Hide();
+                    pnlActivitySuperviser.Hide();
 
                     // show students
                     pnlStudents.Show();
@@ -73,7 +75,7 @@ namespace SomerenUI
                     pnlRegister.Hide();
                     pnlReport.Hide();
                     pnlActivityStudent.Hide();
-
+                    pnlActivitySuperviser.Hide();
                     //show lecturers
                     pnlLecturers.Show();
                     pnlLecturers.Dock = DockStyle.Fill;
@@ -88,7 +90,7 @@ namespace SomerenUI
                     pnlRegister.Hide();
                     pnlReport.Hide();
                     pnlActivityStudent.Hide();
-
+                    pnlActivitySuperviser.Hide();
                     //show activities                    
                     pnlActivities.Show();
                     pnlActivities.Dock = DockStyle.Fill;
@@ -104,7 +106,7 @@ namespace SomerenUI
                     pnlRegister.Hide();
                     pnlReport.Hide();
                     pnlActivityStudent.Hide();
-
+                    pnlActivitySuperviser.Hide();
                     //show rooms
                     pnlRooms.Show();
                     pnlRooms.Dock = DockStyle.Fill;
@@ -120,7 +122,7 @@ namespace SomerenUI
                     pnlRegister.Hide();
                     pnlReport.Hide();
                     pnlActivityStudent.Hide();
-
+                    pnlActivitySuperviser.Hide();
                     //show
                     pnlStock.Show();
                     pnlStock.Dock = DockStyle.Fill;
@@ -137,11 +139,11 @@ namespace SomerenUI
                     pnlStock.Hide();
                     pnlReport.Hide();
                     pnlActivityStudent.Hide();
+                    pnlActivitySuperviser.Hide();
 
                     //disable the checkout button and reset the text
                     btnCheckoutCR.Enabled = false;
                     UpdateCheckoutInfo(0);
-
                     //show
                     pnlRegister.Show();
                     pnlRegister.Dock = DockStyle.Fill;
@@ -157,7 +159,7 @@ namespace SomerenUI
                     pnlStock.Hide();
                     pnlRegister.Hide();
                     pnlActivityStudent.Hide();
-
+                    pnlActivitySuperviser.Hide();
                     //show
                     pnlReport.Show();
                     pnlReport.Dock = DockStyle.Fill;
@@ -174,12 +176,28 @@ namespace SomerenUI
                     pnlStock.Hide();
                     pnlRegister.Hide();
                     pnlReport.Hide();
-
+                    pnlActivitySuperviser.Hide();
                     //show
                     pnlActivityStudent.Show();
                     pnlActivityStudent.Dock = DockStyle.Fill;
                     break;
 
+                case "Activity Supervisors":
+                    //hide
+                    pnlDashboard.Hide();
+                    pnlStudents.Hide();
+                    pnlActivities.Hide();
+                    pnlLecturers.Hide();
+                    pnlStudents.Hide();
+                    pnlRooms.Hide();
+                    pnlStock.Hide();
+                    pnlRegister.Hide();
+                    pnlReport.Hide();
+                    pnlActivityStudent.Hide();
+                    //show
+                    pnlActivitySuperviser.Show();
+                    pnlActivitySuperviser.Dock = DockStyle.Fill;
+                    break;
             }
 
             if (panelName == "Students")
@@ -299,7 +317,10 @@ namespace SomerenUI
             {
                 FillListViewsActivityStudents();
             }
-            
+            else if(panelName == "Activity Supervisors")
+            {
+                FillForms();
+            }
 
         }
 
@@ -356,6 +377,10 @@ namespace SomerenUI
         private void activityStudentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Activity Students");
+        }
+        private void activitySupervisorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Activity Supervisors");
         }
 
 
@@ -644,10 +669,6 @@ namespace SomerenUI
 
 
 
-
-
-
-        //Variant C Week 4 Yvan Roes
         void FillListViewsActivityStudents()
         {
             //Participants
@@ -746,6 +767,92 @@ namespace SomerenUI
             FillListViewsActivityStudents();
         }
 
+        // Variant B - Elias
+        void FillForms()
+        {
+            ActivitySuperviserService service = new ActivitySuperviserService();
+            List<Teacher> participants = service.GetParticipants();
+            List<Teacher> nonParticipants = service.GetNonParticipants();
+
+            ListViewParticipants.Clear();
+            ListViewParticipants.View = View.Details;
+            ListViewParticipants.FullRowSelect = true;
+            ListViewParticipants.Columns.Add("Teacher ID", 80);
+            ListViewParticipants.Columns.Add("Name", 80);
+            ListViewParticipants.Columns.Add("Activity", 80);
+
+            foreach (Teacher teacher in participants)
+            {
+                string[] item = { teacher.Number.ToString(), teacher.Name, teacher.Activity };
+                ListViewItem li = new ListViewItem(item);
+                ListViewParticipants.Items.Add(li);
+            }
+
+            ListViewNonParticipants.Clear();
+            ListViewNonParticipants.View = View.Details;
+            ListViewNonParticipants.FullRowSelect = true;
+            ListViewNonParticipants.Columns.Add("Teacher ID", 80);
+            ListViewNonParticipants.Columns.Add("Teacher Name", 130);
+
+            foreach (Teacher teacher in nonParticipants.Distinct())
+            {
+                string[] item = { teacher.Number.ToString(), teacher.Name };
+                ListViewItem li = new ListViewItem(item);
+                ListViewNonParticipants.Items.Add(li);
+            }
+
+            List<ActivitySuperviser> activities = service.GetActivities();
+
+            ListViewActivityLecturersActivities.Clear();
+            ListViewActivityLecturersActivities.View = View.Details;
+            ListViewActivityLecturersActivities.FullRowSelect = true;
+            ListViewActivityLecturersActivities.Columns.Add("Id", 30);
+            ListViewActivityLecturersActivities.Columns.Add("Activity",  90);
+
+            foreach (ActivitySuperviser activity in activities)
+            {
+                string[] item = { activity.ActivityId.ToString(), activity.ActivityDescription };
+                ListViewItem li = new ListViewItem(item);
+                ListViewActivityLecturersActivities.Items.Add(li);
+            }
+        }
+
+        private void btnAddLecturer_Click(object sender, EventArgs e)
+        {
+           ActivitySuperviserService service = new ActivitySuperviserService();
+           int superviserId = int.Parse(ListViewNonParticipants.FocusedItem.SubItems[0].Text);
+           int activityId = int.Parse(ListViewActivityLecturersActivities.FocusedItem.SubItems[0].Text);
+           service.AddSuperviserActivity(superviserId, activityId);
+           FillForms();
+        }
+        private void btnRemoveLecturer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to remove this supervisor from the activity?", "Are you sure?", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    ActivitySuperviserService service = new ActivitySuperviserService();
+                    int teacherId = int.Parse(ListViewParticipants.FocusedItem.SubItems[0].Text);
+                    service.RemoveSuperviserActivity(teacherId);
+                }
+
+            }
+            catch (Exception ex) { throw ex; }
+            FillForms();
+        }
+        void SelectActivitySuperviser()
+        {
+            try
+            {
+                int Id = int.Parse(ListViewActivityLecturersActivities.FocusedItem.SubItems[0].Text);
+            }
+            catch (Exception ex) { throw ex; }
+        }
+        private void ListViewActivityLecturersActivities_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SelectActivitySuperviser();
+        }
 
     }
 }

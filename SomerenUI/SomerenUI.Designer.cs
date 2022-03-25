@@ -125,6 +125,17 @@
             this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.pnlActivitySuperviser = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.btnRemoveLecturer = new System.Windows.Forms.Button();
+            this.btnAddLecturer = new System.Windows.Forms.Button();
+            this.ListViewNonParticipants = new System.Windows.Forms.ListView();
+            this.ListViewParticipants = new System.Windows.Forms.ListView();
+            this.ListViewActivityLecturersActivities = new System.Windows.Forms.ListView();
             this.pnlRegister = new System.Windows.Forms.Panel();
             this.lblCheckoutInfoCR = new System.Windows.Forms.Label();
             this.btnCheckoutCR = new System.Windows.Forms.Button();
@@ -155,6 +166,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.pnlActivityStudent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+
+            this.pnlActivitySuperviser.SuspendLayout();
+
             this.pnlRegister.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -162,6 +176,12 @@
             // imgDashboard
             // 
             this.imgDashboard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+
+            this.imgDashboard.Location = new System.Drawing.Point(41, 0);
+            this.imgDashboard.Margin = new System.Windows.Forms.Padding(4);
+            this.imgDashboard.Name = "imgDashboard";
+            this.imgDashboard.Size = new System.Drawing.Size(415, 332);
+
             this.imgDashboard.Location = new System.Drawing.Point(83, 0);
             this.imgDashboard.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.imgDashboard.Name = "imgDashboard";
@@ -253,6 +273,7 @@
             this.activitySupervisorsToolStripMenuItem.Name = "activitySupervisorsToolStripMenuItem";
             this.activitySupervisorsToolStripMenuItem.Size = new System.Drawing.Size(440, 54);
             this.activitySupervisorsToolStripMenuItem.Text = "Activity Supervisors";
+            this.activitySupervisorsToolStripMenuItem.Click += new System.EventHandler(this.activitySupervisorsToolStripMenuItem_Click);
             // 
             // activityStudentsToolStripMenuItem
             // 
@@ -754,8 +775,7 @@
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
-            this.ListViewStock.HideSelection = false;
-            this.ListViewStock.Location = new System.Drawing.Point(43, 103);
+            this.ListViewStock.HideSelection = false;is.ListViewStock.Location = new System.Drawing.Point(43, 103);
             this.ListViewStock.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.ListViewStock.Name = "ListViewStock";
             this.ListViewStock.Size = new System.Drawing.Size(193, 95);
@@ -791,12 +811,104 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(29, 26);
-            this.label4.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label4.Location = new System.Drawing.Point(15, 14);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(521, 65);
+            this.label4.Size = new System.Drawing.Size(266, 33);
             this.label4.TabIndex = 3;
             this.label4.Text = "Stock management";
+            // 
+            // pnlRegister
+            // 
+            this.pnlRegister.Controls.Add(this.ListViewRegisterD);
+            this.pnlRegister.Controls.Add(this.ListViewRegisterS);
+            this.pnlRegister.Controls.Add(this.pictureBox2);
+            this.pnlRegister.Controls.Add(this.label5);
+            this.pnlRegister.Location = new System.Drawing.Point(1287, 338);
+            this.pnlRegister.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlRegister.Name = "pnlRegister";
+            this.pnlRegister.Size = new System.Drawing.Size(325, 246);
+            this.pnlRegister.TabIndex = 10;
+            // 
+            // ListViewRegisterD
+            // 
+            this.ListViewRegisterD.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ListViewRegisterD.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader19,
+            this.columnHeader20,
+            this.columnHeader21});
+            this.ListViewRegisterD.HideSelection = false;
+            this.ListViewRegisterD.Location = new System.Drawing.Point(352, 53);
+            this.ListViewRegisterD.Margin = new System.Windows.Forms.Padding(4);
+            this.ListViewRegisterD.MinimumSize = new System.Drawing.Size(65, 61);
+            this.ListViewRegisterD.Name = "ListViewRegisterD";
+            this.ListViewRegisterD.Size = new System.Drawing.Size(65, 61);
+            this.ListViewRegisterD.TabIndex = 6;
+            this.ListViewRegisterD.UseCompatibleStateImageBehavior = false;
+            // 
+            // columnHeader19
+            // 
+            this.columnHeader19.Text = "ID";
+            // 
+            // columnHeader20
+            // 
+            this.columnHeader20.Text = "Name";
+            // 
+            // columnHeader21
+            // 
+            this.columnHeader21.Text = "Date of Birth";
+            // 
+            // ListViewRegisterS
+            // 
+            this.ListViewRegisterS.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader16,
+            this.columnHeader17,
+            this.columnHeader18});
+            this.ListViewRegisterS.HideSelection = false;
+            this.ListViewRegisterS.Location = new System.Drawing.Point(21, 53);
+            this.ListViewRegisterS.Margin = new System.Windows.Forms.Padding(4);
+            this.ListViewRegisterS.MinimumSize = new System.Drawing.Size(65, 61);
+            this.ListViewRegisterS.Name = "ListViewRegisterS";
+            this.ListViewRegisterS.Size = new System.Drawing.Size(311, 315);
+            this.ListViewRegisterS.TabIndex = 5;
+            this.ListViewRegisterS.UseCompatibleStateImageBehavior = false;
+            // 
+            // columnHeader16
+            // 
+            this.columnHeader16.Text = "ID";
+            // 
+            // columnHeader17
+            // 
+            this.columnHeader17.Text = "Name";
+            // 
+            // columnHeader18
+            // 
+            this.columnHeader18.Text = "Date of Birth";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.Image = global::SomerenUI.Properties.Resources.someren;
+            this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
+            this.pictureBox2.Location = new System.Drawing.Point(148, 0);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(173, 151);
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(15, 14);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(189, 33);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Cash register";
             // 
             // pnlReport
             // 
@@ -1096,6 +1208,156 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+            this.label15.Location = new System.Drawing.Point(15, 14);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(239, 33);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Activities Student";
+            // 
+            // pnlActivitySuperviser
+            // 
+            this.pnlActivitySuperviser.Controls.Add(this.label19);
+            this.pnlActivitySuperviser.Controls.Add(this.label22);
+            this.pnlActivitySuperviser.Controls.Add(this.label21);
+            this.pnlActivitySuperviser.Controls.Add(this.label20);
+            this.pnlActivitySuperviser.Controls.Add(this.lblTitle);
+            this.pnlActivitySuperviser.Controls.Add(this.btnRemoveLecturer);
+            this.pnlActivitySuperviser.Controls.Add(this.btnAddLecturer);
+            this.pnlActivitySuperviser.Controls.Add(this.ListViewNonParticipants);
+            this.pnlActivitySuperviser.Controls.Add(this.ListViewParticipants);
+            this.pnlActivitySuperviser.Controls.Add(this.ListViewActivityLecturersActivities);
+            this.pnlActivitySuperviser.Location = new System.Drawing.Point(121, 617);
+            this.pnlActivitySuperviser.Name = "pnlActivitySuperviser";
+            this.pnlActivitySuperviser.Size = new System.Drawing.Size(316, 269);
+            this.pnlActivitySuperviser.TabIndex = 12;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label19.Location = new System.Drawing.Point(415, 127);
+            this.label19.MinimumSize = new System.Drawing.Size(8, 400);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(8, 400);
+            this.label19.TabIndex = 9;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(519, 314);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(257, 26);
+            this.label22.TabIndex = 8;
+            this.label22.Text = "Non Participant Lecturers";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(517, 96);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(345, 26);
+            this.label21.TabIndex = 7;
+            this.label21.Text = "Participant Lecturers - Supervisors";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(161, 96);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(82, 24);
+            this.label20.TabIndex = 6;
+            this.label20.Text = "Activities";
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(17, 25);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(262, 33);
+            this.lblTitle.TabIndex = 5;
+            this.lblTitle.Text = "Activities Lecturers";
+            // 
+            // btnRemoveLecturer
+            // 
+            this.btnRemoveLecturer.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnRemoveLecturer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemoveLecturer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveLecturer.ForeColor = System.Drawing.Color.White;
+            this.btnRemoveLecturer.Location = new System.Drawing.Point(102, 461);
+            this.btnRemoveLecturer.Name = "btnRemoveLecturer";
+            this.btnRemoveLecturer.Size = new System.Drawing.Size(200, 66);
+            this.btnRemoveLecturer.TabIndex = 4;
+            this.btnRemoveLecturer.Text = "Remove participant";
+            this.btnRemoveLecturer.UseVisualStyleBackColor = false;
+            this.btnRemoveLecturer.Click += new System.EventHandler(this.btnRemoveLecturer_Click);
+            // 
+            // btnAddLecturer
+            // 
+            this.btnAddLecturer.BackColor = System.Drawing.Color.Chartreuse;
+            this.btnAddLecturer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddLecturer.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnAddLecturer.FlatAppearance.BorderSize = 6;
+            this.btnAddLecturer.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnAddLecturer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnAddLecturer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddLecturer.Location = new System.Drawing.Point(102, 390);
+            this.btnAddLecturer.Name = "btnAddLecturer";
+            this.btnAddLecturer.Size = new System.Drawing.Size(200, 66);
+            this.btnAddLecturer.TabIndex = 3;
+            this.btnAddLecturer.Text = "Add participant";
+            this.btnAddLecturer.UseVisualStyleBackColor = false;
+            this.btnAddLecturer.Click += new System.EventHandler(this.btnAddLecturer_Click);
+            // 
+            // ListViewNonParticipants
+            // 
+            this.ListViewNonParticipants.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ListViewNonParticipants.ForeColor = System.Drawing.Color.White;
+            this.ListViewNonParticipants.FullRowSelect = true;
+            this.ListViewNonParticipants.HideSelection = false;
+            this.ListViewNonParticipants.Location = new System.Drawing.Point(517, 341);
+            this.ListViewNonParticipants.Name = "ListViewNonParticipants";
+            this.ListViewNonParticipants.Size = new System.Drawing.Size(342, 180);
+            this.ListViewNonParticipants.TabIndex = 2;
+            this.ListViewNonParticipants.UseCompatibleStateImageBehavior = false;
+            // 
+            // ListViewParticipants
+            // 
+            this.ListViewParticipants.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ListViewParticipants.ForeColor = System.Drawing.Color.White;
+            this.ListViewParticipants.HideSelection = false;
+            this.ListViewParticipants.Location = new System.Drawing.Point(517, 127);
+            this.ListViewParticipants.Name = "ListViewParticipants";
+            this.ListViewParticipants.Size = new System.Drawing.Size(342, 169);
+            this.ListViewParticipants.TabIndex = 1;
+            this.ListViewParticipants.UseCompatibleStateImageBehavior = false;
+            // 
+            // ListViewActivityLecturersActivities
+            // 
+            this.ListViewActivityLecturersActivities.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.ListViewActivityLecturersActivities.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ListViewActivityLecturersActivities.ForeColor = System.Drawing.Color.White;
+            this.ListViewActivityLecturersActivities.FullRowSelect = true;
+            this.ListViewActivityLecturersActivities.HideSelection = false;
+            this.ListViewActivityLecturersActivities.Location = new System.Drawing.Point(92, 127);
+            this.ListViewActivityLecturersActivities.Name = "ListViewActivityLecturersActivities";
+            this.ListViewActivityLecturersActivities.Size = new System.Drawing.Size(258, 205);
+            this.ListViewActivityLecturersActivities.TabIndex = 0;
+            this.ListViewActivityLecturersActivities.UseCompatibleStateImageBehavior = false;
+            this.ListViewActivityLecturersActivities.View = System.Windows.Forms.View.SmallIcon;
+            // 
+            // SomerenUI
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.Controls.Add(this.pnlActivitySuperviser);
+
             this.label15.Location = new System.Drawing.Point(29, 26);
             this.label15.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label15.Name = "label15";
@@ -1378,6 +1640,17 @@
         private System.Windows.Forms.ColumnHeader columnHeader24;
         private System.Windows.Forms.Button btnRemoveParticipant;
         private System.Windows.Forms.Button btnAddParticipant;
+        private System.Windows.Forms.Panel pnlActivitySuperviser;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Button btnRemoveLecturer;
+        private System.Windows.Forms.Button btnAddLecturer;
+        private System.Windows.Forms.ListView ListViewNonParticipants;
+        private System.Windows.Forms.ListView ListViewParticipants;
+        private System.Windows.Forms.ListView ListViewActivityLecturersActivities;
+        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Panel pnlRegister;
         private System.Windows.Forms.Label lblCheckoutInfoCR;
         private System.Windows.Forms.Button btnCheckoutCR;
