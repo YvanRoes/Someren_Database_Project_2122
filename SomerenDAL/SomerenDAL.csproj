@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivitySuperviserDao.cs" />
     <Compile Include="BaseDao.cs" />
     <Compile Include="ActivityStudentDao.cs" />
     <Compile Include="DrinkDao.cs" />
