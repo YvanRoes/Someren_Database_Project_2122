@@ -17,6 +17,12 @@ namespace SomerenLogic
         {
             userdb = new UserDao();
         }
+        //add user to database
+        public void AddUser(User user)
+        {
+            userdb = new UserDao();
+            userdb.AddUser(user);
+        }
 
         //get user
         public User GetRecorveryPasswordUser(string username)

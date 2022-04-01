@@ -22,6 +22,18 @@ namespace SomerenDAL
 
             return u;
         }
+        public void AddUser(User user)
+        {
+            SqlParameter[] sqlParameters =
+            {
+               new SqlParameter("@name",   user.Name),
+               new SqlParameter("@username",    user.email),
+               new SqlParameter("@password",    User.PasswordTosha256(user.password)),
+            };
+            string query = $"INSERT INTO [USER]([Name], [Role], [Username], [Password]) " +
+                            $"VALUES( @name, 0, @username, @password);";
+            ExecuteEditQuery(query, sqlParameters);
+        }
 
         //Password recovery
         public User GetRecoveryPasswordUser(string username)
