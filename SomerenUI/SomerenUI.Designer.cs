@@ -49,10 +49,17 @@
             this.pnlDashboard = new System.Windows.Forms.Panel();
             this.lbl_Dashboard = new System.Windows.Forms.Label();
             this.pnlActivities = new System.Windows.Forms.Panel();
+            this.btnRefreshList = new System.Windows.Forms.Button();
+            this.txtActivityDescription = new System.Windows.Forms.TextBox();
+            this.lblDesc = new System.Windows.Forms.Label();
+            this.lblEDT = new System.Windows.Forms.Label();
+            this.lblSDT = new System.Windows.Forms.Label();
+            this.btnDeleteActivity = new System.Windows.Forms.Button();
+            this.btnEditActivity = new System.Windows.Forms.Button();
+            this.DatePickerStart = new System.Windows.Forms.DateTimePicker();
+            this.DatePickerEnd = new System.Windows.Forms.DateTimePicker();
+            this.btnAddActivity = new System.Windows.Forms.Button();
             this.ListViewActivities = new System.Windows.Forms.ListView();
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lbl_Activities = new System.Windows.Forms.Label();
             this.pnlRooms = new System.Windows.Forms.Panel();
@@ -137,6 +144,8 @@
             this.ListViewParticipants = new System.Windows.Forms.ListView();
             this.ListViewActivityLecturersActivities = new System.Windows.Forms.ListView();
             this.pnlRegister = new System.Windows.Forms.Panel();
+            this.lblCheckoutInfoCR = new System.Windows.Forms.Label();
+            this.btnCheckoutCR = new System.Windows.Forms.Button();
             this.ListViewRegisterD = new System.Windows.Forms.ListView();
             this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -147,8 +156,6 @@
             this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.lblCheckoutInfoCR = new System.Windows.Forms.Label();
-            this.btnCheckoutCR = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -194,7 +201,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1722, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1966, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -257,6 +264,7 @@
             this.activitiesToolStripMenuItem1.Name = "activitiesToolStripMenuItem1";
             this.activitiesToolStripMenuItem1.Size = new System.Drawing.Size(177, 22);
             this.activitiesToolStripMenuItem1.Text = "Activities";
+            this.activitiesToolStripMenuItem1.Click += new System.EventHandler(this.activitiesToolStripMenuItem1_Click);
             // 
             // activitySupervisorsToolStripMenuItem
             // 
@@ -330,48 +338,138 @@
             // 
             // pnlActivities
             // 
+            this.pnlActivities.Controls.Add(this.btnRefreshList);
+            this.pnlActivities.Controls.Add(this.txtActivityDescription);
+            this.pnlActivities.Controls.Add(this.lblDesc);
+            this.pnlActivities.Controls.Add(this.lblEDT);
+            this.pnlActivities.Controls.Add(this.lblSDT);
+            this.pnlActivities.Controls.Add(this.btnDeleteActivity);
+            this.pnlActivities.Controls.Add(this.btnEditActivity);
+            this.pnlActivities.Controls.Add(this.DatePickerStart);
+            this.pnlActivities.Controls.Add(this.DatePickerEnd);
+            this.pnlActivities.Controls.Add(this.btnAddActivity);
             this.pnlActivities.Controls.Add(this.ListViewActivities);
             this.pnlActivities.Controls.Add(this.pictureBox3);
             this.pnlActivities.Controls.Add(this.lbl_Activities);
-            this.pnlActivities.Location = new System.Drawing.Point(965, 276);
+            this.pnlActivities.Location = new System.Drawing.Point(687, 522);
             this.pnlActivities.Name = "pnlActivities";
-            this.pnlActivities.Size = new System.Drawing.Size(247, 200);
+            this.pnlActivities.Size = new System.Drawing.Size(356, 267);
             this.pnlActivities.TabIndex = 7;
+            // 
+            // btnRefreshList
+            // 
+            this.btnRefreshList.Location = new System.Drawing.Point(28, 239);
+            this.btnRefreshList.Name = "btnRefreshList";
+            this.btnRefreshList.Size = new System.Drawing.Size(75, 23);
+            this.btnRefreshList.TabIndex = 15;
+            this.btnRefreshList.Text = "Refresh";
+            this.btnRefreshList.UseVisualStyleBackColor = true;
+            this.btnRefreshList.Click += new System.EventHandler(this.btnRefreshList_Click);
+            // 
+            // txtActivityDescription
+            // 
+            this.txtActivityDescription.Location = new System.Drawing.Point(28, 367);
+            this.txtActivityDescription.Multiline = true;
+            this.txtActivityDescription.Name = "txtActivityDescription";
+            this.txtActivityDescription.Size = new System.Drawing.Size(451, 84);
+            this.txtActivityDescription.TabIndex = 14;
+            this.txtActivityDescription.TextChanged += new System.EventHandler(this.txtActivityDescription_TextChanged);
+            // 
+            // lblDesc
+            // 
+            this.lblDesc.AutoSize = true;
+            this.lblDesc.Location = new System.Drawing.Point(25, 351);
+            this.lblDesc.Name = "lblDesc";
+            this.lblDesc.Size = new System.Drawing.Size(89, 13);
+            this.lblDesc.TabIndex = 13;
+            this.lblDesc.Text = "Enter description:";
+            // 
+            // lblEDT
+            // 
+            this.lblEDT.AutoSize = true;
+            this.lblEDT.Location = new System.Drawing.Point(264, 278);
+            this.lblEDT.Name = "lblEDT";
+            this.lblEDT.Size = new System.Drawing.Size(93, 13);
+            this.lblEDT.TabIndex = 12;
+            this.lblEDT.Text = "End date and time";
+            // 
+            // lblSDT
+            // 
+            this.lblSDT.AutoSize = true;
+            this.lblSDT.Location = new System.Drawing.Point(19, 278);
+            this.lblSDT.Name = "lblSDT";
+            this.lblSDT.Size = new System.Drawing.Size(99, 13);
+            this.lblSDT.TabIndex = 11;
+            this.lblSDT.Text = "Start date and time:";
+            // 
+            // btnDeleteActivity
+            // 
+            this.btnDeleteActivity.Location = new System.Drawing.Point(510, 428);
+            this.btnDeleteActivity.Name = "btnDeleteActivity";
+            this.btnDeleteActivity.Size = new System.Drawing.Size(229, 23);
+            this.btnDeleteActivity.TabIndex = 10;
+            this.btnDeleteActivity.Text = "Delete Activity";
+            this.btnDeleteActivity.UseVisualStyleBackColor = true;
+            this.btnDeleteActivity.Click += new System.EventHandler(this.btnDeleteActivity_Click);
+            // 
+            // btnEditActivity
+            // 
+            this.btnEditActivity.Location = new System.Drawing.Point(510, 394);
+            this.btnEditActivity.Name = "btnEditActivity";
+            this.btnEditActivity.Size = new System.Drawing.Size(229, 23);
+            this.btnEditActivity.TabIndex = 9;
+            this.btnEditActivity.Text = "Edit Activity";
+            this.btnEditActivity.UseVisualStyleBackColor = true;
+            this.btnEditActivity.Click += new System.EventHandler(this.btnEditActivity_Click);
+            // 
+            // DatePickerStart
+            // 
+            this.DatePickerStart.Location = new System.Drawing.Point(26, 303);
+            this.DatePickerStart.MinDate = new System.DateTime(2022, 3, 1, 0, 0, 0, 0);
+            this.DatePickerStart.Name = "DatePickerStart";
+            this.DatePickerStart.Size = new System.Drawing.Size(200, 20);
+            this.DatePickerStart.TabIndex = 8;
+            this.DatePickerStart.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
+            // 
+            // DatePickerEnd
+            // 
+            this.DatePickerEnd.Location = new System.Drawing.Point(267, 303);
+            this.DatePickerEnd.MinDate = new System.DateTime(2022, 3, 1, 0, 0, 0, 0);
+            this.DatePickerEnd.Name = "DatePickerEnd";
+            this.DatePickerEnd.Size = new System.Drawing.Size(200, 20);
+            this.DatePickerEnd.TabIndex = 7;
+            // 
+            // btnAddActivity
+            // 
+            this.btnAddActivity.Location = new System.Drawing.Point(510, 365);
+            this.btnAddActivity.Name = "btnAddActivity";
+            this.btnAddActivity.Size = new System.Drawing.Size(229, 23);
+            this.btnAddActivity.TabIndex = 6;
+            this.btnAddActivity.Text = "Add Activity";
+            this.btnAddActivity.UseVisualStyleBackColor = true;
+            this.btnAddActivity.Click += new System.EventHandler(this.btnAddActivity_Click);
             // 
             // ListViewActivities
             // 
             this.ListViewActivities.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ListViewActivities.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6});
             this.ListViewActivities.HideSelection = false;
-            this.ListViewActivities.Location = new System.Drawing.Point(16, 43);
+            this.ListViewActivities.Location = new System.Drawing.Point(22, 59);
+            this.ListViewActivities.MultiSelect = false;
             this.ListViewActivities.Name = "ListViewActivities";
-            this.ListViewActivities.Size = new System.Drawing.Size(75, 41);
+            this.ListViewActivities.Size = new System.Drawing.Size(182, 0);
             this.ListViewActivities.TabIndex = 5;
             this.ListViewActivities.UseCompatibleStateImageBehavior = false;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "ID";
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Name";
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Date of Birth";
+            this.ListViewActivities.View = System.Windows.Forms.View.Details;
+            this.ListViewActivities.SelectedIndexChanged += new System.EventHandler(this.ListViewActivities_SelectedIndexChanged);
             // 
             // pictureBox3
             // 
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox3.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox3.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.InitialImage")));
-            this.pictureBox3.Location = new System.Drawing.Point(114, 0);
+            this.pictureBox3.Location = new System.Drawing.Point(223, 0);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(130, 123);
             this.pictureBox3.TabIndex = 0;
@@ -797,7 +895,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewRevenueReport.HideSelection = false;
             this.listViewRevenueReport.Location = new System.Drawing.Point(380, 142);
-            this.listViewRevenueReport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listViewRevenueReport.Margin = new System.Windows.Forms.Padding(2);
             this.listViewRevenueReport.MinimumSize = new System.Drawing.Size(50, 50);
             this.listViewRevenueReport.Name = "listViewRevenueReport";
             this.listViewRevenueReport.Size = new System.Drawing.Size(50, 50);
@@ -811,7 +909,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCheckout.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckout.Location = new System.Drawing.Point(52, 247);
-            this.btnCheckout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCheckout.Margin = new System.Windows.Forms.Padding(2);
             this.btnCheckout.MaximumSize = new System.Drawing.Size(224, 50);
             this.btnCheckout.MinimumSize = new System.Drawing.Size(50, 50);
             this.btnCheckout.Name = "btnCheckout";
@@ -868,7 +966,7 @@
             this.dateTimePickerEnd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dateTimePickerEnd.Location = new System.Drawing.Point(114, 206);
-            this.dateTimePickerEnd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerEnd.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerEnd.Name = "dateTimePickerEnd";
             this.dateTimePickerEnd.Size = new System.Drawing.Size(194, 20);
             this.dateTimePickerEnd.TabIndex = 5;
@@ -879,7 +977,7 @@
             this.dateTimePickerStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dateTimePickerStart.Location = new System.Drawing.Point(114, 165);
-            this.dateTimePickerStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerStart.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerStart.Name = "dateTimePickerStart";
             this.dateTimePickerStart.Size = new System.Drawing.Size(194, 20);
             this.dateTimePickerStart.TabIndex = 4;
@@ -918,7 +1016,7 @@
             this.pnlActivityStudent.Controls.Add(this.ListViewStudentActivityList);
             this.pnlActivityStudent.Controls.Add(this.pictureBox8);
             this.pnlActivityStudent.Controls.Add(this.label15);
-            this.pnlActivityStudent.Location = new System.Drawing.Point(671, 506);
+            this.pnlActivityStudent.Location = new System.Drawing.Point(505, 909);
             this.pnlActivityStudent.Name = "pnlActivityStudent";
             this.pnlActivityStudent.Size = new System.Drawing.Size(538, 386);
             this.pnlActivityStudent.TabIndex = 8;
@@ -1078,7 +1176,7 @@
             this.pnlActivitySuperviser.Controls.Add(this.ListViewParticipants);
             this.pnlActivitySuperviser.Controls.Add(this.ListViewActivityLecturersActivities);
             this.pnlActivitySuperviser.Location = new System.Drawing.Point(1245, 42);
-            this.pnlActivitySuperviser.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.pnlActivitySuperviser.Margin = new System.Windows.Forms.Padding(1);
             this.pnlActivitySuperviser.Name = "pnlActivitySuperviser";
             this.pnlActivitySuperviser.Size = new System.Drawing.Size(477, 372);
             this.pnlActivitySuperviser.TabIndex = 12;
@@ -1145,7 +1243,7 @@
             this.btnRemoveLecturer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveLecturer.ForeColor = System.Drawing.Color.White;
             this.btnRemoveLecturer.Location = new System.Drawing.Point(11, 260);
-            this.btnRemoveLecturer.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnRemoveLecturer.Margin = new System.Windows.Forms.Padding(1);
             this.btnRemoveLecturer.Name = "btnRemoveLecturer";
             this.btnRemoveLecturer.Size = new System.Drawing.Size(150, 28);
             this.btnRemoveLecturer.TabIndex = 4;
@@ -1163,7 +1261,7 @@
             this.btnAddLecturer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnAddLecturer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddLecturer.Location = new System.Drawing.Point(11, 221);
-            this.btnAddLecturer.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnAddLecturer.Margin = new System.Windows.Forms.Padding(1);
             this.btnAddLecturer.Name = "btnAddLecturer";
             this.btnAddLecturer.Size = new System.Drawing.Size(150, 28);
             this.btnAddLecturer.TabIndex = 3;
@@ -1178,7 +1276,7 @@
             this.ListViewNonParticipants.FullRowSelect = true;
             this.ListViewNonParticipants.HideSelection = false;
             this.ListViewNonParticipants.Location = new System.Drawing.Point(194, 221);
-            this.ListViewNonParticipants.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.ListViewNonParticipants.Margin = new System.Windows.Forms.Padding(1);
             this.ListViewNonParticipants.Name = "ListViewNonParticipants";
             this.ListViewNonParticipants.Size = new System.Drawing.Size(273, 78);
             this.ListViewNonParticipants.TabIndex = 2;
@@ -1190,7 +1288,7 @@
             this.ListViewParticipants.ForeColor = System.Drawing.Color.White;
             this.ListViewParticipants.HideSelection = false;
             this.ListViewParticipants.Location = new System.Drawing.Point(194, 73);
-            this.ListViewParticipants.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.ListViewParticipants.Margin = new System.Windows.Forms.Padding(1);
             this.ListViewParticipants.Name = "ListViewParticipants";
             this.ListViewParticipants.Size = new System.Drawing.Size(273, 110);
             this.ListViewParticipants.TabIndex = 1;
@@ -1204,7 +1302,7 @@
             this.ListViewActivityLecturersActivities.FullRowSelect = true;
             this.ListViewActivityLecturersActivities.HideSelection = false;
             this.ListViewActivityLecturersActivities.Location = new System.Drawing.Point(11, 59);
-            this.ListViewActivityLecturersActivities.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.ListViewActivityLecturersActivities.Margin = new System.Windows.Forms.Padding(1);
             this.ListViewActivityLecturersActivities.Name = "ListViewActivityLecturersActivities";
             this.ListViewActivityLecturersActivities.Size = new System.Drawing.Size(150, 147);
             this.ListViewActivityLecturersActivities.TabIndex = 0;
@@ -1223,6 +1321,30 @@
             this.pnlRegister.Name = "pnlRegister";
             this.pnlRegister.Size = new System.Drawing.Size(580, 374);
             this.pnlRegister.TabIndex = 12;
+            // 
+            // lblCheckoutInfoCR
+            // 
+            this.lblCheckoutInfoCR.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCheckoutInfoCR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCheckoutInfoCR.Location = new System.Drawing.Point(124, 313);
+            this.lblCheckoutInfoCR.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblCheckoutInfoCR.Name = "lblCheckoutInfoCR";
+            this.lblCheckoutInfoCR.Size = new System.Drawing.Size(330, 19);
+            this.lblCheckoutInfoCR.TabIndex = 8;
+            this.lblCheckoutInfoCR.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // btnCheckoutCR
+            // 
+            this.btnCheckoutCR.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnCheckoutCR.Location = new System.Drawing.Point(0, 350);
+            this.btnCheckoutCR.Margin = new System.Windows.Forms.Padding(1);
+            this.btnCheckoutCR.Name = "btnCheckoutCR";
+            this.btnCheckoutCR.Size = new System.Drawing.Size(580, 24);
+            this.btnCheckoutCR.TabIndex = 7;
+            this.btnCheckoutCR.Text = "Checkout";
+            this.btnCheckoutCR.UseVisualStyleBackColor = true;
+            this.btnCheckoutCR.Click += new System.EventHandler(this.btnCheckoutCR_Click);
             // 
             // ListViewRegisterD
             // 
@@ -1304,35 +1426,11 @@
             this.label5.TabIndex = 3;
             this.label5.Text = "Cash register";
             // 
-            // lblCheckoutInfoCR
-            // 
-            this.lblCheckoutInfoCR.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCheckoutInfoCR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCheckoutInfoCR.Location = new System.Drawing.Point(124, 313);
-            this.lblCheckoutInfoCR.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.lblCheckoutInfoCR.Name = "lblCheckoutInfoCR";
-            this.lblCheckoutInfoCR.Size = new System.Drawing.Size(330, 19);
-            this.lblCheckoutInfoCR.TabIndex = 8;
-            this.lblCheckoutInfoCR.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // btnCheckoutCR
-            // 
-            this.btnCheckoutCR.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnCheckoutCR.Location = new System.Drawing.Point(0, 350);
-            this.btnCheckoutCR.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.btnCheckoutCR.Name = "btnCheckoutCR";
-            this.btnCheckoutCR.Size = new System.Drawing.Size(580, 24);
-            this.btnCheckoutCR.TabIndex = 7;
-            this.btnCheckoutCR.Text = "Checkout";
-            this.btnCheckoutCR.UseVisualStyleBackColor = true;
-            this.btnCheckoutCR.Click += new System.EventHandler(this.btnCheckoutCR_Click);
-            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1722, 1061);
+            this.ClientSize = new System.Drawing.Size(1966, 1061);
             this.Controls.Add(this.pnlActivitySuperviser);
             this.Controls.Add(this.pnlRegister);
             this.Controls.Add(this.pnlActivityStudent);
@@ -1403,9 +1501,6 @@
         private System.Windows.Forms.ToolStripMenuItem roomsToolStripMenuItem;
         private System.Windows.Forms.Panel pnlActivities;
         private System.Windows.Forms.ListView ListViewActivities;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label lbl_Activities;
         private System.Windows.Forms.Panel pnlRooms;
@@ -1509,6 +1604,16 @@
         private System.Windows.Forms.ColumnHeader columnHeader18;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DateTimePicker DatePickerStart;
+        private System.Windows.Forms.DateTimePicker DatePickerEnd;
+        private System.Windows.Forms.Button btnAddActivity;
+        private System.Windows.Forms.Button btnRefreshList;
+        private System.Windows.Forms.TextBox txtActivityDescription;
+        private System.Windows.Forms.Label lblDesc;
+        private System.Windows.Forms.Label lblEDT;
+        private System.Windows.Forms.Label lblSDT;
+        private System.Windows.Forms.Button btnDeleteActivity;
+        private System.Windows.Forms.Button btnEditActivity;
     }
 }
 
