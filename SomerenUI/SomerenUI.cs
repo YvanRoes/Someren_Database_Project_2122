@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace SomerenUI
 {
@@ -64,6 +65,12 @@ namespace SomerenUI
                     //show activities                    
                     pnlActivities.Show();
                     pnlActivities.Dock = DockStyle.Fill;
+                    //generate and fill List View
+                    FillActivityLV();
+                    //lock buttons until can be used
+                    btnAddActivity.Enabled = false;
+                    btnEditActivity.Enabled = false;
+                    btnDeleteActivity.Enabled = false;
                     break;
                 case "Rooms":
                     //hide all other panels
@@ -249,11 +256,14 @@ namespace SomerenUI
             {
                 FillListViewsActivityStudents();
             }
-            else if(panelName == "Activity Supervisors")
+            else if (panelName == "Activity Supervisors")
             {
                 FillForms();
             }
-
+            else if (panelName == "Activities")
+            {
+                FillActivityLV();
+            }
         }
 
         private void HideAllpanels()
@@ -292,7 +302,7 @@ namespace SomerenUI
         private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Lecturers");
-        }        
+        }
 
         private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -353,7 +363,7 @@ namespace SomerenUI
         }
 
         private void SelectStockItem()
-        {            
+        {
             try
             {
                 int Id = int.Parse(ListViewStock.FocusedItem.SubItems[0].Text);
@@ -391,7 +401,7 @@ namespace SomerenUI
             txtName.Text = null;
             txtPrice.Text = null;
             txtAlcoholic.Text = null;
-            txtStock.Text=null;
+            txtStock.Text = null;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -408,7 +418,7 @@ namespace SomerenUI
             //update list & clear fields
             ListAllStock();
             btnClear_Click(sender, e);
-            
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -427,7 +437,7 @@ namespace SomerenUI
         }
 
         // Variant B - Lucas de Jong
-        private void FillListViewCashRegister() 
+        private void FillListViewCashRegister()
         {
             try
             {
@@ -577,6 +587,10 @@ namespace SomerenUI
             {
                 MessageBox.Show("Error: order already exists in the database!\n" + err.Message);
             }
+            finally
+            {
+                btnCheckoutCR.Enabled = false;
+            }
 
         }
 
@@ -592,7 +606,7 @@ namespace SomerenUI
 
             RevenueReport report = new RevenueReport();
             RevenueReportService revenueReportService = new RevenueReportService();
-            report = revenueReportService.GetRevenueReport(dateTimePickerStart.Value , dateTimePickerEnd.Value);
+            report = revenueReportService.GetRevenueReport(dateTimePickerStart.Value, dateTimePickerEnd.Value);
 
             ListViewItem li = new ListViewItem(report.Sales.ToString());
             li.SubItems.Add($"{report.Turnover.ToString()}");
@@ -602,12 +616,12 @@ namespace SomerenUI
 
         private void dateTimePickerStart_ValueChanged(object sender, EventArgs e)
         {
-             DateTime startDate = dateTimePickerStart.Value;
+            DateTime startDate = dateTimePickerStart.Value;
         }
 
         private void dateTimePickerEnd_ValueChanged(object sender, EventArgs e)
         {
-             DateTime endDate = dateTimePickerEnd.Value;
+            DateTime endDate = dateTimePickerEnd.Value;
         }
 
 
@@ -628,7 +642,7 @@ namespace SomerenUI
 
             foreach (Student p in participants)
             {
-                string[] item = { p.Number.ToString(), p.Name , p.Activity};
+                string[] item = { p.Number.ToString(), p.Name, p.Activity };
                 ListViewItem li = new ListViewItem(item);
                 ListViewActivityStudentP.Items.Add(li);
             }
@@ -655,7 +669,7 @@ namespace SomerenUI
             ListViewStudentActivityList.Columns.Add("Id", 90);
             ListViewStudentActivityList.Columns.Add("Activity", 90);
 
-            foreach(ActivityStudent a in activities)
+            foreach (ActivityStudent a in activities)
             {
                 string[] item = { a.Activity_ID.ToString(), a.Activity_Description };
                 ListViewItem li = new ListViewItem(item);
@@ -673,7 +687,7 @@ namespace SomerenUI
         {
             try
             {
-                int Id = int.Parse(ListViewStudentActivityList.FocusedItem.SubItems[0].Text);               
+                int Id = int.Parse(ListViewStudentActivityList.FocusedItem.SubItems[0].Text);
             }
             catch (Exception ex) { throw ex; }
         }
@@ -686,10 +700,11 @@ namespace SomerenUI
                 int student_id = int.Parse(ListViewActivityStudentNP.FocusedItem.SubItems[0].Text);
                 int activity_id = int.Parse(ListViewStudentActivityList.FocusedItem.SubItems[0].Text);
                 service.AddStudentActivity(student_id, activity_id);
-            }catch(Exception ex) { throw ex; }
+            }
+            catch (Exception ex) { throw ex; }
 
             FillListViewsActivityStudents();
-            
+
         }
 
         private void btnRemoveParticipant_Click(object sender, EventArgs e)
@@ -703,12 +718,69 @@ namespace SomerenUI
                     int student_id = int.Parse(ListViewActivityStudentP.FocusedItem.SubItems[0].Text);
                     service.RemoveStudentActivity(student_id);
                 }
-                
+
             }
             catch (Exception ex) { throw ex; }
 
             FillListViewsActivityStudents();
         }
+        // Variant A - Lucas
+        private void ListViewActivities_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ListViewActivities.SelectedItems.Count > 0)
+            {
+                Activity selected = GetSelected();
+                try
+                {
+
+
+                    DatePickerStart.Value = selected.StartDateTime;
+                    DatePickerEnd.Value = selected.EndDateTime;
+                    txtActivityDescription.Text = selected.ActivityDescription;
+                    btnDeleteActivity.Enabled = true;
+                    btnEditActivity.Enabled = true;
+
+                }
+                catch (Exception err)
+                {
+
+                    MessageBox.Show(err.Message);
+                }
+
+            }
+
+        }
+
+        private void FillActivityLV()
+        {
+            ActivityService activityService = new ActivityService();
+            List<Activity> activities = activityService.GetAllActivities();
+            ListViewActivities.Clear();
+            ListViewActivities.View = View.Details;
+            ListViewActivities.MultiSelect = false;
+            ListViewActivities.FullRowSelect = true;
+            ListViewActivities.Columns.Add("ID", 80);
+            ListViewActivities.Columns.Add("Activity Description", 200);
+            ListViewActivities.Columns.Add("Start date", 140);
+            ListViewActivities.Columns.Add("End date", 140);
+            foreach (Activity activity in activities)
+            {
+                string[] item = { activity.ActivityId.ToString(), activity.ActivityDescription, activity.StartDateTime.ToString("d"), activity.EndDateTime.ToString("d") };
+                ListViewItem li = new ListViewItem(item);
+                ListViewActivities.Items.Add(li);
+            }
+        }
+
+        private void activitiesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            showPanel("Activities");
+        }
+
+        private void btnRefreshList_Click(object sender, EventArgs e)
+        {
+            FillActivityLV();
+        }
+
 
         // Variant B - Elias
         void FillForms()
@@ -750,7 +822,7 @@ namespace SomerenUI
             ListViewActivityLecturersActivities.View = View.Details;
             ListViewActivityLecturersActivities.FullRowSelect = true;
             ListViewActivityLecturersActivities.Columns.Add("Id", 30);
-            ListViewActivityLecturersActivities.Columns.Add("Activity",  90);
+            ListViewActivityLecturersActivities.Columns.Add("Activity", 90);
 
             foreach (ActivitySuperviser activity in activities)
             {
@@ -762,11 +834,11 @@ namespace SomerenUI
 
         private void btnAddLecturer_Click(object sender, EventArgs e)
         {
-           ActivitySuperviserService service = new ActivitySuperviserService();
-           int superviserId = int.Parse(ListViewNonParticipants.FocusedItem.SubItems[0].Text);
-           int activityId = int.Parse(ListViewActivityLecturersActivities.FocusedItem.SubItems[0].Text);
-           service.AddSuperviserActivity(superviserId, activityId);
-           FillForms();
+            ActivitySuperviserService service = new ActivitySuperviserService();
+            int superviserId = int.Parse(ListViewNonParticipants.FocusedItem.SubItems[0].Text);
+            int activityId = int.Parse(ListViewActivityLecturersActivities.FocusedItem.SubItems[0].Text);
+            service.AddSuperviserActivity(superviserId, activityId);
+            FillForms();
         }
 
         private void btnRemoveLecturer_Click(object sender, EventArgs e)
@@ -794,13 +866,68 @@ namespace SomerenUI
             }
             catch (Exception ex) { throw ex; }
         }
-
-        private void ListViewActivityLecturersActivities_SelectedIndexChanged(object sender, EventArgs e)
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
-            SelectActivitySuperviser();
+
+        }
+        private void btnAddActivity_Click(object sender, EventArgs e)
+        {
+            Activity input = GetUserInput();
+            ActivityService activityService = new ActivityService();
+            activityService.AddActivity(input);
+            MessageBox.Show("Activity added succesfully");
+        }
+        private Activity GetUserInput()
+        {
+            return new Activity()
+            {
+                ActivityDescription = txtActivityDescription.Text,
+                StartDateTime = DatePickerStart.Value,
+                EndDateTime = DatePickerEnd.Value
+            };
         }
 
 
+        private Activity GetSelected()
+        {
+            CultureInfo provider = CultureInfo.InvariantCulture;
+            ListViewItem.ListViewSubItemCollection selectedItems = ListViewActivities.SelectedItems[0].SubItems;
+            Activity selected = new Activity()
+            {
+                ActivityId = Convert.ToInt32(selectedItems[0].Text),
+                ActivityDescription = selectedItems[1].Text,
+                StartDateTime = Convert.ToDateTime(selectedItems[2].Text),
+                EndDateTime = Convert.ToDateTime(selectedItems[3].Text)
+            };
+            return selected;
+        }
+
+        private void txtActivityDescription_TextChanged(object sender, EventArgs e)
+        {
+            btnAddActivity.Enabled = true;
+        }
+
+        private void btnDeleteActivity_Click(object sender, EventArgs e)
+        {
+            Activity selected = GetSelected();
+            ActivityService activityService = new ActivityService();
+            if (MessageBox.Show("Are you sure you want to delete this activity?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                activityService.DeleteActivity(selected);
+            }
+
+        }
+
+        private void btnEditActivity_Click(object sender, EventArgs e)
+        {
+            Activity edited = GetUserInput();
+            edited.ActivityId = GetSelected().ActivityId;
+            ActivityService activityService = new ActivityService();
+            if (MessageBox.Show("Are you sure you want to edit this activity?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                activityService.UpdateActivity(edited);
+            }
+        }
         //Week 5 Forgot password
         private void btnForgotPassword_Click(object sender, EventArgs e)
         {
@@ -813,7 +940,7 @@ namespace SomerenUI
             User user = new User();
             UserService service = new UserService();
 
-            if(user.licenseKey == txt_licensekey.Text)
+            if (user.licenseKey == txt_licensekey.Text)
             {
                 user.Name = txt_name.Text;
                 user.email = txt_username.Text;
@@ -832,5 +959,6 @@ namespace SomerenUI
         {
             showPanel("Register_user");
         }
+
     }
 }

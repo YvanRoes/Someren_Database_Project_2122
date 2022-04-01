@@ -41,5 +41,24 @@ namespace SomerenLogic
         {
             userdb.UpdateUserQnA(question_id, answer, username);
         }
+
+        //Get password from database
+        public string GetPassword(string email) => userdb.GetPassword(email);
+
+        //private method to validate user credentials
+        public bool CredentialValidator(User user)
+        {
+            //Run password through hasher
+            //Find hashed password and username in database
+            //If it's in, return true
+            string hashedPassword = GetPassword(user.email);
+            string storedPassword = User.PasswordTosha256(user.password);
+            if (hashedPassword == storedPassword) return true;
+            else return false;
+        }
+
+        //Log user in using credentials stored in a User object
+        public bool LogUserIn(User user) => CredentialValidator(user);
+
     }
 }
