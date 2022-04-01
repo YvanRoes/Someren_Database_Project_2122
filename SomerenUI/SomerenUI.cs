@@ -799,7 +799,8 @@ namespace SomerenUI
         //Week 5 Forgot password
         private void btnForgotPassword_Click(object sender, EventArgs e)
         {
-            
+            PasswordReset p = new PasswordReset();
+            p.ShowDialog();
         }
     }
 }
