@@ -150,7 +150,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.pnlLogin = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnForgotPassword = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -1333,20 +1333,21 @@
             // 
             // pnlLogin
             // 
-            this.pnlLogin.Controls.Add(this.button1);
+            this.pnlLogin.Controls.Add(this.btnForgotPassword);
             this.pnlLogin.Location = new System.Drawing.Point(1245, 506);
             this.pnlLogin.Name = "pnlLogin";
             this.pnlLogin.Size = new System.Drawing.Size(438, 243);
             this.pnlLogin.TabIndex = 13;
             // 
-            // button1
+            // btnForgotPassword
             // 
-            this.button1.Location = new System.Drawing.Point(11, 18);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(174, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Forgot password?";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnForgotPassword.Location = new System.Drawing.Point(11, 18);
+            this.btnForgotPassword.Name = "btnForgotPassword";
+            this.btnForgotPassword.Size = new System.Drawing.Size(174, 23);
+            this.btnForgotPassword.TabIndex = 4;
+            this.btnForgotPassword.Text = "Forgot password?";
+            this.btnForgotPassword.UseVisualStyleBackColor = true;
+            this.btnForgotPassword.Click += new System.EventHandler(this.btnForgotPassword_Click);
             // 
             // SomerenUI
             // 
@@ -1532,7 +1533,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel pnlLogin;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnForgotPassword;
     }
 }
 
