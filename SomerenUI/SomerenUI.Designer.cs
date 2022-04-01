@@ -1345,14 +1345,6 @@
             // 
             // btnGoTo
             // 
-            this.btnGoTo.Location = new System.Drawing.Point(50, 102);
-            this.btnGoTo.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGoTo.Name = "btnGoTo";
-            this.btnGoTo.Size = new System.Drawing.Size(72, 41);
-            this.btnGoTo.TabIndex = 5;
-            this.btnGoTo.Text = "Go to Register";
-            this.btnGoTo.UseVisualStyleBackColor = true;
-            this.btnGoTo.Click += new System.EventHandler(this.btnGoTo_Click);
             // 
             // btnForgotPassword
             // 

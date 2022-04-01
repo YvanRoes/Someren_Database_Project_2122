@@ -131,11 +131,7 @@ namespace SomerenUI
                     pnlLogin.Show();
                     pnlLogin.Dock = DockStyle.Fill;
                     break;
-                case "Register_user":
-                    HideAllpanels();
-                    Register_user.Show();
-                    Register_user.Dock = DockStyle.Fill;
-                    break;
+                
 
             }
 
@@ -935,30 +931,6 @@ namespace SomerenUI
             p.ShowDialog();
         }
         // Week 5 - Register
-        private void btnRegister_Click(object sender, EventArgs e)
-        {
-            User user = new User();
-            UserService service = new UserService();
-
-            if (user.licenseKey == txt_licensekey.Text)
-            {
-                user.Name = txt_name.Text;
-                user.email = txt_username.Text;
-                user.password = txt_password.Text;
-
-                if (User.CorrectPasswordFormat(user.password))
-                    service.AddUser(user);
-                else
-                    MessageBox.Show("Password is not in correct format");
-            }
-            else
-                MessageBox.Show("Incorrect license key!");
-        }
-
-        private void btnGoTo_Click(object sender, EventArgs e)
-        {
-            showPanel("Register_user");
-        }
 
     }
 }
