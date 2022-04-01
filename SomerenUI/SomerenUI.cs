@@ -22,7 +22,8 @@ namespace SomerenUI
 
         private void SomerenUI_Load(object sender, EventArgs e)
         {
-            showPanel("Dashboard");
+            showPanel("Login");
+            menuStrip1.Visible = false;
         }
 
         private void showPanel(string panelName)
@@ -32,33 +33,17 @@ namespace SomerenUI
             {
                 case "Dashboard":
                     // hide all other panels
-                    pnlStudents.Hide();
-                    pnlLecturers.Hide();
-                    pnlActivities.Hide();
-                    pnlRooms.Hide();
-                    pnlStock.Hide();
-                    pnlRegister.Hide();
-                    pnlReport.Hide();
-                    pnlActivityStudent.Hide();
-                    pnlActivitySuperviser.Hide();
+                    HideAllpanels();
 
                     // show dashboard
                     pnlDashboard.Show();
                     imgDashboard.Show();
                     pnlDashboard.Dock = DockStyle.Fill;
+                    menuStrip1.Visible = true;
                     break;
                 case "Students":
                     // hide all other panels
-                    pnlDashboard.Hide();
-                    imgDashboard.Hide();
-                    pnlLecturers.Hide();
-                    pnlActivities.Hide();
-                    pnlRooms.Hide();
-                    pnlStock.Hide();
-                    pnlRegister.Hide();
-                    pnlReport.Hide();
-                    pnlActivityStudent.Hide();
-                    pnlActivitySuperviser.Hide();
+                    HideAllpanels();
 
                     // show students
                     pnlStudents.Show();
@@ -66,63 +51,32 @@ namespace SomerenUI
                     break;
                 case "Lecturers":
                     //hide all other panels
-                    pnlDashboard.Hide();
-                    pnlStudents.Hide();
-                    imgDashboard.Hide();
-                    pnlActivities.Hide();
-                    pnlRooms.Hide();
-                    pnlStock.Hide();
-                    pnlRegister.Hide();
-                    pnlReport.Hide();
-                    pnlActivityStudent.Hide();
-                    pnlActivitySuperviser.Hide();
+                    HideAllpanels();
+
                     //show lecturers
                     pnlLecturers.Show();
                     pnlLecturers.Dock = DockStyle.Fill;
                     break;
                 case "Activities":
                     //hide all other panels 
-                    pnlDashboard.Hide();
-                    pnlStudents.Hide();
-                    pnlRooms.Hide();
-                    pnlLecturers.Hide();
-                    pnlStock.Hide();
-                    pnlRegister.Hide();
-                    pnlReport.Hide();
-                    pnlActivityStudent.Hide();
-                    pnlActivitySuperviser.Hide();
+                    HideAllpanels();
+
                     //show activities                    
                     pnlActivities.Show();
                     pnlActivities.Dock = DockStyle.Fill;
                     break;
                 case "Rooms":
                     //hide all other panels
-                    pnlDashboard.Hide();
-                    pnlStudents.Hide();
-                    pnlActivities.Hide();
-                    pnlLecturers.Hide();
-                    pnlStudents.Hide();
-                    pnlStock.Hide();
-                    pnlRegister.Hide();
-                    pnlReport.Hide();
-                    pnlActivityStudent.Hide();
-                    pnlActivitySuperviser.Hide();
+                    HideAllpanels();
+
                     //show rooms
                     pnlRooms.Show();
                     pnlRooms.Dock = DockStyle.Fill;
                     break;
                 case "Stock management":
                     //hide
-                    pnlDashboard.Hide();
-                    pnlStudents.Hide();
-                    pnlActivities.Hide();
-                    pnlLecturers.Hide();
-                    pnlStudents.Hide();
-                    pnlRooms.Hide();
-                    pnlRegister.Hide();
-                    pnlReport.Hide();
-                    pnlActivityStudent.Hide();
-                    pnlActivitySuperviser.Hide();
+                    HideAllpanels();
+
                     //show
                     pnlStock.Show();
                     pnlStock.Dock = DockStyle.Fill;
@@ -130,16 +84,7 @@ namespace SomerenUI
                     break;
                 case "Cash register":
                     //hide
-                    pnlDashboard.Hide();
-                    pnlStudents.Hide();
-                    pnlActivities.Hide();
-                    pnlLecturers.Hide();
-                    pnlStudents.Hide();
-                    pnlRooms.Hide();
-                    pnlStock.Hide();
-                    pnlReport.Hide();
-                    pnlActivityStudent.Hide();
-                    pnlActivitySuperviser.Hide();
+                    HideAllpanels();
 
                     //disable the checkout button and reset the text
                     btnCheckoutCR.Enabled = false;
@@ -150,16 +95,7 @@ namespace SomerenUI
                     break;
                 case "Revenue report":
                     //hide
-                    pnlDashboard.Hide();
-                    pnlStudents.Hide();
-                    pnlActivities.Hide();
-                    pnlLecturers.Hide();
-                    pnlStudents.Hide();
-                    pnlRooms.Hide();
-                    pnlStock.Hide();
-                    pnlRegister.Hide();
-                    pnlActivityStudent.Hide();
-                    pnlActivitySuperviser.Hide();
+                    HideAllpanels();
                     //show
                     pnlReport.Show();
                     pnlReport.Dock = DockStyle.Fill;
@@ -167,37 +103,28 @@ namespace SomerenUI
 
                 case "Activity Students":
                     //hide
-                    pnlDashboard.Hide();
-                    pnlStudents.Hide();
-                    pnlActivities.Hide();
-                    pnlLecturers.Hide();
-                    pnlStudents.Hide();
-                    pnlRooms.Hide();
-                    pnlStock.Hide();
-                    pnlRegister.Hide();
-                    pnlReport.Hide();
-                    pnlActivitySuperviser.Hide();
+                    HideAllpanels();
                     //show
                     pnlActivityStudent.Show();
                     pnlActivityStudent.Dock = DockStyle.Fill;
+
                     break;
 
                 case "Activity Supervisors":
                     //hide
-                    pnlDashboard.Hide();
-                    pnlStudents.Hide();
-                    pnlActivities.Hide();
-                    pnlLecturers.Hide();
-                    pnlStudents.Hide();
-                    pnlRooms.Hide();
-                    pnlStock.Hide();
-                    pnlRegister.Hide();
-                    pnlReport.Hide();
-                    pnlActivityStudent.Hide();
+                    HideAllpanels();
                     //show
                     pnlActivitySuperviser.Show();
                     pnlActivitySuperviser.Dock = DockStyle.Fill;
                     break;
+
+                case "Login":
+                    HideAllpanels();
+
+                    pnlLogin.Show();
+                    pnlLogin.Dock = DockStyle.Fill;
+                    break;
+                    
             }
 
             if (panelName == "Students")
@@ -324,6 +251,14 @@ namespace SomerenUI
 
         }
 
+        private void HideAllpanels()
+        {
+            foreach (Control c in this.Controls)
+            {
+                if (c is Panel) c.Visible = false;
+            }
+        }
+
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //
@@ -378,6 +313,7 @@ namespace SomerenUI
         {
             showPanel("Activity Students");
         }
+
         private void activitySupervisorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Activity Supervisors");
@@ -572,6 +508,7 @@ namespace SomerenUI
                 throw;
             }
         }
+
         private void ListViewRegisterS_SelectedIndexChanged(object sender, EventArgs e)
         {
             //verify that both a student and drink are selected
@@ -610,6 +547,7 @@ namespace SomerenUI
                 throw;
             }
         }
+
         private void btnCheckoutCR_Click(object sender, EventArgs e)
         {
             UpdateCheckoutInfo(0);
@@ -668,7 +606,7 @@ namespace SomerenUI
         }
 
 
-
+        // Vaiant C Yvan Roes 
         void FillListViewsActivityStudents()
         {
             //Participants
@@ -825,6 +763,7 @@ namespace SomerenUI
            service.AddSuperviserActivity(superviserId, activityId);
            FillForms();
         }
+
         private void btnRemoveLecturer_Click(object sender, EventArgs e)
         {
             try
@@ -841,6 +780,7 @@ namespace SomerenUI
             catch (Exception ex) { throw ex; }
             FillForms();
         }
+
         void SelectActivitySuperviser()
         {
             try
@@ -849,10 +789,12 @@ namespace SomerenUI
             }
             catch (Exception ex) { throw ex; }
         }
+
         private void ListViewActivityLecturersActivities_SelectedIndexChanged(object sender, EventArgs e)
         {
             SelectActivitySuperviser();
         }
 
+        
     }
 }
