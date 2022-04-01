@@ -25,7 +25,7 @@ namespace SomerenDAL
 
         public User GetRecoveryPasswordUser(string username)
         {
-            string query = "SELECT [User_ID], [Username], [Seq_Question], [Seq_Answer] FROM [USER] WHERE @uName = [Username]";
+            string query = "SELECT [User_ID], [Username], [Sec_Question], [Sec_Answer] FROM [USER] WHERE @uName = [Username]";
             SqlParameter[] sqlParameters = new SqlParameter[1] { new SqlParameter("Uname", username) };
             return GetRow(ExecuteSelectQuery(query, sqlParameters));
         }
