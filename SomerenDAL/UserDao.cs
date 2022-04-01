@@ -57,6 +57,14 @@ namespace SomerenDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
+        public string GetPassword(string email)
+        {
+            string query = "SELECT Password from [USER] WHERE [Username] = @Username;";
+            SqlParameter[] sqlParameters = { new SqlParameter("@Username", email) };
+            DataTable output = ExecuteSelectQuery(query, sqlParameters);
+            return (string)output.Rows[0]["Password"];
+        }
+
 
     }
 }
