@@ -10,7 +10,7 @@ using SomerenDAL;
 
 namespace SomerenLogic
 {
-    class UserService
+    public class UserService
     {
         UserDao userdb;
         public UserService()
@@ -18,10 +18,22 @@ namespace SomerenLogic
             userdb = new UserDao();
         }
 
+        //get user
         public User GetRecorveryPasswordUser(string username)
         {
             User u = new User();
             return userdb.GetRecoveryPasswordUser(username);
+        }
+        //update password
+        public void UpdateUserPassword(string password, string username)
+        {
+            userdb.UpdateUserPassword(password, username);
+        }
+
+        //update QnA
+        public void UpdateUserQnA(int question_id, string answer, string username)
+        {
+            userdb.UpdateUserQnA(question_id, answer, username);
         }
     }
 }
