@@ -137,6 +137,8 @@
             this.ListViewParticipants = new System.Windows.Forms.ListView();
             this.ListViewActivityLecturersActivities = new System.Windows.Forms.ListView();
             this.pnlRegister = new System.Windows.Forms.Panel();
+            this.lblCheckoutInfoCR = new System.Windows.Forms.Label();
+            this.btnCheckoutCR = new System.Windows.Forms.Button();
             this.ListViewRegisterD = new System.Windows.Forms.ListView();
             this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -147,8 +149,8 @@
             this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.lblCheckoutInfoCR = new System.Windows.Forms.Label();
-            this.btnCheckoutCR = new System.Windows.Forms.Button();
+            this.pnlLogin = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -169,14 +171,15 @@
             this.pnlActivitySuperviser.SuspendLayout();
             this.pnlRegister.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.pnlLogin.SuspendLayout();
             this.SuspendLayout();
             // 
             // imgDashboard
             // 
             this.imgDashboard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.imgDashboard.Location = new System.Drawing.Point(31, 0);
+            this.imgDashboard.Location = new System.Drawing.Point(249, 0);
             this.imgDashboard.Name = "imgDashboard";
-            this.imgDashboard.Size = new System.Drawing.Size(311, 270);
+            this.imgDashboard.Size = new System.Drawing.Size(93, 84);
             this.imgDashboard.TabIndex = 0;
             this.imgDashboard.TabStop = false;
             // 
@@ -797,7 +800,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewRevenueReport.HideSelection = false;
             this.listViewRevenueReport.Location = new System.Drawing.Point(380, 142);
-            this.listViewRevenueReport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listViewRevenueReport.Margin = new System.Windows.Forms.Padding(2);
             this.listViewRevenueReport.MinimumSize = new System.Drawing.Size(50, 50);
             this.listViewRevenueReport.Name = "listViewRevenueReport";
             this.listViewRevenueReport.Size = new System.Drawing.Size(50, 50);
@@ -811,7 +814,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCheckout.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckout.Location = new System.Drawing.Point(52, 247);
-            this.btnCheckout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCheckout.Margin = new System.Windows.Forms.Padding(2);
             this.btnCheckout.MaximumSize = new System.Drawing.Size(224, 50);
             this.btnCheckout.MinimumSize = new System.Drawing.Size(50, 50);
             this.btnCheckout.Name = "btnCheckout";
@@ -868,7 +871,7 @@
             this.dateTimePickerEnd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dateTimePickerEnd.Location = new System.Drawing.Point(114, 206);
-            this.dateTimePickerEnd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerEnd.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerEnd.Name = "dateTimePickerEnd";
             this.dateTimePickerEnd.Size = new System.Drawing.Size(194, 20);
             this.dateTimePickerEnd.TabIndex = 5;
@@ -879,7 +882,7 @@
             this.dateTimePickerStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dateTimePickerStart.Location = new System.Drawing.Point(114, 165);
-            this.dateTimePickerStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerStart.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerStart.Name = "dateTimePickerStart";
             this.dateTimePickerStart.Size = new System.Drawing.Size(194, 20);
             this.dateTimePickerStart.TabIndex = 4;
@@ -1078,7 +1081,7 @@
             this.pnlActivitySuperviser.Controls.Add(this.ListViewParticipants);
             this.pnlActivitySuperviser.Controls.Add(this.ListViewActivityLecturersActivities);
             this.pnlActivitySuperviser.Location = new System.Drawing.Point(1245, 42);
-            this.pnlActivitySuperviser.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.pnlActivitySuperviser.Margin = new System.Windows.Forms.Padding(1);
             this.pnlActivitySuperviser.Name = "pnlActivitySuperviser";
             this.pnlActivitySuperviser.Size = new System.Drawing.Size(477, 372);
             this.pnlActivitySuperviser.TabIndex = 12;
@@ -1145,7 +1148,7 @@
             this.btnRemoveLecturer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveLecturer.ForeColor = System.Drawing.Color.White;
             this.btnRemoveLecturer.Location = new System.Drawing.Point(11, 260);
-            this.btnRemoveLecturer.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnRemoveLecturer.Margin = new System.Windows.Forms.Padding(1);
             this.btnRemoveLecturer.Name = "btnRemoveLecturer";
             this.btnRemoveLecturer.Size = new System.Drawing.Size(150, 28);
             this.btnRemoveLecturer.TabIndex = 4;
@@ -1163,7 +1166,7 @@
             this.btnAddLecturer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnAddLecturer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddLecturer.Location = new System.Drawing.Point(11, 221);
-            this.btnAddLecturer.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnAddLecturer.Margin = new System.Windows.Forms.Padding(1);
             this.btnAddLecturer.Name = "btnAddLecturer";
             this.btnAddLecturer.Size = new System.Drawing.Size(150, 28);
             this.btnAddLecturer.TabIndex = 3;
@@ -1178,7 +1181,7 @@
             this.ListViewNonParticipants.FullRowSelect = true;
             this.ListViewNonParticipants.HideSelection = false;
             this.ListViewNonParticipants.Location = new System.Drawing.Point(194, 221);
-            this.ListViewNonParticipants.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.ListViewNonParticipants.Margin = new System.Windows.Forms.Padding(1);
             this.ListViewNonParticipants.Name = "ListViewNonParticipants";
             this.ListViewNonParticipants.Size = new System.Drawing.Size(273, 78);
             this.ListViewNonParticipants.TabIndex = 2;
@@ -1190,7 +1193,7 @@
             this.ListViewParticipants.ForeColor = System.Drawing.Color.White;
             this.ListViewParticipants.HideSelection = false;
             this.ListViewParticipants.Location = new System.Drawing.Point(194, 73);
-            this.ListViewParticipants.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.ListViewParticipants.Margin = new System.Windows.Forms.Padding(1);
             this.ListViewParticipants.Name = "ListViewParticipants";
             this.ListViewParticipants.Size = new System.Drawing.Size(273, 110);
             this.ListViewParticipants.TabIndex = 1;
@@ -1204,7 +1207,7 @@
             this.ListViewActivityLecturersActivities.FullRowSelect = true;
             this.ListViewActivityLecturersActivities.HideSelection = false;
             this.ListViewActivityLecturersActivities.Location = new System.Drawing.Point(11, 59);
-            this.ListViewActivityLecturersActivities.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.ListViewActivityLecturersActivities.Margin = new System.Windows.Forms.Padding(1);
             this.ListViewActivityLecturersActivities.Name = "ListViewActivityLecturersActivities";
             this.ListViewActivityLecturersActivities.Size = new System.Drawing.Size(150, 147);
             this.ListViewActivityLecturersActivities.TabIndex = 0;
@@ -1223,6 +1226,30 @@
             this.pnlRegister.Name = "pnlRegister";
             this.pnlRegister.Size = new System.Drawing.Size(580, 374);
             this.pnlRegister.TabIndex = 12;
+            // 
+            // lblCheckoutInfoCR
+            // 
+            this.lblCheckoutInfoCR.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCheckoutInfoCR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCheckoutInfoCR.Location = new System.Drawing.Point(124, 313);
+            this.lblCheckoutInfoCR.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblCheckoutInfoCR.Name = "lblCheckoutInfoCR";
+            this.lblCheckoutInfoCR.Size = new System.Drawing.Size(330, 19);
+            this.lblCheckoutInfoCR.TabIndex = 8;
+            this.lblCheckoutInfoCR.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // btnCheckoutCR
+            // 
+            this.btnCheckoutCR.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnCheckoutCR.Location = new System.Drawing.Point(0, 350);
+            this.btnCheckoutCR.Margin = new System.Windows.Forms.Padding(1);
+            this.btnCheckoutCR.Name = "btnCheckoutCR";
+            this.btnCheckoutCR.Size = new System.Drawing.Size(580, 24);
+            this.btnCheckoutCR.TabIndex = 7;
+            this.btnCheckoutCR.Text = "Checkout";
+            this.btnCheckoutCR.UseVisualStyleBackColor = true;
+            this.btnCheckoutCR.Click += new System.EventHandler(this.btnCheckoutCR_Click);
             // 
             // ListViewRegisterD
             // 
@@ -1304,35 +1331,29 @@
             this.label5.TabIndex = 3;
             this.label5.Text = "Cash register";
             // 
-            // lblCheckoutInfoCR
+            // pnlLogin
             // 
-            this.lblCheckoutInfoCR.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCheckoutInfoCR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCheckoutInfoCR.Location = new System.Drawing.Point(124, 313);
-            this.lblCheckoutInfoCR.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.lblCheckoutInfoCR.Name = "lblCheckoutInfoCR";
-            this.lblCheckoutInfoCR.Size = new System.Drawing.Size(330, 19);
-            this.lblCheckoutInfoCR.TabIndex = 8;
-            this.lblCheckoutInfoCR.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.pnlLogin.Controls.Add(this.button1);
+            this.pnlLogin.Location = new System.Drawing.Point(1245, 506);
+            this.pnlLogin.Name = "pnlLogin";
+            this.pnlLogin.Size = new System.Drawing.Size(438, 243);
+            this.pnlLogin.TabIndex = 13;
             // 
-            // btnCheckoutCR
+            // button1
             // 
-            this.btnCheckoutCR.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnCheckoutCR.Location = new System.Drawing.Point(0, 350);
-            this.btnCheckoutCR.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.btnCheckoutCR.Name = "btnCheckoutCR";
-            this.btnCheckoutCR.Size = new System.Drawing.Size(580, 24);
-            this.btnCheckoutCR.TabIndex = 7;
-            this.btnCheckoutCR.Text = "Checkout";
-            this.btnCheckoutCR.UseVisualStyleBackColor = true;
-            this.btnCheckoutCR.Click += new System.EventHandler(this.btnCheckoutCR_Click);
+            this.button1.Location = new System.Drawing.Point(11, 18);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(174, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Forgot password?";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1722, 1061);
+            this.Controls.Add(this.pnlLogin);
             this.Controls.Add(this.pnlActivitySuperviser);
             this.Controls.Add(this.pnlRegister);
             this.Controls.Add(this.pnlActivityStudent);
@@ -1382,6 +1403,7 @@
             this.pnlRegister.ResumeLayout(false);
             this.pnlRegister.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.pnlLogin.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1509,6 +1531,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader18;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel pnlLogin;
+        private System.Windows.Forms.Button button1;
     }
 }
 
