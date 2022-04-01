@@ -59,6 +59,12 @@
     <Compile Include="PasswordReset.Designer.cs">
       <DependentUpon>PasswordReset.cs</DependentUpon>
     </Compile>
+    <Compile Include="Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
     <Compile Include="SomerenUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PasswordReset.resx">
       <DependentUpon>PasswordReset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SomerenUI.resx">
       <DependentUpon>SomerenUI.cs</DependentUpon>

@@ -21,7 +21,8 @@ namespace SomerenUI
 
         private void linkLabelRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //register form here
+            Register register = new Register();
+            register.Show();
 
         }
 
@@ -29,7 +30,6 @@ namespace SomerenUI
         {
             PasswordReset passwordReset = new PasswordReset();
             passwordReset.Show();
-            this.Hide();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
