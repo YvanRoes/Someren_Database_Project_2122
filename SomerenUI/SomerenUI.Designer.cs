@@ -156,6 +156,9 @@
             this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
+
+            this.pnlLogin = new System.Windows.Forms.Panel();
+            this.btnForgotPassword = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -176,14 +179,15 @@
             this.pnlActivitySuperviser.SuspendLayout();
             this.pnlRegister.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.pnlLogin.SuspendLayout();
             this.SuspendLayout();
             // 
             // imgDashboard
             // 
             this.imgDashboard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.imgDashboard.Location = new System.Drawing.Point(31, 0);
+            this.imgDashboard.Location = new System.Drawing.Point(249, 0);
             this.imgDashboard.Name = "imgDashboard";
-            this.imgDashboard.Size = new System.Drawing.Size(311, 270);
+            this.imgDashboard.Size = new System.Drawing.Size(93, 84);
             this.imgDashboard.TabIndex = 0;
             this.imgDashboard.TabStop = false;
             // 
@@ -1426,11 +1430,30 @@
             this.label5.TabIndex = 3;
             this.label5.Text = "Cash register";
             // 
+            // pnlLogin
+            // 
+            this.pnlLogin.Controls.Add(this.btnForgotPassword);
+            this.pnlLogin.Location = new System.Drawing.Point(1245, 506);
+            this.pnlLogin.Name = "pnlLogin";
+            this.pnlLogin.Size = new System.Drawing.Size(438, 243);
+            this.pnlLogin.TabIndex = 13;
+            // 
+            // btnForgotPassword
+            // 
+            this.btnForgotPassword.Location = new System.Drawing.Point(11, 18);
+            this.btnForgotPassword.Name = "btnForgotPassword";
+            this.btnForgotPassword.Size = new System.Drawing.Size(174, 23);
+            this.btnForgotPassword.TabIndex = 4;
+            this.btnForgotPassword.Text = "Forgot password?";
+            this.btnForgotPassword.UseVisualStyleBackColor = true;
+            this.btnForgotPassword.Click += new System.EventHandler(this.btnForgotPassword_Click);
+            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1966, 1061);
+            this.ClientSize = new System.Drawing.Size(1722, 1061);
+            this.Controls.Add(this.pnlLogin);
             this.Controls.Add(this.pnlActivitySuperviser);
             this.Controls.Add(this.pnlRegister);
             this.Controls.Add(this.pnlActivityStudent);
@@ -1480,6 +1503,7 @@
             this.pnlRegister.ResumeLayout(false);
             this.pnlRegister.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.pnlLogin.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1614,6 +1638,8 @@
         private System.Windows.Forms.Label lblSDT;
         private System.Windows.Forms.Button btnDeleteActivity;
         private System.Windows.Forms.Button btnEditActivity;
+        private System.Windows.Forms.Panel pnlLogin;
+        private System.Windows.Forms.Button btnForgotPassword;
     }
 }
 

@@ -55,6 +55,7 @@
     <Compile Include="StockItemDao.cs" />
     <Compile Include="StudentDao.cs" />
     <Compile Include="TeacherDao.cs" />
+    <Compile Include="UserDao.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SomerenModel\SomerenModel.csproj">
