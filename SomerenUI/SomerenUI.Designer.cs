@@ -49,10 +49,17 @@
             this.pnlDashboard = new System.Windows.Forms.Panel();
             this.lbl_Dashboard = new System.Windows.Forms.Label();
             this.pnlActivities = new System.Windows.Forms.Panel();
+            this.btnRefreshList = new System.Windows.Forms.Button();
+            this.txtActivityDescription = new System.Windows.Forms.TextBox();
+            this.lblDesc = new System.Windows.Forms.Label();
+            this.lblEDT = new System.Windows.Forms.Label();
+            this.lblSDT = new System.Windows.Forms.Label();
+            this.btnDeleteActivity = new System.Windows.Forms.Button();
+            this.btnEditActivity = new System.Windows.Forms.Button();
+            this.DatePickerStart = new System.Windows.Forms.DateTimePicker();
+            this.DatePickerEnd = new System.Windows.Forms.DateTimePicker();
+            this.btnAddActivity = new System.Windows.Forms.Button();
             this.ListViewActivities = new System.Windows.Forms.ListView();
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lbl_Activities = new System.Windows.Forms.Label();
             this.pnlRooms = new System.Windows.Forms.Panel();
@@ -149,6 +156,7 @@
             this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
+
             this.pnlLogin = new System.Windows.Forms.Panel();
             this.btnForgotPassword = new System.Windows.Forms.Button();
             this.Register_user = new System.Windows.Forms.Panel();
@@ -279,6 +287,7 @@
             this.activitiesToolStripMenuItem1.Name = "activitiesToolStripMenuItem1";
             this.activitiesToolStripMenuItem1.Size = new System.Drawing.Size(220, 26);
             this.activitiesToolStripMenuItem1.Text = "Activities";
+            this.activitiesToolStripMenuItem1.Click += new System.EventHandler(this.activitiesToolStripMenuItem1_Click);
             // 
             // activitySupervisorsToolStripMenuItem
             // 
@@ -354,43 +363,134 @@
             // 
             // pnlActivities
             // 
+            this.pnlActivities.Controls.Add(this.btnRefreshList);
+            this.pnlActivities.Controls.Add(this.txtActivityDescription);
+            this.pnlActivities.Controls.Add(this.lblDesc);
+            this.pnlActivities.Controls.Add(this.lblEDT);
+            this.pnlActivities.Controls.Add(this.lblSDT);
+            this.pnlActivities.Controls.Add(this.btnDeleteActivity);
+            this.pnlActivities.Controls.Add(this.btnEditActivity);
+            this.pnlActivities.Controls.Add(this.DatePickerStart);
+            this.pnlActivities.Controls.Add(this.DatePickerEnd);
+            this.pnlActivities.Controls.Add(this.btnAddActivity);
             this.pnlActivities.Controls.Add(this.ListViewActivities);
             this.pnlActivities.Controls.Add(this.pictureBox3);
             this.pnlActivities.Controls.Add(this.lbl_Activities);
+
             this.pnlActivities.Location = new System.Drawing.Point(1287, 340);
             this.pnlActivities.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlActivities.Name = "pnlActivities";
             this.pnlActivities.Size = new System.Drawing.Size(329, 246);
             this.pnlActivities.TabIndex = 7;
             // 
+            // btnRefreshList
+            // 
+            this.btnRefreshList.Location = new System.Drawing.Point(28, 239);
+            this.btnRefreshList.Name = "btnRefreshList";
+            this.btnRefreshList.Size = new System.Drawing.Size(75, 23);
+            this.btnRefreshList.TabIndex = 15;
+            this.btnRefreshList.Text = "Refresh";
+            this.btnRefreshList.UseVisualStyleBackColor = true;
+            this.btnRefreshList.Click += new System.EventHandler(this.btnRefreshList_Click);
+            // 
+            // txtActivityDescription
+            // 
+            this.txtActivityDescription.Location = new System.Drawing.Point(28, 367);
+            this.txtActivityDescription.Multiline = true;
+            this.txtActivityDescription.Name = "txtActivityDescription";
+            this.txtActivityDescription.Size = new System.Drawing.Size(451, 84);
+            this.txtActivityDescription.TabIndex = 14;
+            this.txtActivityDescription.TextChanged += new System.EventHandler(this.txtActivityDescription_TextChanged);
+            // 
+            // lblDesc
+            // 
+            this.lblDesc.AutoSize = true;
+            this.lblDesc.Location = new System.Drawing.Point(25, 351);
+            this.lblDesc.Name = "lblDesc";
+            this.lblDesc.Size = new System.Drawing.Size(89, 13);
+            this.lblDesc.TabIndex = 13;
+            this.lblDesc.Text = "Enter description:";
+            // 
+            // lblEDT
+            // 
+            this.lblEDT.AutoSize = true;
+            this.lblEDT.Location = new System.Drawing.Point(264, 278);
+            this.lblEDT.Name = "lblEDT";
+            this.lblEDT.Size = new System.Drawing.Size(93, 13);
+            this.lblEDT.TabIndex = 12;
+            this.lblEDT.Text = "End date and time";
+            // 
+            // lblSDT
+            // 
+            this.lblSDT.AutoSize = true;
+            this.lblSDT.Location = new System.Drawing.Point(19, 278);
+            this.lblSDT.Name = "lblSDT";
+            this.lblSDT.Size = new System.Drawing.Size(99, 13);
+            this.lblSDT.TabIndex = 11;
+            this.lblSDT.Text = "Start date and time:";
+            // 
+            // btnDeleteActivity
+            // 
+            this.btnDeleteActivity.Location = new System.Drawing.Point(510, 428);
+            this.btnDeleteActivity.Name = "btnDeleteActivity";
+            this.btnDeleteActivity.Size = new System.Drawing.Size(229, 23);
+            this.btnDeleteActivity.TabIndex = 10;
+            this.btnDeleteActivity.Text = "Delete Activity";
+            this.btnDeleteActivity.UseVisualStyleBackColor = true;
+            this.btnDeleteActivity.Click += new System.EventHandler(this.btnDeleteActivity_Click);
+            // 
+            // btnEditActivity
+            // 
+            this.btnEditActivity.Location = new System.Drawing.Point(510, 394);
+            this.btnEditActivity.Name = "btnEditActivity";
+            this.btnEditActivity.Size = new System.Drawing.Size(229, 23);
+            this.btnEditActivity.TabIndex = 9;
+            this.btnEditActivity.Text = "Edit Activity";
+            this.btnEditActivity.UseVisualStyleBackColor = true;
+            this.btnEditActivity.Click += new System.EventHandler(this.btnEditActivity_Click);
+            // 
+            // DatePickerStart
+            // 
+            this.DatePickerStart.Location = new System.Drawing.Point(26, 303);
+            this.DatePickerStart.MinDate = new System.DateTime(2022, 3, 1, 0, 0, 0, 0);
+            this.DatePickerStart.Name = "DatePickerStart";
+            this.DatePickerStart.Size = new System.Drawing.Size(200, 20);
+            this.DatePickerStart.TabIndex = 8;
+            this.DatePickerStart.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
+            // 
+            // DatePickerEnd
+            // 
+            this.DatePickerEnd.Location = new System.Drawing.Point(267, 303);
+            this.DatePickerEnd.MinDate = new System.DateTime(2022, 3, 1, 0, 0, 0, 0);
+            this.DatePickerEnd.Name = "DatePickerEnd";
+            this.DatePickerEnd.Size = new System.Drawing.Size(200, 20);
+            this.DatePickerEnd.TabIndex = 7;
+            // 
+            // btnAddActivity
+            // 
+            this.btnAddActivity.Location = new System.Drawing.Point(510, 365);
+            this.btnAddActivity.Name = "btnAddActivity";
+            this.btnAddActivity.Size = new System.Drawing.Size(229, 23);
+            this.btnAddActivity.TabIndex = 6;
+            this.btnAddActivity.Text = "Add Activity";
+            this.btnAddActivity.UseVisualStyleBackColor = true;
+            this.btnAddActivity.Click += new System.EventHandler(this.btnAddActivity_Click);
+            // 
             // ListViewActivities
             // 
             this.ListViewActivities.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ListViewActivities.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6});
             this.ListViewActivities.HideSelection = false;
+
             this.ListViewActivities.Location = new System.Drawing.Point(21, 53);
             this.ListViewActivities.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ListViewActivities.Name = "ListViewActivities";
             this.ListViewActivities.Size = new System.Drawing.Size(99, 50);
             this.ListViewActivities.TabIndex = 5;
             this.ListViewActivities.UseCompatibleStateImageBehavior = false;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "ID";
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Name";
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Date of Birth";
+            this.ListViewActivities.View = System.Windows.Forms.View.Details;
+            this.ListViewActivities.SelectedIndexChanged += new System.EventHandler(this.ListViewActivities_SelectedIndexChanged);
             // 
             // pictureBox3
             // 
@@ -1675,9 +1775,6 @@
         private System.Windows.Forms.ToolStripMenuItem roomsToolStripMenuItem;
         private System.Windows.Forms.Panel pnlActivities;
         private System.Windows.Forms.ListView ListViewActivities;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label lbl_Activities;
         private System.Windows.Forms.Panel pnlRooms;
@@ -1781,6 +1878,16 @@
         private System.Windows.Forms.ColumnHeader columnHeader18;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DateTimePicker DatePickerStart;
+        private System.Windows.Forms.DateTimePicker DatePickerEnd;
+        private System.Windows.Forms.Button btnAddActivity;
+        private System.Windows.Forms.Button btnRefreshList;
+        private System.Windows.Forms.TextBox txtActivityDescription;
+        private System.Windows.Forms.Label lblDesc;
+        private System.Windows.Forms.Label lblEDT;
+        private System.Windows.Forms.Label lblSDT;
+        private System.Windows.Forms.Button btnDeleteActivity;
+        private System.Windows.Forms.Button btnEditActivity;
         private System.Windows.Forms.Panel pnlLogin;
         private System.Windows.Forms.Button btnForgotPassword;
         private System.Windows.Forms.Panel Register_user;

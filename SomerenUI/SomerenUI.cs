@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace SomerenUI
 {
@@ -64,6 +65,12 @@ namespace SomerenUI
                     //show activities                    
                     pnlActivities.Show();
                     pnlActivities.Dock = DockStyle.Fill;
+                    //generate and fill List View
+                    FillActivityLV();
+                    //lock buttons until can be used
+                    btnAddActivity.Enabled = false;
+                    btnEditActivity.Enabled = false;
+                    btnDeleteActivity.Enabled = false;
                     break;
                 case "Rooms":
                     //hide all other panels
@@ -249,11 +256,14 @@ namespace SomerenUI
             {
                 FillListViewsActivityStudents();
             }
-            else if(panelName == "Activity Supervisors")
+            else if (panelName == "Activity Supervisors")
             {
                 FillForms();
             }
-
+            else if (panelName == "Activities")
+            {
+                FillActivityLV();
+            }
         }
 
         private void HideAllpanels()
@@ -577,6 +587,10 @@ namespace SomerenUI
             {
                 MessageBox.Show("Error: order already exists in the database!\n" + err.Message);
             }
+            finally
+            {
+                btnCheckoutCR.Enabled = false;
+            }
 
         }
 
@@ -709,6 +723,63 @@ namespace SomerenUI
 
             FillListViewsActivityStudents();
         }
+        // Variant A - Lucas
+        private void ListViewActivities_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ListViewActivities.SelectedItems.Count > 0)
+            {
+                Activity selected = GetSelected();
+            try
+            {
+               
+
+                DatePickerStart.Value = selected.StartDateTime;
+                DatePickerEnd.Value = selected.EndDateTime;
+                txtActivityDescription.Text = selected.ActivityDescription;
+                btnDeleteActivity.Enabled = true;
+                btnEditActivity.Enabled = true;
+
+            }
+            catch (Exception err)
+            {
+
+                    MessageBox.Show(err.Message);
+            }
+
+            }
+
+        }
+
+        private void FillActivityLV()
+        {
+            ActivityService activityService = new ActivityService();
+            List<Activity> activities = activityService.GetAllActivities();
+            ListViewActivities.Clear();
+            ListViewActivities.View = View.Details;
+            ListViewActivities.MultiSelect = false;
+            ListViewActivities.FullRowSelect = true;
+            ListViewActivities.Columns.Add("ID", 80);
+            ListViewActivities.Columns.Add("Activity Description", 200);
+            ListViewActivities.Columns.Add("Start date", 140);
+            ListViewActivities.Columns.Add("End date", 140);
+            foreach (Activity activity in activities)
+            {
+                string[] item = { activity.ActivityId.ToString(),activity.ActivityDescription, activity.StartDateTime.ToString("d"), activity.EndDateTime.ToString("d") };
+                ListViewItem li = new ListViewItem(item);
+                ListViewActivities.Items.Add(li);
+            }
+        }
+
+        private void activitiesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            showPanel("Activities");
+        }
+
+        private void btnRefreshList_Click(object sender, EventArgs e)
+        {
+            FillActivityLV();
+        }
+
 
         // Variant B - Elias
         void FillForms()
@@ -794,12 +865,68 @@ namespace SomerenUI
             }
             catch (Exception ex) { throw ex; }
         }
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void btnAddActivity_Click(object sender, EventArgs e)
+        {
+            Activity input = GetUserInput();
+            ActivityService activityService = new ActivityService();
+            activityService.AddActivity(input);
+            MessageBox.Show("Activity added succesfully");
+        }
+        private Activity GetUserInput()
 
         private void ListViewActivityLecturersActivities_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SelectActivitySuperviser();
+            return new Activity()
+            {
+                ActivityDescription = txtActivityDescription.Text,
+                StartDateTime = DatePickerStart.Value,
+                EndDateTime = DatePickerEnd.Value
+            };
         }
 
+        private Activity GetSelected()
+        {
+            CultureInfo provider = CultureInfo.InvariantCulture;
+            ListViewItem.ListViewSubItemCollection selectedItems = ListViewActivities.SelectedItems[0].SubItems;
+            Activity selected = new Activity()
+            {
+                ActivityId = Convert.ToInt32(selectedItems[0].Text),
+                ActivityDescription = selectedItems[1].Text,
+                StartDateTime = Convert.ToDateTime(selectedItems[2].Text),
+                EndDateTime = Convert.ToDateTime(selectedItems[3].Text)
+            };
+            return selected;
+        }
+
+        private void txtActivityDescription_TextChanged(object sender, EventArgs e)
+        {
+            btnAddActivity.Enabled = true;
+        }
+
+        private void btnDeleteActivity_Click(object sender, EventArgs e)
+        {
+            Activity selected = GetSelected();
+            ActivityService activityService = new ActivityService();
+            if (MessageBox.Show("Are you sure you want to delete this activity?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                activityService.DeleteActivity(selected);
+            }
+
+        }
+
+        private void btnEditActivity_Click(object sender, EventArgs e)
+        {
+            Activity edited = GetUserInput();
+            edited.ActivityId = GetSelected().ActivityId;
+            ActivityService activityService = new ActivityService();
+            if (MessageBox.Show("Are you sure you want to edit this activity?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                activityService.UpdateActivity(edited);
+            }
 
         //Week 5 Forgot password
         private void btnForgotPassword_Click(object sender, EventArgs e)
